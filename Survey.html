@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dietary Questionnaire</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Awareness of My Plate, Food Pyramid, and Compliance of Dietary Habits</h1>
+
+        <!-- 1. Demographic Information -->
+        <section>
+            <h2>I. Demographic Information</h2>
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name">
+            </div>
+            <div class="form-group">
+                <label for="age">Age:</label>
+                <input type="number" id="age" name="age">
+            </div>
+            <div class="form-group">
+                <label for="gender">Gender:</label>
+                <select id="gender" name="gender">
+                    <option value="">Select</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="education">Educational Qualification:</label>
+                <select id="education" name="education">
+                    <option value="">Select</option>
+                    <option value="no_formal">No formal education</option>
+                    <option value="primary">Primary</option>
+                    <option value="secondary">Secondary</option>
+                    <option value="intermediate">Intermediate</option>
+                    <option value="graduate">Graduate</option>
+                    <option value="postgraduate">Postgraduate</option>
+                    <option value="doctorate">Doctorate</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="occupation">Occupation:</label>
+                <select id="occupation" name="occupation">
+                    <option value="">Select</option>
+                    <option value="employed">Employed</option>
+                    <option value="unemployed">Unemployed</option>
+                    <option value="self_employed">Self-employed</option>
+                    <option value="homemaker">Homemaker</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="income">Income Level (monthly salary):</label>
+                <select id="income" name="income">
+                    <option value="">Select</option>
+                    <option value="below_10k">Below 10,000</option>
+                    <option value="20k-25k">20,000-25,000</option>
+                    <option value="25k-50k">25,000-50,000</option>
+                    <option value="50k-1lakh">50,000-1,00,000</option>
+                    <option value="above_1lakh">Above 1,00,000</option>
+                </select>
+            </div>
+        </section>
+
+        <!-- 2. Anthropometry -->
+        <section>
+            <h2>II. Anthropometry</h2>
+            <div class="form-group">
+                <label for="weight">Weight (kgs):</label>
+                <input type="number" id="weight" name="weight" step="0.1">
+            </div>
+            <div class="form-group">
+                <label for="height">Height (cms/mts):</label>
+                <input type="number" id="height" name="height" step="0.1">
+            </div>
+            <div class="form-group">
+                <label for="bmi">BMI (kg/m²):</label>
+                <input type="number" id="bmi" name="bmi" step="0.1" readonly>
+                <button onclick="calculateBMI()" style="margin-left: 10px; vertical-align: middle;">Calculate BMI</button>
+            </div>
+        </section>
+
+        <!-- 3. Dietary Assessment & Knowledge -->
+        <section>
+            <h2>III. Dietary Assessment & Knowledge</h2>
+            <div class="form-group">
+                <label>1. Have you heard about the "My plate for the day" proposed by ICMR-NIN?</label><br>
+                <input type="radio" id="heard_food_groups_yes" name="heard_food_groups" value="yes">
+                <label for="heard_food_groups_yes">Yes</label>
+                <input type="radio" id="heard_food_groups_no" name="heard_food_groups" value="no">
+                <label for="heard_food_groups_no">No</label>
+            </div>
+            <div class="form-group">
+                <label>2. Have you heard about the Indian "Food pyramid" proposed by ICMR-NIN?</label><br>
+                <input type="radio" id="food-pyramid-yes" name="food-pyramid" value="yes">
+                <label for="food-pyramid-yes">Yes</label>
+                <input type="radio" id="food-pyramid-no" name="food-pyramid" value="no">
+                <label for="food-pyramid-no">no</label>
+            </div>
+            <div class="form-group">
+                <label>2. If Yes, where did you learn about it?</label><br>
+                <input type="radio" id="heard_balanced_yes" name="heard_balanced" value="yes">
+                <label for="heard_balanced_yes">Education</label>
+                <input type="radio" id="heard_balanced_yes" name="heard_balanced" value="yes">
+                <label for="heard_balanced_yes">Social Media</label>
+                <input type="radio" id="heard_balanced_no" name="heard_balanced" value="no">
+                <label for="heard_balanced_no">Health care professionals</label>
+            </div>
+            <div class="form-group">
+                <label>4. Are you aware of the concept of the balanced meals as recommended by dietary guidelines?</label><br>
+                <input type="radio" id="aware_balanced_yes" name="aware_balanced" value="yes">
+                <label for="aware_balanced_yes">Yes</label>
+                <input type="radio" id="aware_balanced_no" name="aware_balanced" value="no">
+                <label for="aware_balanced_no">No</label>
+            </div>
+            <div class="form-group">
+                <label>5. Can you list the major food groups recommended for daily consumption?</label><br>
+                <input type="radio" id="food-groups-rec" name="aware_balanced" value="yes">
+                <label for="food-groups-rec">Yes</label>
+                <input type="radio" id="food-groups-rec-no" name="food-groups-rec-no" value="no">
+                <label for="aware_balanced_no">No</label>
+            </div>
+            <div class="form-group">
+                <label>6. Do you know the recommended number of servings from different food groups per day?</label><br>
+                <input type="radio" id="aware_balanced_yes" name="aware_balanced" value="yes">
+                <label for="aware_balanced_yes">Yes</label>
+                <input type="radio" id="aware_balanced_no" name="aware_balanced" value="no">
+                <label for="aware_balanced_no">No</label>
+            </div>
+            <div class="form-group">
+                <label>7. What do you think are the barriers to following dietary guidelines?</label><br>
+                <input type="checkbox" id="barrier_lack" name="barriers" value="lack">
+                <label for="barrier_lack">Lack of awareness</label><br>
+                <input type="checkbox" id="barrier_cost" name="barriers" value="cost">
+                <label for="barrier_cost">Cost</label><br>
+                <input type="checkbox" id="barrier_time" name="barriers" value="time">
+                <label for="barrier_time">Time</label><br>
+                <input type="checkbox" id="barrier_availability" name="barriers" value="availability">
+                <label for="barrier_availability">Availability</label><br>
+                <input type="checkbox" id="barrier_all" name="barriers" value="all">
+                <label for="barrier_all">All the above</label>
+            </div>
+        </section>
+
+        <!-- 4. Physical Activity -->
+        <section>
+            <h2>IV. Physical Activity</h2>
+            <div class="form-group">
+                <label>1. Are you aware of the guidelines recommended by ICMR-NIN for physical activity?</label><br>
+                <input type="radio" id="aware_physical_yes" name="aware_physical" value="yes">
+                <label for="aware_physical_yes">Yes</label>
+                <input type="radio" id="aware_physical_no" name="aware_physical" value="no">
+                <label for="aware_physical_no">No</label>
+            </div>
+            <div class="form-group">
+                <label>2. Do you engage yourself in some physical activity/exercise daily?</label><br>
+                <input type="radio" id="engage_yes" name="engage_daily" value="yes">
+                <label for="engage_yes">Yes</label>
+                <input type="radio" id="engage_no" name="engage_daily" value="no">
+                <label for="engage_no">No</label>
+            </div>
+            <div class="form-group" id="activity_type_group">
+                <label>3. If yes, which of the following physical activity do you engage yourself in?</label><br>
+                <input type="checkbox" id="activity_walking" name="activity_type" value="walking">
+                <label for="activity_walking">Walking</label><br>
+                <input type="checkbox" id="activity_yoga" name="activity_type" value="yoga">
+                <label for="activity_yoga">Yoga</label><br>
+                <input type="checkbox" id="activity_swimming" name="activity_type" value="swimming">
+                <label for="activity_swimming">Swimming</label><br>
+                <input type="checkbox" id="activity_outdoor" name="activity_type" value="outdoor">
+                <label for="activity_outdoor">Playing outdoor games</label><br>
+                <input type="checkbox" id="activity_jogging" name="activity_type" value="jogging">
+                <label for="activity_jogging">Jogging</label><br>
+                <input type="checkbox" id="activity_gym" name="activity_type" value="gym">
+                <label for="activity_gym">Regular gym</label><br>
+                <input type="checkbox" id="activity_others" name="activity_type" value="others">
+                <label for="activity_others">Others(Like cycling,dancing etc)</label>
+            </div>
+            <div class="form-group">
+                <label>4. How long do you engage yourself in the physical activity/exercise in a day?</label><br>
+                <input type="radio" id="duration_15_30" name="duration" value="15-30">
+                <label for="duration_15_30">15-30 minutes a day</label><br>
+                <input type="radio" id="duration_30_60" name="duration" value="30-60">
+                <label for="duration_30_60">30-60 minutes a day</label><br>
+                <input type="radio" id="duration_over_60" name="duration" value="over_60">
+                <label for="duration_over_60">More than 60 minutes a day</label>
+            </div>
+            <div class="form-group">
+                <label>5. How often do you engage in physical activity in a week?</label><br>
+                <input type="radio" id="frequency_1_2" name="frequency" value="1-2">
+                <label for="frequency_1-2">1-3 days a week</label><br>
+                <input type="radio" id="frequency_4_5" name="frequency" value="4-5">
+                <label for="frequency_4-5">4-5 days a week</label><br>
+                <input type="radio" id="frequency_6" name="frequency" value="6">
+                <label for="frequency_6">6 days a week</label><br>
+                <input type="radio" id="frequency_7" name="frequency" value="7">
+                <label for="frequency_7">7 days a week</label>
+            </div>
+        </section>
+
+        <!-- 5. Food Frequency Questionnaire -->
+        <section>
+            <h2>V. Food Frequency Questionnaire</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Food Groups</th>
+                        <th>Once a day</th>
+                        <th>2-3 times a day</th>
+                        <th>2-4 times a week</th>
+                        <th>Once a week</th>
+                        <th>Fortnight</th>
+                        <th>Once a month</th>
+                        <th>Never</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Cereals (milled)</td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td></tr>
+                    <tr><td>Cereals (whole grains)</td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td></tr>
+                    <tr><td>Pulses</td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td></tr>
+                    <tr><td>Green leafy vegetables</td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td></tr>
+                    <tr><td>Other vegetables</td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td></tr>
+                    <tr><td>Roots & Tubers</td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td></tr>
+                    <tr><td>Fruits</td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td></tr>
+                    <tr><td>Nuts & oil seeds</td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td></tr>
+                    <tr><td>Milk & milk products</td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td></tr>
+                    <tr><td>Meat & meat products</td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td></tr>
+                    <tr><td>Sugars</td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td></tr>
+                    <tr><td>High fat, salt, sugar foods/ ultra processed foods</td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td></tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 6. List of Food Items (Higher Frequency) -->
+        <section>
+            <h2>VI. List of Food Items (Higher Frequency)</h2>
+            <p>Note: Choose the highest and 2nd highest frequency foods from the list below (2 or more times in a week) in each category.</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Food Groups</th>
+                        <th>Items</th>
+                        <th>Highest Frequency</th>
+                        <th>2nd Highest Frequency</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Cereals (milled)</td>
+                        <td>Rice (raw/milled), Rice flakes, Puffed rice, Refined wheat flour(maida), Semolina, Vermicelli, Idli rava</td>
+                        <td>
+                            <select name="cereal_milled_highest">
+                                <option value="">Select</option>
+                                <option value="rice">Rice (raw/milled)</option>
+                                <option value="rice_flakes">Rice flakes</option>
+                                <option value="puffed_rice">Puffed rice</option>
+                                <option value="refined_wheat">Refined wheat flour(maida)</option>
+                                <option value="semolina">Semolina</option>
+                                <option value="vermicelli">Vermicelli</option>
+                                <option value="idli_rava">Idli rava</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select name="cereal_milled_second">
+                                <option value="">Select</option>
+                                <option value="rice">Rice (raw/milled)</option>
+                                <option value="rice_flakes">Rice flakes</option>
+                                <option value="puffed_rice">Puffed rice</option>
+                                <option value="refined_wheat">Refined wheat flour(maida)</option>
+                                <option value="semolina">Semolina</option>
+                                <option value="vermicelli">Vermicelli</option>
+                                <option value="idli_rava">Idli rava</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Cereals (whole grains)</td>
+                        <td>Amaranthus seeds, Bajra(flour), Jowar(flour), Quinoa, Ragi, Oats, Brown rice, Samai, Varagu, Wheat flour(atta), Kuthu(Buckwheat), Kakum(foxtail), Kodon(Kodo), Snawa(Barnyard)</td>
+                        <td>
+                            <select name="cereal_whole_highest">
+                                <option value="">Select</option>
+                                <option value="amaranthus">Amaranthus seeds</option>
+                                <option value="bajra">Bajra(flour)</option>
+                                <option value="jowar">Jowar(flour)</option>
+                                <option value="quinoa">Quinoa</option>
+                                <option value="ragi">Ragi</option>
+                                <option value="oats">Oats</option>
+                                <option value="brown_rice">Brown rice</option>
+                                <option value="samai">Samai</option>
+                                <option value="varagu">Varagu</option>
+                                <option value="wheat_flour">Wheat flour(atta)</option>
+                                <option value="kuthu">Kuthu(Buckwheat)</option>
+                                <option value="kakum">Kakum(foxtail)</option>
+                                <option value="kodon">Kodon(Kodo)</option>
+                                <option value="snawa">Snawa(Barnyard)</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select name="cereal_whole_second">
+                                <option value="">Select</option>
+                                <option value="amaranthus">Amaranthus seeds</option>
+                                <option value="bajra">Bajra(flour)</option>
+                                <option value="jowar">Jowar(flour)</option>
+                                <option value="quinoa">Quinoa</option>
+                                <option value="ragi">Ragi</option>
+                                <option value="oats">Oats</option>
+                                <option value="brown_rice">Brown rice</option>
+                                <option value="samai">Samai</option>
+                                <option value="varagu">Varagu</option>
+                                <option value="wheat_flour">Wheat flour(atta)</option>
+                                <option value="kuthu">Kuthu(Buckwheat)</option>
+                                <option value="kakum">Kakum(foxtail)</option>
+                                <option value="kodon">Kodon(Kodo)</option>
+                                <option value="snawa">Snawa(Barnyard)</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Pulses</td>
+                        <td>Bengal gram, Black gram, Cowpea, Green gram, Horse gram, Lentils, Rajmah, Red gram, Soybean</td>
+                        <td>
+                            <select name="pulses_highest">
+                                <option value="">Select</option>
+                                <option value="bengal">Bengal gram</option>
+                                <option value="black">Black gram</option>
+                                <option value="cowpea">Cowpea</option>
+                                <option value="green">Green gram</option>
+                                <option value="horse">Horse gram</option>
+                                <option value="lentils">Lentils</option>
+                                <option value="rajmah">Rajmah</option>
+                                <option value="red">Red gram</option>
+                                <option value="soybean">Soybean</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select name="pulses_second">
+                                <option value="">Select</option>
+                                <option value="bengal">Bengal gram</option>
+                                <option value="black">Black gram</option>
+                                <option value="cowpea">Cowpea</option>
+                                <option value="green">Green gram</option>
+                                <option value="horse">Horse gram</option>
+                                <option value="lentils">Lentils</option>
+                                <option value="rajmah">Rajmah</option>
+                                <option value="red">Red gram</option>
+                                <option value="soybean">Soybean</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Green leafy vegetables</td>
+                        <td>Amaranthus, Baselle, Drumstick, Fenugreek, Gogu, Spinach</td>
+                        <td>
+                            <select name="green_leafy_highest">
+                                <option value="">Select</option>
+                                <option value="amaranthus">Amaranthus</option>
+                                <option value="baselle">Baselle</option>
+                                <option value="drumstick">Drumstick</option>
+                                <option value="fenugreek">Fenugreek</option>
+                                <option value="gogu">Gogu</option>
+                                <option value="spinach">Spinach</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select name="green_leafy_second">
+                                <option value="">Select</option>
+                                <option value="amaranthus">Amaranthus</option>
+                                <option value="baselle">Baselle</option>
+                                <option value="drumstick">Drumstick</option>
+                                <option value="fenugreek">Fenugreek</option>
+                                <option value="gogu">Gogu</option>
+                                <option value="spinach">Spinach</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Other vegetables</td>
+                        <td>Bitter gourd, Bottle gourd, Brinjal, Broad beans, Capsicum, Cauliflower, Cluster beans, Cucumber, Drumstick, French beans, Kovai, Ladies finger, Ridge gourd</td>
+                        <td>
+                            <select name="other_veg_highest">
+                                <option value="">Select</option>
+                                <option value="bitter_gourd">Bitter gourd</option>
+                                <option value="bottle_gourd">Bottle gourd</option>
+                                <option value="brinjal">Brinjal</option>
+                                <option value="broad_beans">Broad beans</option>
+                                <option value="capsicum">Capsicum</option>
+                                <option value="cauliflower">Cauliflower</option>
+                                <option value="cluster_beans">Cluster beans</option>
+                                <option value="cucumber">Cucumber</option>
+                                <option value="drumstick">Drumstick</option>
+                                <option value="french_beans">French beans</option>
+                                <option value="kovai">Kovai</option>
+                                <option value="ladies_finger">Ladies finger</option>
+                                <option value="ridge_gourd">Ridge gourd</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select name="other_veg_second">
+                                <option value="">Select</option>
+                                <option value="bitter_gourd">Bitter gourd</option>
+                                <option value="bottle_gourd">Bottle gourd</option>
+                                <option value="brinjal">Brinjal</option>
+                                <option value="broad_beans">Broad beans</option>
+                                <option value="capsicum">Capsicum</option>
+                                <option value="cauliflower">Cauliflower</option>
+                                <option value="cluster_beans">Cluster beans</option>
+                                <option value="cucumber">Cucumber</option>
+                                <option value="drumstick">Drumstick</option>
+                                <option value="french_beans">French beans</option>
+                                <option value="kovai">Kovai</option>
+                                <option value="ladies_finger">Ladies finger</option>
+                                <option value="ridge_gourd">Ridge gourd</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Roots & Tubers</td>
+                        <td>Potato, Carrot, Sweet potato, Radish, beetroot</td>
+                        <td>
+                            <select name="roots_tubers_highest">
+                                <option value="">Select</option>
+                                <option value="potato">Potato</option>
+                                <option value="carrot">Carrot</option>
+                                <option value="sweet_potato">Sweet potato</option>
+                                <option value="radish">Radish</option>
+                                <option value="beetroot">beetroot</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select name="roots_tubers_second">
+                                <option value="">Select</option>
+                                <option value="potato">Potato</option>
+                                <option value="carrot">Carrot</option>
+                                <option value="sweet_potato">Sweet potato</option>
+                                <option value="radish">Radish</option>
+                                <option value="beetroot">beetroot</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Fruits</td>
+                        <td>Apple, Avocado, Banana, Custard apple, Dates, Grapes, Guava, Lime, Mango, Orange, Papaya, Pineapple, Pomegranate, Sapota, Strawberry, Watermelon</td>
+                        <td>
+                            <select name="fruits_highest">
+                                <option value="">Select</option>
+                                <option value="apple">Apple</option>
+                                <option value="avocado">Avocado</option>
+                                <option value="banana">Banana</option>
+                                <option value="custard_apple">Custard apple</option>
+                                <option value="dates">Dates</option>
+                                <option value="grapes">Grapes</option>
+                                <option value="guava">Guava</option>
+                                <option value="lime">Lime</option>
+                                <option value="mango">Mango</option>
+                                <option value="orange">Orange</option>
+                                <option value="papaya">Papaya</option>
+                                <option value="pineapple">Pineapple</option>
+                                <option value="pomegranate">Pomegranate</option>
+                                <option value="sapota">Sapota</option>
+                                <option value="strawberry">Strawberry</option>
+                                <option value="watermelon">Watermelon</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select name="fruits_second">
+                                <option value="">Select</option>
+                                <option value="apple">Apple</option>
+                                <option value="avocado">Avocado</option>
+                                <option value="banana">Banana</option>
+                                <option value="custard_apple">Custard apple</option>
+                                <option value="dates">Dates</option>
+                                <option value="grapes">Grapes</option>
+                                <option value="guava">Guava</option>
+                                <option value="lime">Lime</option>
+                                <option value="mango">Mango</option>
+                                <option value="orange">Orange</option>
+                                <option value="papaya">Papaya</option>
+                                <option value="pineapple">Pineapple</option>
+                                <option value="pomegranate">Pomegranate</option>
+                                <option value="sapota">Sapota</option>
+                                <option value="strawberry">Strawberry</option>
+                                <option value="watermelon">Watermelon</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Nuts & oil seeds</td>
+                        <td>Almonds, Cashewnut, Coconut (dried), Gingelly, Linseed, Chia seeds, Pumpkin seeds, Safflower seeds, Sunflower seeds, walnut</td>
+                        <td>
+                            <select name="nuts_seeds_highest">
+                                <option value="">Select</option>
+                                <option value="almonds">Almonds</option>
+                                <option value="cashewnut">Cashewnut</option>
+                                <option value="coconut">Coconut (dried)</option>
+                                <option value="gingelly">Gingelly</option>
+                                <option value="linseed">Linseed</option>
+                                <option value="chia">Chia seeds</option>
+                                <option value="pumpkin">Pumpkin seeds</option>
+                                <option value="safflower">Safflower seeds</option>
+                                <option value="sunflower">Sunflower seeds</option>
+                                <option value="walnut">walnut</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select name="nuts_seeds_second">
+                                <option value="">Select</option>
+                                <option value="almonds">Almonds</option>
+                                <option value="cashewnut">Cashewnut</option>
+                                <option value="coconut">Coconut (dried)</option>
+                                <option value="gingelly">Gingelly</option>
+                                <option value="linseed">Linseed</option>
+                                <option value="chia">Chia seeds</option>
+                                <option value="pumpkin">Pumpkin seeds</option>
+                                <option value="safflower">Saffflower seeds</option>
+                                <option value="sunflower">Sunflower seeds</option>
+                                <option value="walnut">walnut</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Milk & milk products</td>
+                        <td>milk (whole/skimmed), Paneer, curd, khoa, cheese, butter, ghee</td>
+                        <td>
+                            <select name="milk_products_highest">
+                                <option value="">Select</option>
+                                <option value="milk">milk (whole/skimmed)</option>
+                                <option value="paneer">Paneer</option>
+                                <option value="curd">curd</option>
+                                <option value="khoa">khoa</option>
+                                <option value="cheese">cheese</option>
+                                <option value="butter">butter</option>
+                                <option value="ghee">ghee</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select name="milk_products_second">
+                                <option value="">Select</option>
+                                <option value="milk">milk (whole/skimmed)</option>
+                                <option value="paneer">Paneer</option>
+                                <option value="curd">curd</option>
+                                <option value="khoa">khoa</option>
+                                <option value="cheese">cheese</option>
+                                <option value="butter">butter</option>
+                                <option value="ghee">ghee</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Meat & meat products</td>
+                        <td>Chicken, Mutton, Fish, Eggs, Pork, Lamb, Beef</td>
+                        <td>
+                            <select name="meat_products_highest">
+                                <option value="">Select</option>
+                                <option value="chicken">Chicken</option>
+                                <option value="mutton">Mutton</option>
+                                <option value="fish">Fish</option>
+                                <option value="eggs">Eggs</option>
+                                <option value="pork">Pork</option>
+                                <option value="lamb">Lamb</option>
+                                <option value="beef">Beef</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select name="meat_products_second">
+                                <option value="">Select</option>
+                                <option value="chicken">Chicken</option>
+                                <option value="mutton">Mutton</option>
+                                <option value="fish">Fish</option>
+                                <option value="eggs">Eggs</option>
+                                <option value="pork">Pork</option>
+                                <option value="lamb">Lamb</option>
+                                <option value="beef">Beef</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Sugary beverages (added sugars)</td>
+                        <td>Soft drinks, Fruit juices, Carbonated drinks</td>
+                        <td>
+                            <select name="sugary_bev_highest">
+                                <option value="">Select</option>
+                                <option value="soft_drinks">Soft drinks</option>
+                                <option value="fruit_juices">Fruit juices</option>
+                                <option value="carbonated">Carbonated drinks</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select name="sugary_bev_second">
+                                <option value="">Select</option>
+                                <option value="soft_drinks">Soft drinks</option>
+                                <option value="fruit_juices">Fruit juices</option>
+                                <option value="carbonated">Carbonated drinks</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Confectionery</td>
+                        <td>Chocolates, Candies, Biscuits, Sweets, cakes</td>
+                        <td>
+                            <select name="confectionery_highest">
+                                <option value="">Select</option>
+                                <option value="chocolates">Chocolates</option>
+                                <option value="candies">Candies</option>
+                                <option value="biscuits">Biscuits</option>
+                                <option value="sweets">Sweets</option>
+                                <option value="cakes">cakes</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select name="confectionery_second">
+                                <option value="">Select</option>
+                                <option value="chocolates">Chocolates</option>
+                                <option value="candies">Candies</option>
+                                <option value="biscuits">Biscuits</option>
+                                <option value="sweets">Sweets</option>
+                                <option value="cakes">cakes</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>High fat, salt, sugar foods/ ultra processed foods</td>
+                        <td>Fried foods, Sugary beverages, Packaged snacks, Pizzas/Burgers, Confectionery</td>
+                        <td>
+                            <select name="high_fat_foods_highest">
+                                <option value="">Select</option>
+                                <option value="fried_foods">Fried foods</option>
+                                <option value="sugary_bev">Sugary beverages</option>
+                                <option value="packaged_snacks">Packaged snacks</option>
+                                <option value="pizzas_burgers">Pizzas/Burgers</option>
+                                <option value="confectionery">Confectionery</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select name="high_fat_foods_second">
+                                <option value="">Select</option>
+                                <option value="fried_foods">Fried foods</option>
+                                <option value="sugary_bev">Sugary beverages</option>
+                                <option value="packaged_snacks">Packaged snacks</option>
+                                <option value="pizzas_burgers">Pizzas/Burgers</option>
+                                <option value="confectionery">Confectionery</option>
+                            </select>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 7. 24-Hour Recall -->
+        <section>
+            <h2>VII. 24-Hour Meal Recall</h2>
+            <table id="mealRecallTable">
+                <thead>
+                    <tr>
+                        <th>Meal Time</th>
+                        <th>Date</th>
+                        <th>Item</th>
+                        <th>Quantity</th>
+                        <th>Unit</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Early</td><td><input type="date" name="recallDate_Early"></td><td><input type="text" name="item_Early[]"></td><td><input type="number" name="quantity_Early[]" step="0.1"></td><td><select name="unit_Early[]"><option value="cups">Cups</option><option value="tablespoons">Tablespoons</option><option value="teaspoons">Teaspoons</option><option value="pieces">Pieces</option></select></td><td><button type="button" onclick="addRow('Early')">Add New Row</button></td></tr>
+                    <tr><td>Breakfast</td><td><input type="date" name="recallDate_Breakfast"></td><td><input type="text" name="item_Breakfast[]"></td><td><input type="number" name="quantity_Breakfast[]" step="0.1"></td><td><select name="unit_Breakfast[]"><option value="cups">Cups</option><option value="tablespoons">Tablespoons</option><option value="teaspoons">Teaspoons</option><option value="pieces">Pieces</option></select></td><td><button type="button" onclick="addRow('Breakfast')">Add New Row</button></td></tr>
+                    <tr><td>Mid-morning</td><td><input type="date" name="recallDate_Mid-morning"></td><td><input type="text" name="item_Mid-morning[]"></td><td><input type="number" name="quantity_Mid-morning[]" step="0.1"></td><td><select name="unit_Mid-morning[]"><option value="cups">Cups</option><option value="tablespoons">Tablespoons</option><option value="teaspoons">Teaspoons</option><option value="pieces">Pieces</option></select></td><td><button type="button" onclick="addRow('Mid-morning')">Add New Row</button></td></tr>
+                    <tr><td>Lunch</td><td><input type="date" name="recallDate_Lunch"></td><td><input type="text" name="item_Lunch[]"></td><td><input type="number" name="quantity_Lunch[]" step="0.1"></td><td><select name="unit_Lunch[]"><option value="cups">Cups</option><option value="tablespoons">Tablespoons</option><option value="teaspoons">Teaspoons</option><option value="pieces">Pieces</option></select></td><td><button type="button" onclick="addRow('Lunch')">Add New Row</button></td></tr>
+                    <tr><td>Teatime</td><td><input type="date" name="recallDate_Teatime"></td><td><input type="text" name="item_Teatime[]"></td><td><input type="number" name="quantity_Teatime[]" step="0.1"></td><td><select name="unit_Teatime[]"><option value="cups">Cups</option><option value="tablespoons">Tablespoons</option><option value="teaspoons">Teaspoons</option><option value="pieces">Pieces</option></select></td><td><button type="button" onclick="addRow('Teatime')">Add New Row</button></td></tr>
+                    <tr><td>Dinner</td><td><input type="date" name="recallDate_Dinner"></td><td><input type="text" name="item_Dinner[]"></td><td><input type="number" name="quantity_Dinner[]" step="0.1"></td><td><select name="unit_Dinner[]"><option value="cups">Cups</option><option value="tablespoons">Tablespoons</option><option value="teaspoons">Teaspoons</option><option value="pieces">Pieces</option></select></td><td><button type="button" onclick="addRow('Dinner')">Add New Row</button></td></tr>
+                    <tr><td>Bedtime</td><td><input type="date" name="recallDate_Bedtime"></td><td><input type="text" name="item_Bedtime[]"></td><td><input type="number" name="quantity_Bedtime[]" step="0.1"></td><td><select name="unit_Bedtime[]"><option value="cups">Cups</option><option value="tablespoons">Tablespoons</option><option value="teaspoons">Teaspoons</option><option value="pieces">Pieces</option></select></td><td><button type="button" onclick="addRow('Bedtime')">Add New Row</button></td></tr>
+                </tbody>
+            </table>
+        </section>
+
+        <button onclick="saveData()">Save Data</button>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
