@@ -71,134 +71,236 @@
             <h2>II. Anthropometry</h2>
             <div class="form-group">
                 <label for="weight">Weight (kgs):</label>
-                <input type="number" id="weight" name="weight" step="0.1">
+                <input type="number" id="weight" name="weight" step="0.1" required>
             </div>
             <div class="form-group">
                 <label for="height">Height (cms/mts):</label>
-                <input type="number" id="height" name="height" step="0.1">
+                <input type="number" id="height" name="height" step="0.1" required>
             </div>
             <div class="form-group">
                 <label for="bmi">BMI (kg/m²):</label>
                 <input type="number" id="bmi" name="bmi" step="0.1" readonly>
-                <button onclick="calculateBMI()" style="margin-left: 10px; vertical-align: middle;">Calculate BMI</button>
+                <button id="calcBMIBtn" style="margin-left: 10px; vertical-align: middle;">Calculate BMI</button>
             </div>
         </section>
 
-        <!-- 3. Dietary Assessment & Knowledge -->
+        <!-- 3. Dietary Assessment -->
         <section>
-            <h2>III. Dietary Assessment & Knowledge</h2>
+            <h2>III. Dietary Assessment</h2>
+            <h3>IIIA. Awareness and Knowledge of My Plate, Food Pyramid and Dietary Guidelines</h3>
             <div class="form-group">
-                <label>1. Have you heard about the "My plate for the day" proposed by ICMR-NIN?</label><br>
-                <input type="radio" id="heard_food_groups_yes" name="heard_food_groups" value="yes">
-                <label for="heard_food_groups_yes">Yes</label>
-                <input type="radio" id="heard_food_groups_no" name="heard_food_groups" value="no">
-                <label for="heard_food_groups_no">No</label>
+                <label>Have you heard about the “My plate for the day” proposed by ICMR-NIN?</label>
+                <div class="options">
+                    <input type="radio" id="myplate_yes" name="myplate" value="yes" onchange="checkFirstThree()">
+                    <label for="myplate_yes">Yes</label>
+                    <input type="radio" id="myplate_no" name="myplate" value="no" onchange="checkFirstThree()">
+                    <label for="myplate_no">No</label>
+                </div>
             </div>
             <div class="form-group">
-                <label>2. Have you heard about the Indian "Food pyramid" proposed by ICMR-NIN?</label><br>
-                <input type="radio" id="food-pyramid-yes" name="food-pyramid" value="yes">
-                <label for="food-pyramid-yes">Yes</label>
-                <input type="radio" id="food-pyramid-no" name="food-pyramid" value="no">
-                <label for="food-pyramid-no">no</label>
+                <label>Have you heard about the Indian “Food Pyramid” proposed by ICMR-NIN?</label>
+                <div class="options">
+                    <input type="radio" id="foodpyramid_yes" name="foodpyramid" value="yes" onchange="checkFirstThree()">
+                    <label for="foodpyramid_yes">Yes</label>
+                    <input type="radio" id="foodpyramid_no" name="foodpyramid" value="no" onchange="checkFirstThree()">
+                    <label for="foodpyramid_no">No</label>
+                </div>
             </div>
             <div class="form-group">
-                <label>2. If Yes, where did you learn about it?</label><br>
-                <input type="radio" id="heard_balanced_yes" name="heard_balanced" value="yes">
-                <label for="heard_balanced_yes">Education</label>
-                <input type="radio" id="heard_balanced_yes" name="heard_balanced" value="yes">
-                <label for="heard_balanced_yes">Social Media</label>
-                <input type="radio" id="heard_balanced_no" name="heard_balanced" value="no">
-                <label for="heard_balanced_no">Health care professionals</label>
+                <label>Have you heard/read about the “Dietary guidelines for Indians” proposed by ICMR-NIN?</label>
+                <div class="options">
+                    <input type="radio" id="dietaryguidelines_yes" name="dietaryguidelines" value="yes" onchange="checkFirstThree()">
+                    <label for="dietaryguidelines_yes">Yes</label>
+                    <input type="radio" id="dietaryguidelines_no" name="dietaryguidelines" value="no" onchange="checkFirstThree()">
+                    <label for="dietaryguidelines_no">No</label>
+                </div>
+            </div>
+            <div class="form-group" id="learn_source_group" style="display: none;">
+                <label>If yes, where did you learn about it/them?</label>
+                <div class="options">
+                    <input type="radio" id="learn_education" name="learn_source" value="education">
+                    <label for="learn_education">Education</label>
+                    <input type="radio" id="learn_socialmedia" name="learn_source" value="socialmedia">
+                    <label for="learn_socialmedia">Social Media</label>
+                    <input type="radio" id="learn_healthcare" name="learn_source" value="healthcare">
+                    <label for="learn_healthcare">Healthcare professionals</label>
+                </div>
             </div>
             <div class="form-group">
-                <label>4. Are you aware of the concept of the balanced meals as recommended by dietary guidelines?</label><br>
-                <input type="radio" id="aware_balanced_yes" name="aware_balanced" value="yes">
-                <label for="aware_balanced_yes">Yes</label>
-                <input type="radio" id="aware_balanced_no" name="aware_balanced" value="no">
-                <label for="aware_balanced_no">No</label>
+                <label>What do you think “My plate for the day” includes?</label>
+                <input type="text" id="myplate_includes" name="myplate_includes">
             </div>
             <div class="form-group">
-                <label>5. Can you list the major food groups recommended for daily consumption?</label><br>
-                <input type="radio" id="food-groups-rec" name="aware_balanced" value="yes">
-                <label for="food-groups-rec">Yes</label>
-                <input type="radio" id="food-groups-rec-no" name="food-groups-rec-no" value="no">
-                <label for="aware_balanced_no">No</label>
+                <label>Are you aware of the concept of balanced meals as recommended by dietary guidelines?</label>
+                <div class="options">
+                    <input type="radio" id="balancedmeals_yes" name="balancedmeals" value="yes">
+                    <label for="balancedmeals_yes">Yes</label>
+                    <input type="radio" id="balancedmeals_no" name="balancedmeals" value="no">
+                    <label for="balancedmeals_no">No</label>
+                </div>
             </div>
             <div class="form-group">
-                <label>6. Do you know the recommended number of servings from different food groups per day?</label><br>
-                <input type="radio" id="aware_balanced_yes" name="aware_balanced" value="yes">
-                <label for="aware_balanced_yes">Yes</label>
-                <input type="radio" id="aware_balanced_no" name="aware_balanced" value="no">
-                <label for="aware_balanced_no">No</label>
+                <label>Are you aware of the concept of food groups division?</label>
+                <div class="options">
+                    <input type="radio" id="foodgroups_yes" name="foodgroups" value="yes">
+                    <label for="foodgroups_yes">Yes</label>
+                    <input type="radio" id="foodgroups_no" name="foodgroups" value="no">
+                    <label for="foodgroups_no">No</label>
+                </div>
             </div>
             <div class="form-group">
-                <label>7. What do you think are the barriers to following dietary guidelines?</label><br>
-                <input type="checkbox" id="barrier_lack" name="barriers" value="lack">
-                <label for="barrier_lack">Lack of awareness</label><br>
-                <input type="checkbox" id="barrier_cost" name="barriers" value="cost">
-                <label for="barrier_cost">Cost</label><br>
-                <input type="checkbox" id="barrier_time" name="barriers" value="time">
-                <label for="barrier_time">Time</label><br>
-                <input type="checkbox" id="barrier_availability" name="barriers" value="availability">
-                <label for="barrier_availability">Availability</label><br>
-                <input type="checkbox" id="barrier_all" name="barriers" value="all">
-                <label for="barrier_all">All the above</label>
+                <label>Can you list all the food groups recommended for daily consumption?</label>
+                <input type="text" id="foodgroups_list" name="foodgroups_list">
+            </div>
+            <div class="form-group">
+                <label>Do you know the recommended number of servings from different food groups per day?</label>
+                <div class="options">
+                    <input type="radio" id="servings_yes" name="servings" value="yes">
+                    <label for="servings_yes">Yes</label>
+                    <input type="radio" id="servings_no" name="servings" value="no">
+                    <label for="servings_no">No</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Which food group do you think would be the base (major part) of the “Food pyramid”?</label>
+                <div class="options">
+                    <input type="radio" id="base_cereals" name="foodpyramid_base" value="cereals">
+                    <label for="base_cereals">Cereals</label>
+                    <input type="radio" id="base_pulses" name="foodpyramid_base" value="pulses">
+                    <label for="base_pulses">Pulses</label>
+                    <input type="radio" id="base_fats" name="foodpyramid_base" value="fats_oils">
+                    <label for="base_fats">Fats & Oils</label>
+                    <input type="radio" id="base_vegetables" name="foodpyramid_base" value="vegetables">
+                    <label for="base_vegetables">Vegetables</label>
+                    <input type="radio" id="base_fruits" name="foodpyramid_base" value="fruits">
+                    <label for="base_fruits">Fruits</label>
+                    <input type="radio" id="base_nuts" name="foodpyramid_base" value="nuts_seeds">
+                    <label for="base_nuts">Nuts and seeds</label>
+                    <input type="radio" id="base_meat" name="foodpyramid_base" value="meat_fish_eggs">
+                    <label for="base_meat">Meat, fish & Eggs</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>What do you think are the reasons for preference of packaged snacks, sugary beverages and fried foods?</label>
+                <div class="options">
+                    <input type="radio" id="reason_taste" name="preference_reason" value="taste">
+                    <label for="reason_taste">Taste preferences</label>
+                    <input type="radio" id="reason_time" name="preference_reason" value="time">
+                    <label for="reason_time">Time</label>
+                    <input type="radio" id="reason_availability" name="preference_reason" value="availability">
+                    <label for="reason_availability">Availability</label>
+                    <input type="radio" id="reason_cost" name="preference_reason" value="cost">
+                    <label for="reason_cost">Cost</label>
+                    <input type="radio" id="reason_cultural" name="preference_reason" value="cultural">
+                    <label for="reason_cultural">Cultural/ family food habits</label>
+                    <input type="radio" id="reason_all" name="preference_reason" value="all">
+                    <label for="reason_all">All the above</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>What do you think are the barriers to following dietary guidelines?</label>
+                <div class="options">
+                    <input type="radio" id="barrier_awareness" name="barrier" value="awareness">
+                    <label for="barrier_awareness">Lack of awareness</label>
+                    <input type="radio" id="barrier_cost" name="barrier" value="cost">
+                    <label for="barrier_cost">Cost</label>
+                    <input type="radio" id="barrier_time" name="barrier" value="time">
+                    <label for="barrier_time">Time</label>
+                    <input type="radio" id="barrier_availability" name="barrier" value="availability">
+                    <label for="barrier_availability">Availability</label>
+                    <input type="radio" id="barrier_taste" name="barrier" value="taste">
+                    <label for="barrier_taste">Taste preferences</label>
+                    <input type="radio" id="barrier_cultural" name="barrier" value="cultural">
+                    <label for="barrier_cultural">Cultural/ family food habits</label>
+                    <input type="radio" id="barrier_all" name="barrier" value="all">
+                    <label for="barrier_all">All the above</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Do you think Dietary guidelines are practical for daily life?</label>
+                <div class="options">
+                    <input type="radio" id="practical_yes" name="practical" value="yes">
+                    <label for="practical_yes">Yes</label>
+                    <input type="radio" id="practical_no" name="practical" value="no">
+                    <label for="practical_no">No</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Type of diet</label>
+                <div class="options">
+                    <input type="radio" id="diet_vegetarian" name="diet_type" value="vegetarian">
+                    <label for="diet_vegetarian">Vegetarian</label>
+                    <input type="radio" id="diet_nonvegetarian" name="diet_type" value="nonvegetarian">
+                    <label for="diet_nonvegetarian">Non-vegetarian</label>
+                    <input type="radio" id="diet_vegan" name="diet_type" value="vegan">
+                    <label for="diet_vegan">Vegan</label>
+                </div>
             </div>
         </section>
 
         <!-- 4. Physical Activity -->
         <section>
-            <h2>IV. Physical Activity</h2>
+            <h2>IIIB. Physical Activity</h2>
             <div class="form-group">
-                <label>1. Are you aware of the guidelines recommended by ICMR-NIN for physical activity?</label><br>
-                <input type="radio" id="aware_physical_yes" name="aware_physical" value="yes">
-                <label for="aware_physical_yes">Yes</label>
-                <input type="radio" id="aware_physical_no" name="aware_physical" value="no">
-                <label for="aware_physical_no">No</label>
+                <label>Are you aware of the guidelines recommended for physical activity?</label>
+                <div class="options">
+                    <input type="radio" id="aware_physical_yes" name="aware_physical" value="yes">
+                    <label for="aware_physical_yes">Yes</label>
+                    <input type="radio" id="aware_physical_no" name="aware_physical" value="no">
+                    <label for="aware_physical_no">No</label>
+                </div>
             </div>
             <div class="form-group">
-                <label>2. Do you engage yourself in some physical activity/exercise daily?</label><br>
-                <input type="radio" id="engage_yes" name="engage_daily" value="yes">
-                <label for="engage_yes">Yes</label>
-                <input type="radio" id="engage_no" name="engage_daily" value="no">
-                <label for="engage_no">No</label>
+                <label>Do you engage yourself in some physical activity/exercise every day?</label>
+                <div class="options">
+                    <input type="radio" id="engage_yes" name="engage_daily" value="yes" onchange="toggleQuestion(this, 'activity_type_group')">
+                    <label for="engage_yes">Yes, I voluntarily make time and engage in some physical activity everyday</label>
+                    <input type="radio" id="engage_no" name="engage_daily" value="no" onchange="toggleQuestion(this, 'activity_type_group')">
+                    <label for="engage_no">No, I only sit, stand and walk as part of my daily chores and commuting</label>
+                </div>
             </div>
-            <div class="form-group" id="activity_type_group">
-                <label>3. If yes, which of the following physical activity do you engage yourself in?</label><br>
-                <input type="checkbox" id="activity_walking" name="activity_type" value="walking">
-                <label for="activity_walking">Walking</label><br>
-                <input type="checkbox" id="activity_yoga" name="activity_type" value="yoga">
-                <label for="activity_yoga">Yoga</label><br>
-                <input type="checkbox" id="activity_swimming" name="activity_type" value="swimming">
-                <label for="activity_swimming">Swimming</label><br>
-                <input type="checkbox" id="activity_outdoor" name="activity_type" value="outdoor">
-                <label for="activity_outdoor">Playing outdoor games</label><br>
-                <input type="checkbox" id="activity_jogging" name="activity_type" value="jogging">
-                <label for="activity_jogging">Jogging</label><br>
-                <input type="checkbox" id="activity_gym" name="activity_type" value="gym">
-                <label for="activity_gym">Regular gym</label><br>
-                <input type="checkbox" id="activity_others" name="activity_type" value="others">
-                <label for="activity_others">Others(Like cycling,dancing etc)</label>
-            </div>
-            <div class="form-group">
-                <label>4. How long do you engage yourself in the physical activity/exercise in a day?</label><br>
-                <input type="radio" id="duration_15_30" name="duration" value="15-30">
-                <label for="duration_15_30">15-30 minutes a day</label><br>
-                <input type="radio" id="duration_30_60" name="duration" value="30-60">
-                <label for="duration_30_60">30-60 minutes a day</label><br>
-                <input type="radio" id="duration_over_60" name="duration" value="over_60">
-                <label for="duration_over_60">More than 60 minutes a day</label>
+            <div class="form-group" id="activity_type_group" style="display: none;">
+                <label>If yes, which of the following physical activity do you engage yourself in?</label>
+                <div class="options">
+                    <input type="radio" id="activity_walking" name="activity_type" value="walking">
+                    <label for="activity_walking">Walking</label>
+                    <input type="radio" id="activity_yoga" name="activity_type" value="yoga">
+                    <label for="activity_yoga">Yoga</label>
+                    <input type="radio" id="activity_swimming" name="activity_type" value="swimming">
+                    <label for="activity_swimming">Swimming</label>
+                    <input type="radio" id="activity_outdoor" name="activity_type" value="outdoor">
+                    <label for="activity_outdoor">Playing outdoor games</label>
+                    <input type="radio" id="activity_jogging" name="activity_type" value="jogging">
+                    <label for="activity_jogging">Jogging</label>
+                    <input type="radio" id="activity_gym" name="activity_type" value="gym">
+                    <label for="activity_gym">Regular gym</label>
+                    <input type="radio" id="activity_cycling" name="activity_type" value="cycling">
+                    <label for="activity_cycling">Cycling</label>
+                    <input type="radio" id="activity_dancing" name="activity_type" value="dancing">
+                    <label for="activity_dancing">Dancing</label>
+                </div>
             </div>
             <div class="form-group">
-                <label>5. How often do you engage in physical activity in a week?</label><br>
-                <input type="radio" id="frequency_1_2" name="frequency" value="1-2">
-                <label for="frequency_1-2">1-3 days a week</label><br>
-                <input type="radio" id="frequency_4_5" name="frequency" value="4-5">
-                <label for="frequency_4-5">4-5 days a week</label><br>
-                <input type="radio" id="frequency_6" name="frequency" value="6">
-                <label for="frequency_6">6 days a week</label><br>
-                <input type="radio" id="frequency_7" name="frequency" value="7">
-                <label for="frequency_7">7 days a week</label>
+                <label>How long do you engage yourself in the physical activity/exercise in a day?</label>
+                <div class="options">
+                    <input type="radio" id="duration_15_30" name="duration" value="15-30">
+                    <label for="duration_15_30">15-30 minutes a day</label>
+                    <input type="radio" id="duration_30_60" name="duration" value="30-60">
+                    <label for="duration_30_60">30-60 minutes a day</label>
+                    <input type="radio" id="duration_over_60" name="duration" value="over_60">
+                    <label for="duration_over_60">More than 60 minutes a day</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>How often do you engage in physical activity in a week?</label>
+                <div class="options">
+                    <input type="radio" id="frequency_4_5" name="frequency" value="4-5">
+                    <label for="frequency_4-5">4-5 days a week</label>
+                    <input type="radio" id="frequency_6" name="frequency" value="6">
+                    <label for="frequency_6">6 days a week</label>
+                    <input type="radio" id="frequency_7" name="frequency" value="7">
+                    <label for="frequency_7">7 days a week</label>
+                </div>
             </div>
         </section>
 
@@ -230,7 +332,11 @@
                     <tr><td>Milk & milk products</td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td></tr>
                     <tr><td>Meat & meat products</td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td></tr>
                     <tr><td>Sugars</td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td></tr>
-                    <tr><td>High fat, salt, sugar foods/ ultra processed foods</td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td></tr>
+                    <tr><td>Fried foods</td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td></tr>
+                    <tr><td>Sugary beverages</td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td></tr>
+                    <tr><td>Packaged snacks</td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td></tr>
+                    <tr><td>Pizzas/Burgers</td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td></tr>
+                    <tr><td>Confectionery</td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td></tr>
                 </tbody>
             </table>
         </section>
@@ -262,6 +368,7 @@
                                 <option value="semolina">Semolina</option>
                                 <option value="vermicelli">Vermicelli</option>
                                 <option value="idli_rava">Idli rava</option>
+                                <option value="none">None</option>
                             </select>
                         </td>
                         <td>
@@ -274,6 +381,7 @@
                                 <option value="semolina">Semolina</option>
                                 <option value="vermicelli">Vermicelli</option>
                                 <option value="idli_rava">Idli rava</option>
+                                <option value="none">None</option>
                             </select>
                         </td>
                     </tr>
@@ -297,6 +405,7 @@
                                 <option value="kakum">Kakum(foxtail)</option>
                                 <option value="kodon">Kodon(Kodo)</option>
                                 <option value="snawa">Snawa(Barnyard)</option>
+                                <option value="none">None</option>
                             </select>
                         </td>
                         <td>
@@ -316,6 +425,7 @@
                                 <option value="kakum">Kakum(foxtail)</option>
                                 <option value="kodon">Kodon(Kodo)</option>
                                 <option value="snawa">Snawa(Barnyard)</option>
+                                <option value="none">None</option>
                             </select>
                         </td>
                     </tr>
@@ -334,6 +444,7 @@
                                 <option value="rajmah">Rajmah</option>
                                 <option value="red">Red gram</option>
                                 <option value="soybean">Soybean</option>
+                                <option value="none">None</option>
                             </select>
                         </td>
                         <td>
@@ -348,6 +459,7 @@
                                 <option value="rajmah">Rajmah</option>
                                 <option value="red">Red gram</option>
                                 <option value="soybean">Soybean</option>
+                                <option value="none">None</option>
                             </select>
                         </td>
                     </tr>
@@ -363,6 +475,7 @@
                                 <option value="fenugreek">Fenugreek</option>
                                 <option value="gogu">Gogu</option>
                                 <option value="spinach">Spinach</option>
+                                <option value="none">None</option>
                             </select>
                         </td>
                         <td>
@@ -374,6 +487,7 @@
                                 <option value="fenugreek">Fenugreek</option>
                                 <option value="gogu">Gogu</option>
                                 <option value="spinach">Spinach</option>
+                                <option value="none">None</option>
                             </select>
                         </td>
                     </tr>
@@ -396,6 +510,7 @@
                                 <option value="kovai">Kovai</option>
                                 <option value="ladies_finger">Ladies finger</option>
                                 <option value="ridge_gourd">Ridge gourd</option>
+                                <option value="none">None</option>
                             </select>
                         </td>
                         <td>
@@ -414,6 +529,7 @@
                                 <option value="kovai">Kovai</option>
                                 <option value="ladies_finger">Ladies finger</option>
                                 <option value="ridge_gourd">Ridge gourd</option>
+                                <option value="none">None</option>
                             </select>
                         </td>
                     </tr>
@@ -428,6 +544,7 @@
                                 <option value="sweet_potato">Sweet potato</option>
                                 <option value="radish">Radish</option>
                                 <option value="beetroot">beetroot</option>
+                                <option value="none">None</option>
                             </select>
                         </td>
                         <td>
@@ -438,6 +555,7 @@
                                 <option value="sweet_potato">Sweet potato</option>
                                 <option value="radish">Radish</option>
                                 <option value="beetroot">beetroot</option>
+                                <option value="none">None</option>
                             </select>
                         </td>
                     </tr>
@@ -463,6 +581,7 @@
                                 <option value="sapota">Sapota</option>
                                 <option value="strawberry">Strawberry</option>
                                 <option value="watermelon">Watermelon</option>
+                                <option value="none">None</option>
                             </select>
                         </td>
                         <td>
@@ -484,6 +603,7 @@
                                 <option value="sapota">Sapota</option>
                                 <option value="strawberry">Strawberry</option>
                                 <option value="watermelon">Watermelon</option>
+                                <option value="none">None</option>
                             </select>
                         </td>
                     </tr>
@@ -503,6 +623,7 @@
                                 <option value="safflower">Safflower seeds</option>
                                 <option value="sunflower">Sunflower seeds</option>
                                 <option value="walnut">walnut</option>
+                                <option value="none">None</option>
                             </select>
                         </td>
                         <td>
@@ -515,9 +636,10 @@
                                 <option value="linseed">Linseed</option>
                                 <option value="chia">Chia seeds</option>
                                 <option value="pumpkin">Pumpkin seeds</option>
-                                <option value="safflower">Saffflower seeds</option>
+                                <option value="safflower">Safflower seeds</option>
                                 <option value="sunflower">Sunflower seeds</option>
                                 <option value="walnut">walnut</option>
+                                <option value="none">None</option>
                             </select>
                         </td>
                     </tr>
@@ -534,6 +656,7 @@
                                 <option value="cheese">cheese</option>
                                 <option value="butter">butter</option>
                                 <option value="ghee">ghee</option>
+                                <option value="none">None</option>
                             </select>
                         </td>
                         <td>
@@ -546,6 +669,7 @@
                                 <option value="cheese">cheese</option>
                                 <option value="butter">butter</option>
                                 <option value="ghee">ghee</option>
+                                <option value="none">None</option>
                             </select>
                         </td>
                     </tr>
@@ -562,6 +686,7 @@
                                 <option value="pork">Pork</option>
                                 <option value="lamb">Lamb</option>
                                 <option value="beef">Beef</option>
+                                <option value="none">None</option>
                             </select>
                         </td>
                         <td>
@@ -574,6 +699,7 @@
                                 <option value="pork">Pork</option>
                                 <option value="lamb">Lamb</option>
                                 <option value="beef">Beef</option>
+                                <option value="none">None</option>
                             </select>
                         </td>
                     </tr>
@@ -586,6 +712,7 @@
                                 <option value="soft_drinks">Soft drinks</option>
                                 <option value="fruit_juices">Fruit juices</option>
                                 <option value="carbonated">Carbonated drinks</option>
+                                <option value="none">None</option>
                             </select>
                         </td>
                         <td>
@@ -594,6 +721,7 @@
                                 <option value="soft_drinks">Soft drinks</option>
                                 <option value="fruit_juices">Fruit juices</option>
                                 <option value="carbonated">Carbonated drinks</option>
+                                <option value="none">None</option>
                             </select>
                         </td>
                     </tr>
@@ -608,6 +736,7 @@
                                 <option value="biscuits">Biscuits</option>
                                 <option value="sweets">Sweets</option>
                                 <option value="cakes">cakes</option>
+                                <option value="none">None</option>
                             </select>
                         </td>
                         <td>
@@ -618,30 +747,33 @@
                                 <option value="biscuits">Biscuits</option>
                                 <option value="sweets">Sweets</option>
                                 <option value="cakes">cakes</option>
+                                <option value="none">None</option>
                             </select>
                         </td>
                     </tr>
                     <tr>
-                        <td>High fat, salt, sugar foods/ ultra processed foods</td>
-                        <td>Fried foods, Sugary beverages, Packaged snacks, Pizzas/Burgers, Confectionery</td>
+                        <td>Fried foods</td>
+                        <td>Samosa, Pakodi/Pakora, Chips, Murkulu, Mixture</td>
                         <td>
-                            <select name="high_fat_foods_highest">
+                            <select name="fried_foods_highest">
                                 <option value="">Select</option>
-                                <option value="fried_foods">Fried foods</option>
-                                <option value="sugary_bev">Sugary beverages</option>
-                                <option value="packaged_snacks">Packaged snacks</option>
-                                <option value="pizzas_burgers">Pizzas/Burgers</option>
-                                <option value="confectionery">Confectionery</option>
+                                <option value="samosa">Samosa</option>
+                                <option value="pakodi">Pakodi/Pakora</option>
+                                <option value="chips">Chips</option>
+                                <option value="murkulu">Murkulu</option>
+                                <option value="mixture">Mixture</option>
+                                <option value="none">None</option>
                             </select>
                         </td>
                         <td>
-                            <select name="high_fat_foods_second">
+                            <select name="fried_foods_second">
                                 <option value="">Select</option>
-                                <option value="fried_foods">Fried foods</option>
-                                <option value="sugary_bev">Sugary beverages</option>
-                                <option value="packaged_snacks">Packaged snacks</option>
-                                <option value="pizzas_burgers">Pizzas/Burgers</option>
-                                <option value="confectionery">Confectionery</option>
+                                <option value="samosa">Samosa</option>
+                                <option value="pakodi">Pakodi/Pakora</option>
+                                <option value="chips">Chips</option>
+                                <option value="murkulu">Murkulu</option>
+                                <option value="mixture">Mixture</option>
+                                <option value="none">None</option>
                             </select>
                         </td>
                     </tr>
@@ -649,30 +781,135 @@
             </table>
         </section>
 
-        <!-- 7. 24-Hour Recall -->
+        <!-- 7. 24-Hour Meal Recall - Day 1 -->
         <section>
-            <h2>VII. 24-Hour Meal Recall</h2>
-            <table id="mealRecallTable">
-                <thead>
-                    <tr>
-                        <th>Meal Time</th>
-                        <th>Date</th>
-                        <th>Item</th>
-                        <th>Quantity</th>
-                        <th>Unit</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr><td>Early</td><td><input type="date" name="recallDate_Early"></td><td><input type="text" name="item_Early[]"></td><td><input type="number" name="quantity_Early[]" step="0.1"></td><td><select name="unit_Early[]"><option value="cups">Cups</option><option value="tablespoons">Tablespoons</option><option value="teaspoons">Teaspoons</option><option value="pieces">Pieces</option></select></td><td><button type="button" onclick="addRow('Early')">Add New Row</button></td></tr>
-                    <tr><td>Breakfast</td><td><input type="date" name="recallDate_Breakfast"></td><td><input type="text" name="item_Breakfast[]"></td><td><input type="number" name="quantity_Breakfast[]" step="0.1"></td><td><select name="unit_Breakfast[]"><option value="cups">Cups</option><option value="tablespoons">Tablespoons</option><option value="teaspoons">Teaspoons</option><option value="pieces">Pieces</option></select></td><td><button type="button" onclick="addRow('Breakfast')">Add New Row</button></td></tr>
-                    <tr><td>Mid-morning</td><td><input type="date" name="recallDate_Mid-morning"></td><td><input type="text" name="item_Mid-morning[]"></td><td><input type="number" name="quantity_Mid-morning[]" step="0.1"></td><td><select name="unit_Mid-morning[]"><option value="cups">Cups</option><option value="tablespoons">Tablespoons</option><option value="teaspoons">Teaspoons</option><option value="pieces">Pieces</option></select></td><td><button type="button" onclick="addRow('Mid-morning')">Add New Row</button></td></tr>
-                    <tr><td>Lunch</td><td><input type="date" name="recallDate_Lunch"></td><td><input type="text" name="item_Lunch[]"></td><td><input type="number" name="quantity_Lunch[]" step="0.1"></td><td><select name="unit_Lunch[]"><option value="cups">Cups</option><option value="tablespoons">Tablespoons</option><option value="teaspoons">Teaspoons</option><option value="pieces">Pieces</option></select></td><td><button type="button" onclick="addRow('Lunch')">Add New Row</button></td></tr>
-                    <tr><td>Teatime</td><td><input type="date" name="recallDate_Teatime"></td><td><input type="text" name="item_Teatime[]"></td><td><input type="number" name="quantity_Teatime[]" step="0.1"></td><td><select name="unit_Teatime[]"><option value="cups">Cups</option><option value="tablespoons">Tablespoons</option><option value="teaspoons">Teaspoons</option><option value="pieces">Pieces</option></select></td><td><button type="button" onclick="addRow('Teatime')">Add New Row</button></td></tr>
-                    <tr><td>Dinner</td><td><input type="date" name="recallDate_Dinner"></td><td><input type="text" name="item_Dinner[]"></td><td><input type="number" name="quantity_Dinner[]" step="0.1"></td><td><select name="unit_Dinner[]"><option value="cups">Cups</option><option value="tablespoons">Tablespoons</option><option value="teaspoons">Teaspoons</option><option value="pieces">Pieces</option></select></td><td><button type="button" onclick="addRow('Dinner')">Add New Row</button></td></tr>
-                    <tr><td>Bedtime</td><td><input type="date" name="recallDate_Bedtime"></td><td><input type="text" name="item_Bedtime[]"></td><td><input type="number" name="quantity_Bedtime[]" step="0.1"></td><td><select name="unit_Bedtime[]"><option value="cups">Cups</option><option value="tablespoons">Tablespoons</option><option value="teaspoons">Teaspoons</option><option value="pieces">Pieces</option></select></td><td><button type="button" onclick="addRow('Bedtime')">Add New Row</button></td></tr>
-                </tbody>
-            </table>
+            <h2>VII. 24-Hour Meal Recall - Day 1</h2>
+            <div id="day1_Early">
+                <h3>Early Morning</h3>
+                <label>Number of Items: </label>
+                <input type="number" id="numItems1_Early" min="1" value="1" onchange="generateRows('Early', 1)">
+                <table id="mealRecallTableDay1_Early">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Item</th>
+                            <th>Quantity</th>
+                            <th>Unit</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Rows will be generated here -->
+                    </tbody>
+                </table>
+            </div>
+            <div id="day1_Breakfast">
+                <h3>Breakfast</h3>
+                <label>Number of Items: </label>
+                <input type="number" id="numItems1_Breakfast" min="1" value="1" onchange="generateRows('Breakfast', 1)">
+                <table id="mealRecallTableDay1_Breakfast">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Item</th>
+                            <th>Quantity</th>
+                            <th>Unit</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Rows will be generated here -->
+                    </tbody>
+                </table>
+            </div>
+            <div id="day1_Mid-morning">
+                <h3>Mid-morning</h3>
+                <label>Number of Items: </label>
+                <input type="number" id="numItems1_Mid-morning" min="1" value="1" onchange="generateRows('Mid-morning', 1)">
+                <table id="mealRecallTableDay1_Mid-morning">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Item</th>
+                            <th>Quantity</th>
+                            <th>Unit</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Rows will be generated here -->
+                    </tbody>
+                </table>
+            </div>
+            <div id="day1_Lunch">
+                <h3>Lunch</h3>
+                <label>Number of Items: </label>
+                <input type="number" id="numItems1_Lunch" min="1" value="1" onchange="generateRows('Lunch', 1)">
+                <table id="mealRecallTableDay1_Lunch">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Item</th>
+                            <th>Quantity</th>
+                            <th>Unit</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Rows will be generated here -->
+                    </tbody>
+                </table>
+            </div>
+            <div id="day1_Teatime">
+                <h3>Teatime</h3>
+                <label>Number of Items: </label>
+                <input type="number" id="numItems1_Teatime" min="1" value="1" onchange="generateRows('Teatime', 1)">
+                <table id="mealRecallTableDay1_Teatime">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Item</th>
+                            <th>Quantity</th>
+                            <th>Unit</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Rows will be generated here -->
+                    </tbody>
+                </table>
+            </div>
+            <div id="day1_Dinner">
+                <h3>Dinner</h3>
+                <label>Number of Items: </label>
+                <input type="number" id="numItems1_Dinner" min="1" value="1" onchange="generateRows('Dinner', 1)">
+                <table id="mealRecallTableDay1_Dinner">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Item</th>
+                            <th>Quantity</th>
+                            <th>Unit</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Rows will be generated here -->
+                    </tbody>
+                </table>
+            </div>
+            <div id="day1_Bedtime">
+                <h3>Bedtime</h3>
+                <label>Number of Items: </label>
+                <input type="number" id="numItems1_Bedtime" min="1" value="1" onchange="generateRows('Bedtime', 1)">
+                <table id="mealRecallTableDay1_Bedtime">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Item</th>
+                            <th>Quantity</th>
+                            <th>Unit</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Rows will be generated here -->
+                    </tbody>
+                </table>
+            </div>
         </section>
 
         <button onclick="saveData()">Save Data</button>
