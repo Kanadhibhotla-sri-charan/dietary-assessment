@@ -122,3 +122,41 @@ button:hover {
 button:active {
     background-color: #219653;
 }
+
+/* General styling for all text inputs */
+input[type="text"],
+input[type="number"],
+select {
+    border: 2px solid #4CAF50; /* Green border for visibility */
+    background-color: #f9f9f9; /* Light gray background */
+    padding: 8px;
+    border-radius: 4px; /* Rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    font-size: 16px;
+    width: 100%; /* Full width for better usability */
+    max-width: 300px; /* Optional: limit max width */
+    margin-bottom: 10px;
+}
+
+/* Highlight on focus for better interaction */
+input[type="text"]:focus,
+input[type="number"]:focus,
+select:focus {
+    border-color: #45a049; /* Darker green on focus */
+    outline: none; /* Remove default outline */
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.5); /* Glow effect */
+}
+
+/* Specific styling for 24-Hour Meal Recall tables */
+table input[type="text"],
+table input[type="number"],
+table select {
+    width: 90%; /* Adjust width for table cells */
+    display: inline-block; /* Ensure proper alignment */
+}
+
+/* Optional: Add some spacing to the container */
+.container {
+    padding: 20px;
+}
+
