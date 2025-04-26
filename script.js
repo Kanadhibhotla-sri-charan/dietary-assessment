@@ -1,11 +1,8 @@
-// Define maxDate globally
 const today = new Date();
 const maxDate = new Date(today);
 maxDate.setDate(today.getDate() - 1); // Yesterday
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Clear localStorage on refresh to reset form
-    localStorage.removeItem('dietFormData');
     checkFirstThree();
     document.querySelectorAll('input[type="radio"]').forEach(radio => {
         if (radio.checked && radio.getAttribute('onchange')) {
@@ -20,7 +17,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (numItems) {
             generateRows(mealTime, 1); // Initial generation
             numItems.addEventListener('change', () => generateRows(mealTime, 1)); // Dynamic update
-            // Remove default min validation to allow 0
             numItems.removeAttribute('min');
         }
     });
@@ -29,47 +25,25 @@ document.addEventListener('DOMContentLoaded', () => {
     const calcBMIBtn = document.getElementById('calcBMIBtn');
     if (calcBMIBtn) {
         calcBMIBtn.addEventListener('click', (event) => {
-            event.preventDefault(); // Prevent any form submission
+            event.preventDefault(); // Prevent form submission
+            event.stopPropagation(); // Stop event bubbling
             calculateBMI();
         });
     }
 
-    // Date validation setup for top-level date pickers (past dates, excluding today and future)
-    const dateInputs = [document.getElementById('day1Date'), document.getElementById('day2Date')];
-    dateInputs.forEach(input => {
-        if (input) {
-            input.max = maxDate.toISOString().split('T')[0];
-            input.value = maxDate.toISOString().split('T')[0]; // Default to yesterday
-            input.addEventListener('change', function() {
-                validateDate(this);
-                updateMealDates(this.id === 'day1Date' ? 1 : 2);
-            });
-        }
-    });
+    // Date validation setup for Day 1 date picker
+    const day1DateInput = document.getElementById('day1Date');
+    if (day1DateInput) {
+        day1DateInput.max = maxDate.toISOString().split('T')[0];
+        day1DateInput.value = maxDate.toISOString().split('T')[0]; // Default to yesterday
+        day1DateInput.addEventListener('change', function() {
+            validateDate(this);
+            updateMealDates(1);
+        });
+    }
 
-    // Load saved data (now empty on fresh load)
+    // Load saved data
     loadData();
-
-    // Add toggle for Day-2 section
-    const day2Toggle = document.createElement('button');
-    day2Toggle.id = 'day2Toggle';
-    day2Toggle.textContent = 'Fill Day-2 Recall';
-    day2Toggle.addEventListener('click', () => {
-        const day2Section = document.getElementById('day2Section');
-        if (day2Section) {
-            const savedData = JSON.parse(localStorage.getItem('dietFormData') || '{}');
-            const day1Date = new Date(savedData.meal_items?.recall1?.[0] || '');
-            const minDay2Date = new Date(day1Date);
-            minDay2Date.setDate(day1Date.getDate() + 2);
-            const today = new Date();
-            if (today >= minDay2Date && !isNaN(day1Date.getTime())) {
-                day2Section.style.display = day2Section.style.display === 'none' ? 'block' : 'none';
-            } else {
-                alert(`Day-2 can only be filled starting ${minDay2Date.toISOString().split('T')[0]}. Please set a valid Day-1 date first.`);
-            }
-        }
-    });
-    document.body.appendChild(day2Toggle);
 
     // Setup exclusive dropdown logic for top-two food items
     const topTwoGroups = [
@@ -79,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
     ];
     topTwoGroups.forEach(group => setupTopTwoDropdowns(group));
 
-    // Setup radio-to-radio conversion for food frequency checkboxes
+    // Setup radio-to-radio conversion for food frequency
     enforceSingleSelectionPerRow();
 });
 
@@ -112,26 +86,41 @@ function setupTopTwoDropdowns(groupName) {
 }
 
 function enforceSingleSelectionPerRow() {
-    const table = document.querySelector("section h2:contains('Food Frequency Questionnaire')")?.closest("section").querySelector("table");
-    if (!table) return;
+    const h2Elements = document.querySelectorAll("section h2");
+    let targetSection = null;
+    for (const h2 of h2Elements) {
+        if (h2.textContent.includes("Food Frequency Questionnaire")) {
+            targetSection = h2.closest("section");
+            break;
+        }
+    }
+    
+    const table = targetSection?.querySelector("table");
+    if (!table) {
+        console.error("Food Frequency table not found");
+        return;
+    }
+    
     const rows = table.querySelectorAll("tbody tr");
     rows.forEach((row, rowIndex) => {
         const inputs = row.querySelectorAll("input[type='checkbox']");
         inputs.forEach(cb => {
             const radio = document.createElement('input');
             radio.type = 'radio';
-            radio.name = `food_freq_row_${rowIndex}`; // Unique name per row
-            radio.value = cb.value;
+            radio.name = cb.name; // e.g., cereal_milled_freq
+            radio.value = cb.value; // e.g., once_day
             radio.checked = cb.checked;
             cb.parentNode.replaceChild(radio, cb);
             radio.addEventListener('change', function() {
-                const rowRadios = this.parentNode.parentNode.querySelectorAll('input[type="radio"]');
+                console.log(`Radio changed: name=${this.name}, value=${this.value}, checked=${this.checked}`);
+                const rowRadios = row.querySelectorAll(`input[name="${this.name}"]`);
                 rowRadios.forEach(r => {
                     if (r !== this) r.checked = false;
                 });
             });
         });
     });
+    console.log("enforceSingleSelectionPerRow completed");
 }
 
 function checkFirstThree() {
@@ -142,27 +131,11 @@ function checkFirstThree() {
     if (learnSourceGroup) {
         learnSourceGroup.style.display = (myplateYes || foodpyramidYes || dietaryguidelinesYes) ? 'block' : 'none';
     }
-    console.log('Checked:', { myplateYes, foodpyramidYes, dietaryguidelinesYes }); // Debug log
 }
 
 function validateDate(input) {
     const selectedDate = new Date(input.value);
-    const today = new Date();
-    const maxDate = new Date(today); // Redefine maxDate here for this function's scope
-    maxDate.setDate(today.getDate() - 1); // Yesterday
-    const dayPrefix = input.id === 'day2Date' ? '2' : '1';
-    const savedData = JSON.parse(localStorage.getItem('dietFormData') || '{}');
-    const day1Date = savedData.meal_items?.recall1?.[0] ? new Date(savedData.meal_items.recall1[0]) : null;
-
-    if (dayPrefix === '2' && day1Date) {
-        const minDay2Date = new Date(day1Date);
-        minDay2Date.setDate(day1Date.getDate() + 2); // Earliest non-consecutive day
-        if (selectedDate < minDay2Date || selectedDate > maxDate) {
-            alert(`Please select a date between ${minDay2Date.toISOString().split('T')[0]} and ${maxDate.toISOString().split('T')[0]} for Day-${dayPrefix}.`);
-            input.value = minDay2Date <= maxDate ? minDay2Date.toISOString().split('T')[0] : maxDate.toISOString().split('T')[0];
-            return;
-        }
-    } else if (selectedDate > maxDate) {
+    if (selectedDate > maxDate) {
         alert(`Please select a date up to ${maxDate.toISOString().split('T')[0]}. Future dates and today are not allowed.`);
         input.value = maxDate.toISOString().split('T')[0]; // Reset to yesterday
         return;
@@ -172,48 +145,36 @@ function validateDate(input) {
 function generateRows(mealTime, day) {
     const numItemsInput = document.getElementById(`numItems${day}_${mealTime}`);
     let numItems = parseInt(numItemsInput.value);
-    if (isNaN(numItems)) numItems = 1; // Default to 1 if not a number
-    numItemsInput.value = numItems; // Ensure input reflects valid value
+    if (isNaN(numItems)) numItems = 1;
+    numItemsInput.value = numItems;
     const tableId = `mealRecallTableDay${day}_${mealTime}`;
     const tableBody = document.getElementById(tableId).getElementsByTagName('tbody')[0];
-
-    // Clear existing rows
     tableBody.innerHTML = '';
-
-    // Generate new rows based on numItems, allowing 0 to clear rows
-    const today = new Date();
-    const maxDate = new Date(today); // Redefine maxDate here for this function's scope
-    maxDate.setDate(today.getDate() - 1); // Yesterday
-    const savedData = JSON.parse(localStorage.getItem('dietFormData') || '{}');
-    const day1Date = savedData.meal_items?.recall1?.[0] ? new Date(savedData.meal_items.recall1[0]) : null;
-    const minDay2Date = day === 2 && day1Date ? new Date(day1Date) : null;
-    if (minDay2Date) minDay2Date.setDate(day1Date.getDate() + 2);
-
     if (numItems >= 0) {
         for (let i = 0; i < numItems; i++) {
             const row = tableBody.insertRow();
-            const dayPrefix = day === 2 ? '2' : '1';
+            const dayPrefix = '1';
             row.innerHTML = `
                 <td><input type="date" name="recallDate${dayPrefix}_${mealTime}" value="" disabled></td>
                 <td><input type="text" name="item${dayPrefix}_${mealTime}[]"></td>
                 <td><input type="number" name="quantity${dayPrefix}_${mealTime}[]" step="0.1" min="0" value="0"></td>
                 <td>
                     <select name="unit${dayPrefix}_${mealTime}[]">
-                        <option value="cups">Cups</option>
-                        <option value="tablespoons">Tablespoons</option>
-                        <option value="teaspoons">Teaspoons</option>
-                        <option value="pieces">Pieces</option>
+                        <option value="cups">Cup(s)</option>
+                        <option value="tablespoons">Tablespoon(s)</option>
+                        <option value="teaspoons">Teaspoon(s)</option>
+                        <option value="pieces">Piece(s)</option>
+                        <option value="small_glass">Small glass(es)</option>
                     </select>
                 </td>
             `;
         }
     }
-    console.log(`Generated ${numItems} rows for ${mealTime}, Day ${day}`); // Debug log
-    updateMealDates(day); // Update dates after row generation
+    updateMealDates(day);
 }
 
 function updateMealDates(day) {
-    const dateInput = day === 1 ? document.getElementById('day1Date') : document.getElementById('day2Date');
+    const dateInput = document.getElementById('day1Date');
     if (dateInput) {
         const date = dateInput.value;
         const mealTimes = ['Early', 'Breakfast', 'Mid-morning', 'Lunch', 'Teatime', 'Dinner', 'Bedtime'];
@@ -235,16 +196,17 @@ function updateMealDates(day) {
 
 function calculateBMI() {
     const weight = parseFloat(document.getElementById('weight').value);
-    const height = parseFloat(document.getElementById('height').value) / 100; // Convert cm to meters
+    const height = parseFloat(document.getElementById('height').value) / 100;
     const bmiInput = document.getElementById('bmi');
     if (weight > 0 && height > 0) {
         const bmi = weight / (height * height);
         bmiInput.value = bmi.toFixed(2);
+        saveData();
     } else {
         bmiInput.value = '';
         alert('Please enter valid weight and height.');
     }
-    console.log('BMI calculated:', bmiInput.value); // Debug log
+    window.scrollTo({ top: window.scrollY, behavior: 'auto' });
 }
 
 function saveData() {
@@ -273,7 +235,7 @@ function saveData() {
             foodpyramid_base: document.querySelector('input[name="foodpyramid_base"]:checked')?.value || '',
             preference_reason: document.querySelector('input[name="preference_reason"]:checked')?.value || '',
             barrier: document.querySelector('input[name="barrier"]:checked')?.value || '',
-            practical: document.querySelector('input[name="practical"]:checked')?.value || '',
+            practical: document.querySelector('input[name="practical"]:checked')?.value || 'no',
             diet_type: document.querySelector('input[name="diet_type"]:checked')?.value || ''
         },
         physical_activity: {
@@ -334,32 +296,21 @@ function saveData() {
             items1: {},
             quantities1: {},
             units1: {}
-        },
-        meal_items2: {
-            recall2: [],
-            items2: {},
-            quantities2: {},
-            units2: {}
         }
     };
 
     const mealTimes = ['Early', 'Breakfast', 'Mid-morning', 'Lunch', 'Teatime', 'Dinner', 'Bedtime'];
     mealTimes.forEach(mealTime => {
         const dateInputs1 = document.querySelectorAll(`input[name="recallDate1_${mealTime}"]`);
-        formData.meal_items.recall1.push(dateInputs1.length ? document.getElementById('day1Date').value : '');
+        const day1Date = document.getElementById('day1Date')?.value || null;
+        formData.meal_items.recall1.push(dateInputs1.length && day1Date ? day1Date : null);
         formData.meal_items.items1[mealTime] = Array.from(document.querySelectorAll(`input[name="item1_${mealTime}[]"]`)).map(input => input?.value || '');
         formData.meal_items.quantities1[mealTime] = Array.from(document.querySelectorAll(`input[name="quantity1_${mealTime}[]"]`)).map(input => input?.value || '');
         formData.meal_items.units1[mealTime] = Array.from(document.querySelectorAll(`select[name="unit1_${mealTime}[]"]`)).map(select => select?.value || '');
-
-        const dateInputs2 = document.querySelectorAll(`input[name="recallDate2_${mealTime}"]`);
-        formData.meal_items2.recall2.push(dateInputs2.length ? document.getElementById('day2Date').value : '');
-        formData.meal_items2.items2[mealTime] = Array.from(document.querySelectorAll(`input[name="item2_${mealTime}[]"]`)).map(input => input?.value || '');
-        formData.meal_items2.quantities2[mealTime] = Array.from(document.querySelectorAll(`input[name="quantity2_${mealTime}[]"]`)).map(input => input?.value || '');
-        formData.meal_items2.units2[mealTime] = Array.from(document.querySelectorAll(`select[name="unit2_${mealTime}[]"]`)).map(select => select?.value || '');
     });
 
+    console.log("Saving food_frequency:", formData.food_frequency);
     localStorage.setItem('dietFormData', JSON.stringify(formData));
-    alert('Data saved successfully!');
 }
 
 async function submitForm(event) {
@@ -451,46 +402,43 @@ async function submitForm(event) {
             items1: {},
             quantities1: {},
             units1: {}
-        },
-        meal_items2: {
-            recall2: [],
-            items2: {},
-            quantities2: {},
-            units2: {}
         }
     };
 
-    const isDay1Page = document.getElementById('day1Form') !== null; // Adjust based on your HTML IDs
     const mealTimes = ['Early', 'Breakfast', 'Mid-morning', 'Lunch', 'Teatime', 'Dinner', 'Bedtime'];
-    if (isDay1Page) {
-        mealTimes.forEach(mealTime => {
-            const dateInputs1 = document.querySelectorAll(`input[name="recallDate1_${mealTime}"]`);
-            formData.meal_items.recall1.push(dateInputs1.length ? document.getElementById('day1Date')?.value || '' : '');
-            formData.meal_items.items1[mealTime] = Array.from(document.querySelectorAll(`input[name="item1_${mealTime}[]"]`)).map(input => input?.value || '');
-            formData.meal_items.quantities1[mealTime] = Array.from(document.querySelectorAll(`input[name="quantity1_${mealTime}[]"]`)).map(input => input?.value || '');
-            formData.meal_items.units1[mealTime] = Array.from(document.querySelectorAll(`select[name="unit1_${mealTime}[]"]`)).map(select => select?.value || '');
-        });
-    } else {
-        mealTimes.forEach(mealTime => {
-            const dateInputs2 = document.querySelectorAll(`input[name="recallDate2_${mealTime}"]`);
-            formData.meal_items2.recall2.push(dateInputs2.length ? document.getElementById('day2Date')?.value || '' : '');
-            formData.meal_items2.items2[mealTime] = Array.from(document.querySelectorAll(`input[name="item2_${mealTime}[]"]`)).map(input => input?.value || '');
-            formData.meal_items2.quantities2[mealTime] = Array.from(document.querySelectorAll(`input[name="quantity2_${mealTime}[]"]`)).map(input => input?.value || '');
-            formData.meal_items2.units2[mealTime] = Array.from(document.querySelectorAll(`select[name="unit2_${mealTime}[]"]`)).map(select => select?.value || '');
-        });
+    const day1Date = document.getElementById('day1Date')?.value || null;
+
+    // Validate day1Date if meal items are present
+    const hasMealItems = mealTimes.some(mealTime => {
+        const items = Array.from(document.querySelectorAll(`input[name="item1_${mealTime}[]"]`)).map(input => input?.value || '');
+        return items.some(item => item.trim() !== '');
+    });
+    if (hasMealItems && !day1Date) {
+        alert('Please select a valid date for Day 1 meal recall.');
+        return;
     }
 
+    mealTimes.forEach(mealTime => {
+        const dateInputs1 = document.querySelectorAll(`input[name="recallDate1_${mealTime}"]`);
+        formData.meal_items.recall1.push(dateInputs1.length && day1Date ? day1Date : null);
+        formData.meal_items.items1[mealTime] = Array.from(document.querySelectorAll(`input[name="item1_${mealTime}[]"]`)).map(input => input?.value || '');
+        formData.meal_items.quantities1[mealTime] = Array.from(document.querySelectorAll(`input[name="quantity1_${mealTime}[]"]`)).map(input => input?.value || '');
+        formData.meal_items.units1[mealTime] = Array.from(document.querySelectorAll(`select[name="unit1_${mealTime}[]"]`)).map(select => select?.value || '');
+    });
+
+    console.log("Submitting food_frequency:", formData.food_frequency);
     calculateBMI();
     try {
+        console.log('Sending formData:', JSON.stringify(formData, null, 2));
         const response = await fetch('http://localhost:5000/api/submit', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ data: formData }),
         });
+        console.log('Response status:', response.status, 'Redirected:', response.redirected);
         if (response.redirected) {
-            // If the server redirected, let the browser handle it
             console.log('Redirecting to:', response.url);
-            return; // Exit the function to avoid further processing
+            return;
         }
         const result = await response.json();
         if (response.ok) {
@@ -553,38 +501,25 @@ function loadData() {
         if (durationRadio) durationRadio.checked = true;
         const frequencyRadio = document.querySelector(`input[name="frequency"][value="${savedData.physical_activity.frequency || ''}"]`);
         if (frequencyRadio) frequencyRadio.checked = true;
-        const cerealMilledRadio = document.querySelector(`input[name="cereal_milled_freq"][value="${savedData.food_frequency.cereal_milled || ''}"]`);
-        if (cerealMilledRadio) cerealMilledRadio.checked = true;
-        const cerealWholeRadio = document.querySelector(`input[name="cereal_whole_freq"][value="${savedData.food_frequency.cereal_whole || ''}"]`);
-        if (cerealWholeRadio) cerealWholeRadio.checked = true;
-        const pulsesRadio = document.querySelector(`input[name="pulses_freq"][value="${savedData.food_frequency.pulses || ''}"]`);
-        if (pulsesRadio) pulsesRadio.checked = true;
-        const greenLeafyRadio = document.querySelector(`input[name="green_leafy_freq"][value="${savedData.food_frequency.green_leafy || ''}"]`);
-        if (greenLeafyRadio) greenLeafyRadio.checked = true;
-        const otherVegRadio = document.querySelector(`input[name="other_veg_freq"][value="${savedData.food_frequency.other_veg || ''}"]`);
-        if (otherVegRadio) otherVegRadio.checked = true;
-        const rootsTubersRadio = document.querySelector(`input[name="roots_tubers_freq"][value="${savedData.food_frequency.roots_tubers || ''}"]`);
-        if (rootsTubersRadio) rootsTubersRadio.checked = true;
-        const fruitsRadio = document.querySelector(`input[name="fruits_freq"][value="${savedData.food_frequency.fruits || ''}"]`);
-        if (fruitsRadio) fruitsRadio.checked = true;
-        const nutsSeedsRadio = document.querySelector(`input[name="nuts_seeds_freq"][value="${savedData.food_frequency.nuts_seeds || ''}"]`);
-        if (nutsSeedsRadio) nutsSeedsRadio.checked = true;
-        const milkProductsRadio = document.querySelector(`input[name="milk_products_freq"][value="${savedData.food_frequency.milk_products || ''}"]`);
-        if (milkProductsRadio) milkProductsRadio.checked = true;
-        const meatProductsRadio = document.querySelector(`input[name="meat_products_freq"][value="${savedData.food_frequency.meat_products || ''}"]`);
-        if (meatProductsRadio) meatProductsRadio.checked = true;
-        const sugarsRadio = document.querySelector(`input[name="sugars_freq"][value="${savedData.food_frequency.sugars || ''}"]`);
-        if (sugarsRadio) sugarsRadio.checked = true;
-        const friedFoodsRadio = document.querySelector(`input[name="fried_foods_freq"][value="${savedData.food_frequency.fried_foods || ''}"]`);
-        if (friedFoodsRadio) friedFoodsRadio.checked = true;
-        const sugaryBevRadio = document.querySelector(`input[name="sugary_bev_freq"][value="${savedData.food_frequency.sugary_bev || ''}"]`);
-        if (sugaryBevRadio) sugaryBevRadio.checked = true;
-        const packagedSnacksRadio = document.querySelector(`input[name="packaged_snacks_freq"][value="${savedData.food_frequency.packaged_snacks || ''}"]`);
-        if (packagedSnacksRadio) packagedSnacksRadio.checked = true;
-        const pizzasBurgersRadio = document.querySelector(`input[name="pizzas_burgers_freq"][value="${savedData.food_frequency.pizzas_burgers || ''}"]`);
-        if (pizzasBurgersRadio) pizzasBurgersRadio.checked = true;
-        const confectioneryRadio = document.querySelector(`input[name="confectionery_freq"][value="${savedData.food_frequency.confectionery || ''}"]`);
-        if (confectioneryRadio) confectioneryRadio.checked = true;
+        
+        // Food Frequency
+        const foodFrequencyFields = [
+            'cereal_milled', 'cereal_whole', 'pulses', 'green_leafy', 'other_veg',
+            'roots_tubers', 'fruits', 'nuts_seeds', 'milk_products', 'meat_products',
+            'sugars', 'fried_foods', 'sugary_bev', 'packaged_snacks', 'pizzas_burgers',
+            'confectionery'
+        ];
+        foodFrequencyFields.forEach(field => {
+            const value = savedData.food_frequency[field] || '';
+            const radio = document.querySelector(`input[name="${field}_freq"][value="${value}"]`);
+            if (radio) {
+                radio.checked = true;
+                console.log(`Loaded ${field}_freq: value=${value}, checked=${radio.checked}`);
+            } else if (value) {
+                console.warn(`No radio button found for ${field}_freq with value=${value}`);
+            }
+        });
+
         document.querySelector('select[name="cereal_milled_highest"]').value = savedData.top_two_items.cereal_milled_highest || '';
         document.querySelector('select[name="cereal_milled_second"]').value = savedData.top_two_items.cereal_milled_second || '';
         document.querySelector('select[name="cereal_whole_highest"]').value = savedData.top_two_items.cereal_whole_highest || '';
@@ -617,7 +552,7 @@ function loadData() {
         mealTimes.forEach(mealTime => {
             if (savedData.meal_items && savedData.meal_items.items1 && savedData.meal_items.items1[mealTime]) {
                 document.getElementById('day1Date').value = savedData.meal_items.recall1[0] || maxDate.toISOString().split('T')[0];
-                document.getElementById(`numItems1_${mealTime}`).value = savedData.meal_items.items1[mealTime].length || 0; // Allow 0 if no items
+                document.getElementById(`numItems1_${mealTime}`).value = savedData.meal_items.items1[mealTime].length || 0;
                 generateRows(mealTime, 1);
                 savedData.meal_items.items1[mealTime].forEach((item, index) => {
                     if (document.querySelectorAll(`input[name="item1_${mealTime}[]"]`)[index]) {
@@ -635,41 +570,6 @@ function loadData() {
                     }
                 });
             }
-
-            // Load Day-2 only if data exists
-            if (savedData.meal_items2 && savedData.meal_items2.items2 && savedData.meal_items2.items2[mealTime]) {
-                document.getElementById('day2Date').value = savedData.meal_items2.recall2[0] || maxDate.toISOString().split('T')[0];
-                document.getElementById(`numItems2_${mealTime}`).value = savedData.meal_items2.items2[mealTime].length || 0;
-                generateRows(mealTime, 2);
-                savedData.meal_items2.items2[mealTime].forEach((item, index) => {
-                    if (document.querySelectorAll(`input[name="item2_${mealTime}[]"]`)[index]) {
-                        document.querySelectorAll(`input[name="item2_${mealTime}[]"]`)[index].value = item || '';
-                    }
-                });
-                savedData.meal_items2.quantities2[mealTime].forEach((qty, index) => {
-                    if (document.querySelectorAll(`input[name="quantity2_${mealTime}[]"]`)[index]) {
-                        document.querySelectorAll(`input[name="quantity2_${mealTime}[]"]`)[index].value = qty || '0';
-                    }
-                });
-                savedData.meal_items2.units2[mealTime].forEach((unit, index) => {
-                    if (document.querySelectorAll(`select[name="unit2_${mealTime}[]"]`)[index]) {
-                        document.querySelectorAll(`select[name="unit2_${mealTime}[]"]`)[index].value = unit || 'cups';
-                    }
-                });
-            } else {
-                document.getElementById(`numItems2_${mealTime}`).value = 0;
-                generateRows(mealTime, 2);
-            }
         });
-
-        // Hide Day-2 section initially and show only if Day-2 data exists or condition is met
-        const day2Section = document.getElementById('day2Section');
-        if (day2Section) {
-            const day1Date = new Date(savedData.meal_items.recall1?.[0] || '');
-            const minDay2Date = new Date(day1Date);
-            minDay2Date.setDate(day1Date.getDate() + 2);
-            const today = new Date();
-            day2Section.style.display = savedData.meal_items2.recall2?.[0] || (today >= minDay2Date && day1Date) ? 'block' : 'none';
-        }
     }
 }
