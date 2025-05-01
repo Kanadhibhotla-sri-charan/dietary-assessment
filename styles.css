@@ -57,19 +57,24 @@ label {
 
 input[type="text"],
 input[type="number"],
-select {
+select,
+input[type="date"] {
     padding: 8px;
     width: 150px;
-    border: 1px solid #ddd;
+    border: 2px solid #4CAF50;
     border-radius: 4px;
     font-size: 1em;
-    transition: border-color 0.3s;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s, box-shadow 0.3s;
 }
 
 input[type="text"]:focus,
 input[type="number"]:focus,
-select:focus {
-    border-color: #3498db;
+select:focus,
+input[type="date"]:focus {
+    border-color: #45a049;
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
     outline: none;
 }
 
@@ -103,16 +108,107 @@ td {
     background-color: #f9fbfd;
 }
 
+/* Specific styles for meal recall tables */
+#mealRecallTableDay1_Early,
+#mealRecallTableDay1_Breakfast,
+#mealRecallTableDay1_Mid-morning,
+#mealRecallTableDay1_Lunch,
+#mealRecallTableDay1_Teatime,
+#mealRecallTableDay1_Dinner,
+#mealRecallTableDay1_Bedtime {
+    table-layout: fixed;
+    width: 100%;
+}
+
+#mealRecallTableDay1_Early th,
+#mealRecallTableDay1_Breakfast th,
+#mealRecallTableDay1_Mid-morning th,
+#mealRecallTableDay1_Lunch th,
+#mealRecallTableDay1_Teatime th,
+#mealRecallTableDay1_Dinner th,
+#mealRecallTableDay1_Bedtime th,
+#mealRecallTableDay1_Early td,
+#mealRecallTableDay1_Breakfast td,
+#mealRecallTableDay1_Mid-morning td,
+#mealRecallTableDay1_Lunch td,
+#mealRecallTableDay1_Teatime td,
+#mealRecallTableDay1_Dinner td,
+#mealRecallTableDay1_Bedtime td {
+    padding: 8px;
+}
+
+/* Set column widths for Item, Quantity, Unit */
+#mealRecallTableDay1_Early th:nth-child(1),
+#mealRecallTableDay1_Breakfast th:nth-child(1),
+#mealRecallTableDay1_Mid-morning th:nth-child(1),
+#mealRecallTableDay1_Lunch th:nth-child(1),
+#mealRecallTableDay1_Teatime th:nth-child(1),
+#mealRecallTableDay1_Dinner th:nth-child(1),
+#mealRecallTableDay1_Bedtime th:nth-child(1),
+#mealRecallTableDay1_Early td:nth-child(1),
+#mealRecallTableDay1_Breakfast td:nth-child(1),
+#mealRecallTableDay1_Mid-morning td:nth-child(1),
+#mealRecallTableDay1_Lunch td:nth-child(1),
+#mealRecallTableDay1_Teatime td:nth-child(1),
+#mealRecallTableDay1_Dinner td:nth-child(1),
+#mealRecallTableDay1_Bedtime td:nth-child(1) {
+    width: 50%; /* Item column */
+}
+
+#mealRecallTableDay1_Early th:nth-child(2),
+#mealRecallTableDay1_Breakfast th:nth-child(2),
+#mealRecallTableDay1_Mid-morning th:nth-child(2),
+#mealRecallTableDay1_Lunch th:nth-child(2),
+#mealRecallTableDay1_Teatime th:nth-child(2),
+#mealRecallTableDay1_Dinner th:nth-child(2),
+#mealRecallTableDay1_Bedtime th:nth-child(2),
+#mealRecallTableDay1_Early td:nth-child(2),
+#mealRecallTableDay1_Breakfast td:nth-child(2),
+#mealRecallTableDay1_Mid-morning td:nth-child(2),
+#mealRecallTableDay1_Lunch td:nth-child(2),
+#mealRecallTableDay1_Teatime td:nth-child(2),
+#mealRecallTableDay1_Dinner td:nth-child(2),
+#mealRecallTableDay1_Bedtime td:nth-child(2) {
+    width: 20%; /* Quantity column */
+}
+
+#mealRecallTableDay1_Early th:nth-child(3),
+#mealRecallTableDay1_Breakfast th:nth-child(3),
+#mealRecallTableDay1_Mid-morning th:nth-child(3),
+#mealRecallTableDay1_Lunch th:nth-child(3),
+#mealRecallTableDay1_Teatime th:nth-child(3),
+#mealRecallTableDay1_Dinner th:nth-child(3),
+#mealRecallTableDay1_Bedtime th:nth-child(3),
+#mealRecallTableDay1_Early td:nth-child(3),
+#mealRecallTableDay1_Breakfast td:nth-child(3),
+#mealRecallTableDay1_Mid-morning td:nth-child(3),
+#mealRecallTableDay1_Lunch td:nth-child(3),
+#mealRecallTableDay1_Teatime td:nth-child(3),
+#mealRecallTableDay1_Dinner td:nth-child(3),
+#mealRecallTableDay1_Bedtime td:nth-child(3) {
+    width: 30%; /* Unit column */
+}
+
+table input[type="text"],
+table input[type="number"],
+table select,
+table input[type="date"] {
+    width: 100%;
+    display: inline-block;
+    box-sizing: border-box;
+}
+
 button {
-    padding: 8px 15px;
-    margin: 5px 0;
+    padding: 10px 20px;
+    margin: 10px 5px;
     background-color: #2ecc71;
     color: #fff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     font-size: 1em;
-    transition: background-color 0.3s;
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.1s;
 }
 
 button:hover {
@@ -121,42 +217,97 @@ button:hover {
 
 button:active {
     background-color: #219653;
+    transform: scale(0.98);
 }
 
-/* General styling for all text inputs */
-input[type="text"],
-input[type="number"],
-select {
-    border: 2px solid #4CAF50; /* Green border for visibility */
-    background-color: #f9f9f9; /* Light gray background */
-    padding: 8px;
-    border-radius: 4px; /* Rounded corners */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-    font-size: 16px;
-    width: 100%; /* Full width for better usability */
-    max-width: 300px; /* Optional: limit max width */
-    margin-bottom: 10px;
+button:disabled {
+    background-color: #95a5a6;
+    cursor: not-allowed;
+    opacity: 0.7;
 }
 
-/* Highlight on focus for better interaction */
-input[type="text"]:focus,
-input[type="number"]:focus,
-select:focus {
-    border-color: #45a049; /* Darker green on focus */
-    outline: none; /* Remove default outline */
-    box-shadow: 0 0 5px rgba(76, 175, 80, 0.5); /* Glow effect */
+.next-btn {
+    background-color: #3498db;
 }
 
-/* Specific styling for 24-Hour Meal Recall tables */
-table input[type="text"],
-table input[type="number"],
-table select {
-    width: 90%; /* Adjust width for table cells */
-    display: inline-block; /* Ensure proper alignment */
+.next-btn:hover {
+    background-color: #2980b9;
 }
 
-/* Optional: Add some spacing to the container */
-.container {
-    padding: 20px;
+.next-btn:active {
+    background-color: #1f618d;
 }
 
+#saveBtn {
+    background-color: #e74c3c;
+}
+
+#saveBtn:hover {
+    background-color: #c0392b;
+}
+
+#saveBtn:active {
+    background-color: #a93226;
+}
+
+.survey-section.locked {
+    filter: blur(5px);
+    pointer-events: none;
+    opacity: 0.7;
+    transition: filter 0.3s, opacity 0.3s;
+}
+
+.save-message {
+    display: none;
+    padding: 10px 20px;
+    margin: 10px 0;
+    background-color: #2ecc71;
+    color: #fff;
+    border-radius: 5px;
+    font-weight: bold;
+    text-align: center;
+    animation: fadeOut 0.5s ease-in-out forwards;
+    animation-delay: 2.5s;
+}
+
+#save-message-meal-recall {
+    background-color: #e74c3c;
+    animation-delay: 4.5s;
+}
+
+@keyframes fadeOut {
+    0% { opacity: 1; }
+    100% { opacity: 0; display: none; }
+}
+
+/* New styles for meal recall section */
+.meal-recall-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.meal-time {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.meal-time h3 {
+    margin: 0 0 10px 0;
+}
+
+.meal-time label {
+    margin-right: 10px;
+}
+
+.meal-time table {
+    width: 100%;
+    margin-top: 10px;
+    border-collapse: collapse;
+}
+
+.meal-time table th,
+.meal-time table td {
+    border: 1px solid #ddd;
+}
