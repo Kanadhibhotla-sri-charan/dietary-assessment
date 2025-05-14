@@ -15,7 +15,7 @@
                 <p><strong>Unique Link:</strong> <a id="uniqueLink" href="#" target="_blank"></a></p>
                 <p><em>Save this link to resume your session later.</em></p>
             </div>
-            <h1>Awareness of My Plate, Food Pyramid, and Compliance of Dietary Habits_test</h1>
+            <h1>Awareness of My Plate, Food Pyramid, and Compliance of Dietary Habits</h1>
 
             <!-- 1. Demographic Information -->
             <section class="survey-section" data-section="demographic">
@@ -27,7 +27,7 @@
                 </div>
                 <div class="form-group">
                     <label for="age">Age:</label>
-                    <input type="number" id="age" name="age">
+                    <input type="number" id="age" name="age" min="1">
                 </div>
                 <div class="form-group">
                     <label for="gender">Gender:</label>
@@ -84,11 +84,11 @@
                 <p><strong>Instructions:</strong> Enter your weight in kilograms and height in centimeters. Use the 'Calculate BMI' button to compute your BMI based on these values. Ensure numbers are positive and accurate for best results.</p>
                 <div class="form-group">
                     <label for="weight">Weight (kgs):</label>
-                    <input type="number" id="weight" name="weight" step="0.1" required>
+                    <input type="number" id="weight" name="weight" step="0.1" min="0" required>
                 </div>
                 <div class="form-group">
                     <label for="height">Height (cms):</label>
-                    <input type="number" id="height" name="height" step="0.1" required>
+                    <input type="number" id="height" name="height" step="0.1" min="0" required>
                 </div>
                 <div class="form-group">
                     <label for="bmi">BMI (kg/m²):</label>
@@ -107,7 +107,7 @@
                 <h3>IIIA. Awareness and Knowledge of My Plate, Food Pyramid and Dietary Guidelines</h3>
                 <p><strong>Instructions:</strong> Answer the following questions by selecting 'Yes' or 'No' for each. Provide details where text input is requested.</p>
                 <div class="form-group">
-                    <label>Have you heard about the “My plate for the day” proposed by ICMR-NIN?</label>
+                    <label>Have you heard about the “My Plate for the Day” proposed by ICMR-NIN?</label>
                     <div class="options">
                         <input type="radio" id="myplate_yes" name="myplate" value="yes" onchange="checkFirstThree()">
                         <label for="myplate_yes">Yes</label>
@@ -125,7 +125,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label>Have you heard/read about the “Dietary guidelines for Indians” proposed by ICMR-NIN?</label>
+                    <label>Have you heard/read about the “Dietary Guidelines for Indians” proposed by ICMR-NIN?</label>
                     <div class="options">
                         <input type="radio" id="dietaryguidelines_yes" name="dietaryguidelines" value="yes" onchange="checkFirstThree()">
                         <label for="dietaryguidelines_yes">Yes</label>
@@ -145,7 +145,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label>What do you think “My plate for the day” includes?</label>
+                    <label>What do you think “My Plate for the Day” includes?</label>
                     <input type="text" id="myplate_includes" name="myplate_includes">
                 </div>
                 <div class="form-group">
@@ -180,7 +180,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label>Which food group do you think would be the base (major part) of the “Food pyramid”?</label>
+                    <label>Which food group do you think would be the base (major part) of the “Food Pyramid”?</label>
                     <div class="options">
                         <input type="radio" id="base_cereals" name="foodpyramid_base" value="cereals">
                         <label for="base_cereals">Cereals</label>
@@ -195,7 +195,7 @@
                         <input type="radio" id="base_nuts" name="foodpyramid_base" value="nuts_seeds">
                         <label for="base_nuts">Nuts and seeds</label>
                         <input type="radio" id="base_meat" name="foodpyramid_base" value="meat_fish_eggs">
-                        <label for="base_meat">Meat, fish & Eggs</label>
+                        <label for="base_meat">Meat, Fish & Eggs</label>
                     </div>
                 </div>
                 <div class="form-group">
@@ -210,7 +210,7 @@
                         <input type="radio" id="reason_cost" name="preference_reason" value="cost">
                         <label for="reason_cost">Cost</label>
                         <input type="radio" id="reason_cultural" name="preference_reason" value="cultural">
-                        <label for="reason_cultural">Cultural/ family food habits</label>
+                        <label for="reason_cultural">Cultural/Family food habits</label>
                         <input type="radio" id="reason_all" name="preference_reason" value="all">
                         <label for="reason_all">All the above</label>
                     </div>
@@ -229,13 +229,13 @@
                         <input type="radio" id="barrier_taste" name="barrier" value="taste">
                         <label for="barrier_taste">Taste preferences</label>
                         <input type="radio" id="barrier_cultural" name="barrier" value="cultural">
-                        <label for="barrier_cultural">Cultural/ family food habits</label>
+                        <label for="barrier_cultural">Cultural/Family food habits</label>
                         <input type="radio" id="barrier_all" name="barrier" value="all">
                         <label for="barrier_all">All the above</label>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label>Do you think Dietary guidelines are practical for daily life?</label>
+                    <label>Do you think dietary guidelines are practical for daily life?</label>
                     <div class="options">
                         <input type="radio" id="practical_yes" name="practical" value="yes">
                         <label for="practical_yes">Yes</label>
@@ -244,7 +244,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label>Type of diet</label>
+                    <label>Type of diet:</label>
                     <div class="options">
                         <input type="radio" id="diet_vegetarian" name="diet_type" value="vegetarian">
                         <label for="diet_vegetarian">Vegetarian</label>
@@ -277,13 +277,13 @@
                     <label>Do you engage yourself in some physical activity/exercise every day?</label>
                     <div class="options">
                         <input type="radio" id="engage_yes" name="engage_daily" value="yes" onchange="toggleQuestion(this, 'activity_type_group')">
-                        <label for="engage_yes">Yes, I voluntarily make time and engage in some physical activity everyday</label>
+                        <label for="engage_yes">Yes, I voluntarily make time and engage in some physical activity every day</label>
                         <input type="radio" id="engage_no" name="engage_daily" value="no" onchange="toggleQuestion(this, 'activity_type_group')">
                         <label for="engage_no">No, I only sit, stand and walk as part of my daily chores and commuting</label>
                     </div>
                 </div>
                 <div class="form-group" id="activity_type_group" style="display: none;">
-                    <label>If yes, which of the following physical activity do you engage yourself in?</label>
+                    <label>If yes, which of the following physical activities do you engage in?</label>
                     <div class="options">
                         <input type="radio" id="activity_walking" name="activity_type" value="walking">
                         <label for="activity_walking">Walking</label>
@@ -304,7 +304,7 @@
                     </div>
                 </div>
                 <div class="form-group" id="duration_group" style="display: none;">
-                    <label>How long do you engage yourself in the physical activity/exercise in a day?</label>
+                    <label>How long do you engage in physical activity/exercise in a day?</label>
                     <div class="options">
                         <input type="radio" id="duration_15_30" name="duration" value="15-30">
                         <label for="duration_15_30">15-30 minutes a day</label>
@@ -333,8 +333,8 @@
 
             <!-- 5. Food Frequency Questionnaire -->
             <section class="survey-section" data-section="frequency">
-                <h2>V. Food Frequency Questionnaire</h2>
-                <p><strong>Instructions:</strong> Check the box that best represents how often you consume each food group. Choose one option per row, based on your typical weekly intake.</p>
+                <h2>IV. Food Frequency Questionnaire</h2>
+                <p><strong>Instructions:</strong> Select the option that best represents how often you consume each food group. Choose one option per row, based on your typical weekly intake.</p>
                 <table>
                     <thead>
                         <tr>
@@ -349,22 +349,22 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr><td>Cereals (milled)</td><td><input type="checkbox" name="cereal_milled_freq" value="once_day"></td><td><input type="checkbox" name="cereal_milled_freq" value="2-3_day"></td><td><input type="checkbox" name="cereal_milled_freq" value="2-4_week"></td><td><input type="checkbox" name="cereal_milled_freq" value="once_week"></td><td><input type="checkbox" name="cereal_milled_freq" value="fortnight"></td><td><input type="checkbox" name="cereal_milled_freq" value="once_month"></td><td><input type="checkbox" name="cereal_milled_freq" value="never"></td></tr>
-                        <tr><td>Cereals (whole grains)</td><td><input type="checkbox" name="cereal_whole_freq" value="once_day"></td><td><input type="checkbox" name="cereal_whole_freq" value="2-3_day"></td><td><input type="checkbox" name="cereal_whole_freq" value="2-4_week"></td><td><input type="checkbox" name="cereal_whole_freq" value="once_week"></td><td><input type="checkbox" name="cereal_whole_freq" value="fortnight"></td><td><input type="checkbox" name="cereal_whole_freq" value="once_month"></td><td><input type="checkbox" name="cereal_whole_freq" value="never"></td></tr>
-                        <tr><td>Pulses</td><td><input type="checkbox" name="pulses_freq" value="once_day"></td><td><input type="checkbox" name="pulses_freq" value="2-3_day"></td><td><input type="checkbox" name="pulses_freq" value="2-4_week"></td><td><input type="checkbox" name="pulses_freq" value="once_week"></td><td><input type="checkbox" name="pulses_freq" value="fortnight"></td><td><input type="checkbox" name="pulses_freq" value="once_month"></td><td><input type="checkbox" name="pulses_freq" value="never"></td></tr>
-                        <tr><td>Green leafy vegetables</td><td><input type="checkbox" name="green_leafy_freq" value="once_day"></td><td><input type="checkbox" name="green_leafy_freq" value="2-3_day"></td><td><input type="checkbox" name="green_leafy_freq" value="2-4_week"></td><td><input type="checkbox" name="green_leafy_freq" value="once_week"></td><td><input type="checkbox" name="green_leafy_freq" value="fortnight"></td><td><input type="checkbox" name="green_leafy_freq" value="once_month"></td><td><input type="checkbox" name="green_leafy_freq" value="never"></td></tr>
-                        <tr><td>Other vegetables</td><td><input type="checkbox" name="other_veg_freq" value="once_day"></td><td><input type="checkbox" name="other_veg_freq" value="2-3_day"></td><td><input type="checkbox" name="other_veg_freq" value="2-4_week"></td><td><input type="checkbox" name="other_veg_freq" value="once_week"></td><td><input type="checkbox" name="other_veg_freq" value="fortnight"></td><td><input type="checkbox" name="other_veg_freq" value="once_month"></td><td><input type="checkbox" name="other_veg_freq" value="never"></td></tr>
-                        <tr><td>Roots & Tubers</td><td><input type="checkbox" name="roots_tubers_freq" value="once_day"></td><td><input type="checkbox" name="roots_tubers_freq" value="2-3_day"></td><td><input type="checkbox" name="roots_tubers_freq" value="2-4_week"></td><td><input type="checkbox" name="roots_tubers_freq" value="once_week"></td><td><input type="checkbox" name="roots_tubers_freq" value="fortnight"></td><td><input type="checkbox" name="roots_tubers_freq" value="once_month"></td><td><input type="checkbox" name="roots_tubers_freq" value="never"></td></tr>
-                        <tr><td>Fruits</td><td><input type="checkbox" name="fruits_freq" value="once_day"></td><td><input type="checkbox" name="fruits_freq" value="2-3_day"></td><td><input type="checkbox" name="fruits_freq" value="2-4_week"></td><td><input type="checkbox" name="fruits_freq" value="once_week"></td><td><input type="checkbox" name="fruits_freq" value="fortnight"></td><td><input type="checkbox" name="fruits_freq" value="once_month"></td><td><input type="checkbox" name="fruits_freq" value="never"></td></tr>
-                        <tr><td>Nuts & oil seeds</td><td><input type="checkbox" name="nuts_seeds_freq" value="once_day"></td><td><input type="checkbox" name="nuts_seeds_freq" value="2-3_day"></td><td><input type="checkbox" name="nuts_seeds_freq" value="2-4_week"></td><td><input type="checkbox" name="nuts_seeds_freq" value="once_week"></td><td><input type="checkbox" name="nuts_seeds_freq" value="fortnight"></td><td><input type="checkbox" name="nuts_seeds_freq" value="once_month"></td><td><input type="checkbox" name="nuts_seeds_freq" value="never"></td></tr>
-                        <tr><td>Milk & milk products</td><td><input type="checkbox" name="milk_products_freq" value="once_day"></td><td><input type="checkbox" name="milk_products_freq" value="2-3_day"></td><td><input type="checkbox" name="milk_products_freq" value="2-4_week"></td><td><input type="checkbox" name="milk_products_freq" value="once_week"></td><td><input type="checkbox" name="milk_products_freq" value="fortnight"></td><td><input type="checkbox" name="milk_products_freq" value="once_month"></td><td><input type="checkbox" name="milk_products_freq" value="never"></td></tr>
-                        <tr><td>Meat & meat products</td><td><input type="checkbox" name="meat_products_freq" value="once_day"></td><td><input type="checkbox" name="meat_products_freq" value="2-3_day"></td><td><input type="checkbox" name="meat_products_freq" value="2-4_week"></td><td><input type="checkbox" name="meat_products_freq" value="once_week"></td><td><input type="checkbox" name="meat_products_freq" value="fortnight"></td><td><input type="checkbox" name="meat_products_freq" value="once_month"></td><td><input type="checkbox" name="meat_products_freq" value="never"></td></tr>
-                        <tr><td>Sugars</td><td><input type="checkbox" name="sugars_freq" value="once_day"></td><td><input type="checkbox" name="sugars_freq" value="2-3_day"></td><td><input type="checkbox" name="sugars_freq" value="2-4_week"></td><td><input type="checkbox" name="sugars_freq" value="once_week"></td><td><input type="checkbox" name="sugars_freq" value="fortnight"></td><td><input type="checkbox" name="sugars_freq" value="once_month"></td><td><input type="checkbox" name="sugars_freq" value="never"></td></tr>
-                        <tr><td>Fried foods</td><td><input type="checkbox" name="fried_foods_freq" value="once_day"></td><td><input type="checkbox" name="fried_foods_freq" value="2-3_day"></td><td><input type="checkbox" name="fried_foods_freq" value="2-4_week"></td><td><input type="checkbox" name="fried_foods_freq" value="once_week"></td><td><input type="checkbox" name="fried_foods_freq" value="fortnight"></td><td><input type="checkbox" name="fried_foods_freq" value="once_month"></td><td><input type="checkbox" name="fried_foods_freq" value="never"></td></tr>
-                        <tr><td>Sugary beverages</td><td><input type="checkbox" name="sugary_bev_freq" value="once_day"></td><td><input type="checkbox" name="sugary_bev_freq" value="2-3_day"></td><td><input type="checkbox" name="sugary_bev_freq" value="2-4_week"></td><td><input type="checkbox" name="sugary_bev_freq" value="once_week"></td><td><input type="checkbox" name="sugary_bev_freq" value="fortnight"></td><td><input type="checkbox" name="sugary_bev_freq" value="once_month"></td><td><input type="checkbox" name="sugary_bev_freq" value="never"></td></tr>
-                        <tr><td>Packaged snacks</td><td><input type="checkbox" name="packaged_snacks_freq" value="once_day"></td><td><input type="checkbox" name="packaged_snacks_freq" value="2-3_day"></td><td><input type="checkbox" name="packaged_snacks_freq" value="2-4_week"></td><td><input type="checkbox" name="packaged_snacks_freq" value="once_week"></td><td><input type="checkbox" name="packaged_snacks_freq" value="fortnight"></td><td><input type="checkbox" name="packaged_snacks_freq" value="once_month"></td><td><input type="checkbox" name="packaged_snacks_freq" value="never"></td></tr>
-                        <tr><td>Pizzas/Burgers</td><td><input type="checkbox" name="pizzas_burgers_freq" value="once_day"></td><td><input type="checkbox" name="pizzas_burgers_freq" value="2-3_day"></td><td><input type="checkbox" name="pizzas_burgers_freq" value="2-4_week"></td><td><input type="checkbox" name="pizzas_burgers_freq" value="once_week"></td><td><input type="checkbox" name="pizzas_burgers_freq" value="fortnight"></td><td><input type="checkbox" name="pizzas_burgers_freq" value="once_month"></td><td><input type="checkbox" name="pizzas_burgers_freq" value="never"></td></tr>
-                        <tr><td>Confectionery</td><td><input type="checkbox" name="confectionery_freq" value="once_day"></td><td><input type="checkbox" name="confectionery_freq" value="2-3_day"></td><td><input type="checkbox" name="confectionery_freq" value="2-4_week"></td><td><input type="checkbox" name="confectionery_freq" value="once_week"></td><td><input type="checkbox" name="confectionery_freq" value="fortnight"></td><td><input type="checkbox" name="confectionery_freq" value="once_month"></td><td><input type="checkbox" name="confectionery_freq" value="never"></td></tr>
+                        <tr><td>Cereals (milled)</td><td><input type="radio" name="cereal_milled_freq" value="once_day"></td><td><input type="radio" name="cereal_milled_freq" value="2-3_day"></td><td><input type="radio" name="cereal_milled_freq" value="2-4_week"></td><td><input type="radio" name="cereal_milled_freq" value="once_week"></td><td><input type="radio" name="cereal_milled_freq" value="fortnight"></td><td><input type="radio" name="cereal_milled_freq" value="once_month"></td><td><input type="radio" name="cereal_milled_freq" value="never"></td></tr>
+                        <tr><td>Cereals (whole grains)</td><td><input type="radio" name="cereal_whole_freq" value="once_day"></td><td><input type="radio" name="cereal_whole_freq" value="2-3_day"></td><td><input type="radio" name="cereal_whole_freq" value="2-4_week"></td><td><input type="radio" name="cereal_whole_freq" value="once_week"></td><td><input type="radio" name="cereal_whole_freq" value="fortnight"></td><td><input type="radio" name="cereal_whole_freq" value="once_month"></td><td><input type="radio" name="cereal_whole_freq" value="never"></td></tr>
+                        <tr><td>Pulses</td><td><input type="radio" name="pulses_freq" value="once_day"></td><td><input type="radio" name="pulses_freq" value="2-3_day"></td><td><input type="radio" name="pulses_freq" value="2-4_week"></td><td><input type="radio" name="pulses_freq" value="once_week"></td><td><input type="radio" name="pulses_freq" value="fortnight"></td><td><input type="radio" name="pulses_freq" value="once_month"></td><td><input type="radio" name="pulses_freq" value="never"></td></tr>
+                        <tr><td>Green leafy vegetables</td><td><input type="radio" name="green_leafy_freq" value="once_day"></td><td><input type="radio" name="green_leafy_freq" value="2-3_day"></td><td><input type="radio" name="green_leafy_freq" value="2-4_week"></td><td><input type="radio" name="green_leafy_freq" value="once_week"></td><td><input type="radio" name="green_leafy_freq" value="fortnight"></td><td><input type="radio" name="green_leafy_freq" value="once_month"></td><td><input type="radio" name="green_leafy_freq" value="never"></td></tr>
+                        <tr><td>Other vegetables</td><td><input type="radio" name="other_veg_freq" value="once_day"></td><td><input type="radio" name="other_veg_freq" value="2-3_day"></td><td><input type="radio" name="other_veg_freq" value="2-4_week"></td><td><input type="radio" name="other_veg_freq" value="once_week"></td><td><input type="radio" name="other_veg_freq" value="fortnight"></td><td><input type="radio" name="other_veg_freq" value="once_month"></td><td><input type="radio" name="other_veg_freq" value="never"></td></tr>
+                        <tr><td>Roots & Tubers</td><td><input type="radio" name="roots_tubers_freq" value="once_day"></td><td><input type="radio" name="roots_tubers_freq" value="2-3_day"></td><td><input type="radio" name="roots_tubers_freq" value="2-4_week"></td><td><input type="radio" name="roots_tubers_freq" value="once_week"></td><td><input type="radio" name="roots_tubers_freq" value="fortnight"></td><td><input type="radio" name="roots_tubers_freq" value="once_month"></td><td><input type="radio" name="roots_tubers_freq" value="never"></td></tr>
+                        <tr><td>Fruits</td><td><input type="radio" name="fruits_freq" value="once_day"></td><td><input type="radio" name="fruits_freq" value="2-3_day"></td><td><input type="radio" name="fruits_freq" value="2-4_week"></td><td><input type="radio" name="fruits_freq" value="once_week"></td><td><input type="radio" name="fruits_freq" value="fortnight"></td><td><input type="radio" name="fruits_freq" value="once_month"></td><td><input type="radio" name="fruits_freq" value="never"></td></tr>
+                        <tr><td>Nuts & oil seeds</td><td><input type="radio" name="nuts_seeds_freq" value="once_day"></td><td><input type="radio" name="nuts_seeds_freq" value="2-3_day"></td><td><input type="radio" name="nuts_seeds_freq" value="2-4_week"></td><td><input type="radio" name="nuts_seeds_freq" value="once_week"></td><td><input type="radio" name="nuts_seeds_freq" value="fortnight"></td><td><input type="radio" name="nuts_seeds_freq" value="once_month"></td><td><input type="radio" name="nuts_seeds_freq" value="never"></td></tr>
+                        <tr><td>Milk & milk products</td><td><input type="radio" name="milk_products_freq" value="once_day"></td><td><input type="radio" name="milk_products_freq" value="2-3_day"></td><td><input type="radio" name="milk_products_freq" value="2-4_week"></td><td><input type="radio" name="milk_products_freq" value="once_week"></td><td><input type="radio" name="milk_products_freq" value="fortnight"></td><td><input type="radio" name="milk_products_freq" value="once_month"></td><td><input type="radio" name="milk_products_freq" value="never"></td></tr>
+                        <tr><td>Meat & meat products</td><td><input type="radio" name="meat_products_freq" value="once_day"></td><td><input type="radio" name="meat_products_freq" value="2-3_day"></td><td><input type="radio" name="meat_products_freq" value="2-4_week"></td><td><input type="radio" name="meat_products_freq" value="once_week"></td><td><input type="radio" name="meat_products_freq" value="fortnight"></td><td><input type="radio" name="meat_products_freq" value="once_month"></td><td><input type="radio" name="meat_products_freq" value="never"></td></tr>
+                        <tr><td>Sugars</td><td><input type="radio" name="sugars_freq" value="once_day"></td><td><input type="radio" name="sugars_freq" value="2-3_day"></td><td><input type="radio" name="sugars_freq" value="2-4_week"></td><td><input type="radio" name="sugars_freq" value="once_week"></td><td><input type="radio" name="sugars_freq" value="fortnight"></td><td><input type="radio" name="sugars_freq" value="once_month"></td><td><input type="radio" name="sugars_freq" value="never"></td></tr>
+                        <tr><td>Fried foods</td><td><input type="radio" name="fried_foods_freq" value="once_day"></td><td><input type="radio" name="fried_foods_freq" value="2-3_day"></td><td><input type="radio" name="fried_foods_freq" value="2-4_week"></td><td><input type="radio" name="fried_foods_freq" value="once_week"></td><td><input type="radio" name="fried_foods_freq" value="fortnight"></td><td><input type="radio" name="fried_foods_freq" value="once_month"></td><td><input type="radio" name="fried_foods_freq" value="never"></td></tr>
+                        <tr><td>Sugary beverages</td><td><input type="radio" name="sugary_bev_freq" value="once_day"></td><td><input type="radio" name="sugary_bev_freq" value="2-3_day"></td><td><input type="radio" name="sugary_bev_freq" value="2-4_week"></td><td><input type="radio" name="sugary_bev_freq" value="once_week"></td><td><input type="radio" name="sugary_bev_freq" value="fortnight"></td><td><input type="radio" name="sugary_bev_freq" value="once_month"></td><td><input type="radio" name="sugary_bev_freq" value="never"></td></tr>
+                        <tr><td>Packaged snacks</td><td><input type="radio" name="packaged_snacks_freq" value="once_day"></td><td><input type="radio" name="packaged_snacks_freq" value="2-3_day"></td><td><input type="radio" name="packaged_snacks_freq" value="2-4_week"></td><td><input type="radio" name="packaged_snacks_freq" value="once_week"></td><td><input type="radio" name="packaged_snacks_freq" value="fortnight"></td><td><input type="radio" name="packaged_snacks_freq" value="once_month"></td><td><input type="radio" name="packaged_snacks_freq" value="never"></td></tr>
+                        <tr><td>Pizzas/Burgers</td><td><input type="radio" name="pizzas_burgers_freq" value="once_day"></td><td><input type="radio" name="pizzas_burgers_freq" value="2-3_day"></td><td><input type="radio" name="pizzas_burgers_freq" value="2-4_week"></td><td><input type="radio" name="pizzas_burgers_freq" value="once_week"></td><td><input type="radio" name="pizzas_burgers_freq" value="fortnight"></td><td><input type="radio" name="pizzas_burgers_freq" value="once_month"></td><td><input type="radio" name="pizzas_burgers_freq" value="never"></td></tr>
+                        <tr><td>Confectionery</td><td><input type="radio" name="confectionery_freq" value="once_day"></td><td><input type="radio" name="confectionery_freq" value="2-3_day"></td><td><input type="radio" name="confectionery_freq" value="2-4_week"></td><td><input type="radio" name="confectionery_freq" value="once_week"></td><td><input type="radio" name="confectionery_freq" value="fortnight"></td><td><input type="radio" name="confectionery_freq" value="once_month"></td><td><input type="radio" name="confectionery_freq" value="never"></td></tr>
                     </tbody>
                 </table>
                 <div style="margin-top: 20px;">
@@ -375,7 +375,7 @@
 
             <!-- 6. List of Food Items (Higher Frequency) -->
             <section class="survey-section" data-section="food-items">
-                <h2>VI. List of Food Items (Higher Frequency)</h2>
+                <h2>V. List of Food Items (Higher Frequency)</h2>
                 <p><strong>Instructions:</strong> Select the two most frequently consumed items (highest and second highest) from each food group category if you eat them 2 or more times a week. Choose 'None' if no items apply.</p>
                 <table>
                     <thead>
@@ -389,14 +389,14 @@
                     <tbody>
                         <tr>
                             <td>Cereals (milled)</td>
-                            <td>Rice (raw/milled), Rice flakes, Puffed rice, Refined wheat flour(maida), Semolina, Vermicelli, Idli rava</td>
+                            <td>Rice (raw/milled), Rice flakes, Puffed rice, Refined wheat flour (maida), Semolina, Vermicelli, Idli rava</td>
                             <td>
                                 <select name="cereal_milled_highest">
                                     <option value="">Select</option>
                                     <option value="rice">Rice (raw/milled)</option>
                                     <option value="rice_flakes">Rice flakes</option>
                                     <option value="puffed_rice">Puffed rice</option>
-                                    <option value="refined_wheat">Refined wheat flour(maida)</option>
+                                    <option value="refined_wheat">Refined wheat flour (maida)</option>
                                     <option value="semolina">Semolina</option>
                                     <option value="vermicelli">Vermicelli</option>
                                     <option value="idli_rava">Idli rava</option>
@@ -409,7 +409,7 @@
                                     <option value="rice">Rice (raw/milled)</option>
                                     <option value="rice_flakes">Rice flakes</option>
                                     <option value="puffed_rice">Puffed rice</option>
-                                    <option value="refined_wheat">Refined wheat flour(maida)</option>
+                                    <option value="refined_wheat">Refined wheat flour (maida)</option>
                                     <option value="semolina">Semolina</option>
                                     <option value="vermicelli">Vermicelli</option>
                                     <option value="idli_rava">Idli rava</option>
@@ -419,24 +419,24 @@
                         </tr>
                         <tr>
                             <td>Cereals (whole grains)</td>
-                            <td>Amaranthus seeds, Bajra(flour), Jowar(flour), Quinoa, Ragi, Oats, Brown rice, Samai, Varagu, Wheat flour(atta), Kuthu(Buckwheat), Kakum(foxtail), Kodon(Kodo), Snawa(Barnyard)</td>
+                            <td>Amaranthus seeds, Bajra (flour), Jowar (flour), Quinoa, Ragi, Oats, Brown rice, Samai, Varagu, Wheat flour (atta), Kuthu (Buckwheat), Kakum (foxtail), Kodon (Kodo), Snawa (Barnyard)</td>
                             <td>
                                 <select name="cereal_whole_highest">
                                     <option value="">Select</option>
                                     <option value="amaranthus">Amaranthus seeds</option>
-                                    <option value="bajra">Bajra(flour)</option>
-                                    <option value="jowar">Jowar(flour)</option>
+                                    <option value="bajra">Bajra (flour)</option>
+                                    <option value="jowar">Jowar (flour)</option>
                                     <option value="quinoa">Quinoa</option>
                                     <option value="ragi">Ragi</option>
                                     <option value="oats">Oats</option>
                                     <option value="brown_rice">Brown rice</option>
                                     <option value="samai">Samai</option>
                                     <option value="varagu">Varagu</option>
-                                    <option value="wheat_flour">Wheat flour(atta)</option>
-                                    <option value="kuthu">Kuthu(Buckwheat)</option>
-                                    <option value="kakum">Kakum(foxtail)</option>
-                                    <option value="kodon">Kodon(Kodo)</option>
-                                    <option value="snawa">Snawa(Barnyard)</option>
+                                    <option value="wheat_flour">Wheat flour (atta)</option>
+                                    <option value="kuthu">Kuthu (Buckwheat)</option>
+                                    <option value="kakum">Kakum (foxtail)</option>
+                                    <option value="kodon">Kodon (Kodo)</option>
+                                    <option value="snawa">Snawa (Barnyard)</option>
                                     <option value="none">None</option>
                                 </select>
                             </td>
@@ -444,19 +444,19 @@
                                 <select name="cereal_whole_second">
                                     <option value="">Select</option>
                                     <option value="amaranthus">Amaranthus seeds</option>
-                                    <option value="bajra">Bajra(flour)</option>
-                                    <option value="jowar">Jowar(flour)</option>
+                                    <option value="bajra">Bajra (flour)</option>
+                                    <option value="jowar">Jowar (flour)</option>
                                     <option value="quinoa">Quinoa</option>
                                     <option value="ragi">Ragi</option>
                                     <option value="oats">Oats</option>
                                     <option value="brown_rice">Brown rice</option>
                                     <option value="samai">Samai</option>
                                     <option value="varagu">Varagu</option>
-                                    <option value="wheat_flour">Wheat flour(atta)</option>
-                                    <option value="kuthu">Kuthu(Buckwheat)</option>
-                                    <option value="kakum">Kakum(foxtail)</option>
-                                    <option value="kodon">Kodon(Kodo)</option>
-                                    <option value="snawa">Snawa(Barnyard)</option>
+                                    <option value="wheat_flour">Wheat flour (atta)</option>
+                                    <option value="kuthu">Kuthu (Buckwheat)</option>
+                                    <option value="kakum">Kakum (foxtail)</option>
+                                    <option value="kodon">Kodon (Kodo)</option>
+                                    <option value="snawa">Snawa (Barnyard)</option>
                                     <option value="none">None</option>
                                 </select>
                             </td>
@@ -567,7 +567,7 @@
                         </tr>
                         <tr>
                             <td>Roots & Tubers</td>
-                            <td>Potato, Carrot, Sweet potato, Radish, beetroot</td>
+                            <td>Potato, Carrot, Sweet potato, Radish, Beetroot</td>
                             <td>
                                 <select name="roots_tubers_highest">
                                     <option value="">Select</option>
@@ -575,7 +575,7 @@
                                     <option value="carrot">Carrot</option>
                                     <option value="sweet_potato">Sweet potato</option>
                                     <option value="radish">Radish</option>
-                                    <option value="beetroot">beetroot</option>
+                                    <option value="beetroot">Beetroot</option>
                                     <option value="none">None</option>
                                 </select>
                             </td>
@@ -586,7 +586,7 @@
                                     <option value="carrot">Carrot</option>
                                     <option value="sweet_potato">Sweet potato</option>
                                     <option value="radish">Radish</option>
-                                    <option value="beetroot">beetroot</option>
+                                    <option value="beetroot">Beetroot</option>
                                     <option value="none">None</option>
                                 </select>
                             </td>
@@ -641,7 +641,7 @@
                         </tr>
                         <tr>
                             <td>Nuts & oil seeds</td>
-                            <td>Almonds, Cashewnut, Coconut (dried), Gingelly, Linseed, Chia seeds, Pumpkin seeds, Safflower seeds, Sunflower seeds, walnut</td>
+                            <td>Almonds, Cashewnut, Coconut (dried), Gingelly, Linseed, Chia seeds, Pumpkin seeds, Safflower seeds, Sunflower seeds, Walnut</td>
                             <td>
                                 <select name="nuts_seeds_highest">
                                     <option value="">Select</option>
@@ -654,7 +654,7 @@
                                     <option value="pumpkin">Pumpkin seeds</option>
                                     <option value="safflower">Safflower seeds</option>
                                     <option value="sunflower">Sunflower seeds</option>
-                                    <option value="walnut">walnut</option>
+                                    <option value="walnut">Walnut</option>
                                     <option value="none">None</option>
                                 </select>
                             </td>
@@ -670,37 +670,37 @@
                                     <option value="pumpkin">Pumpkin seeds</option>
                                     <option value="safflower">Safflower seeds</option>
                                     <option value="sunflower">Sunflower seeds</option>
-                                    <option value="walnut">walnut</option>
+                                    <option value="walnut">Walnut</option>
                                     <option value="none">None</option>
                                 </select>
                             </td>
                         </tr>
                         <tr>
                             <td>Milk & milk products</td>
-                            <td>milk (whole/skimmed), Paneer, curd, khoa, cheese, butter, ghee</td>
+                            <td>Milk (whole/skimmed), Paneer, Curd, Khoa, Cheese, Butter, Ghee</td>
                             <td>
                                 <select name="milk_products_highest">
                                     <option value="">Select</option>
-                                    <option value="milk">milk (whole/skimmed)</option>
+                                    <option value="milk">Milk (whole/skimmed)</option>
                                     <option value="paneer">Paneer</option>
-                                    <option value="curd">curd</option>
-                                    <option value="khoa">khoa</option>
-                                    <option value="cheese">cheese</option>
-                                    <option value="butter">butter</option>
-                                    <option value="ghee">ghee</option>
+                                    <option value="curd">Curd</option>
+                                    <option value="khoa">Khoa</option>
+                                    <option value="cheese">Cheese</option>
+                                    <option value="butter">Butter</option>
+                                    <option value="ghee">Ghee</option>
                                     <option value="none">None</option>
                                 </select>
                             </td>
                             <td>
                                 <select name="milk_products_second">
                                     <option value="">Select</option>
-                                    <option value="milk">milk (whole/skimmed)</option>
+                                    <option value="milk">Milk (whole/skimmed)</option>
                                     <option value="paneer">Paneer</option>
-                                    <option value="curd">curd</option>
-                                    <option value="khoa">khoa</option>
-                                    <option value="cheese">cheese</option>
-                                    <option value="butter">butter</option>
-                                    <option value="ghee">ghee</option>
+                                    <option value="curd">Curd</option>
+                                    <option value="khoa">Khoa</option>
+                                    <option value="cheese">Cheese</option>
+                                    <option value="butter">Butter</option>
+                                    <option value="ghee">Ghee</option>
                                     <option value="none">None</option>
                                 </select>
                             </td>
@@ -759,7 +759,7 @@
                         </tr>
                         <tr>
                             <td>Confectionery</td>
-                            <td>Chocolates, Candies, Biscuits, Sweets, cakes</td>
+                            <td>Chocolates, Candies, Biscuits, Sweets, Cakes</td>
                             <td>
                                 <select name="confectionery_highest">
                                     <option value="">Select</option>
@@ -767,7 +767,7 @@
                                     <option value="candies">Candies</option>
                                     <option value="biscuits">Biscuits</option>
                                     <option value="sweets">Sweets</option>
-                                    <option value="cakes">cakes</option>
+                                    <option value="cakes">Cakes</option>
                                     <option value="none">None</option>
                                 </select>
                             </td>
@@ -778,21 +778,21 @@
                                     <option value="candies">Candies</option>
                                     <option value="biscuits">Biscuits</option>
                                     <option value="sweets">Sweets</option>
-                                    <option value="cakes">cakes</option>
+                                    <option value="cakes">Cakes</option>
                                     <option value="none">None</option>
                                 </select>
                             </td>
                         </tr>
                         <tr>
                             <td>Fried foods</td>
-                            <td>Samosa, Pakodi/Pakora, Chips, Murkulu, Mixture</td>
+                            <td>Samosa, Pakodi/Pakora, Chips, Murukku, Mixture</td>
                             <td>
                                 <select name="fried_foods_highest">
                                     <option value="">Select</option>
                                     <option value="samosa">Samosa</option>
                                     <option value="pakodi">Pakodi/Pakora</option>
                                     <option value="chips">Chips</option>
-                                    <option value="murkulu">Murkulu</option>
+                                    <option value="murukku">Murukku</option>
                                     <option value="mixture">Mixture</option>
                                     <option value="none">None</option>
                                 </select>
@@ -803,7 +803,7 @@
                                     <option value="samosa">Samosa</option>
                                     <option value="pakodi">Pakodi/Pakora</option>
                                     <option value="chips">Chips</option>
-                                    <option value="murkulu">Murkulu</option>
+                                    <option value="murukku">Murukku</option>
                                     <option value="mixture">Mixture</option>
                                     <option value="none">None</option>
                                 </select>
@@ -817,140 +817,304 @@
                 </div>
             </section>
 
-            <!-- 7. 24-Hour Meal Recall - Day 1 -->
-            <section class="survey-section" data-section="meal-recall">
-                <h2>VII. 24-Hour Meal Recall - Day 1</h2>
-                <p><strong>Instructions:</strong> Please provide details for a recent day you remember clearly (e.g., yesterday). Use the "Number of Items" adjuster to select how many different food items you consumed. This will generate that number of rows in the table. For each row, enter the name of the food item and select the appropriate quantity from the available options.</p>
-                <div class="form-group">
-                    <label for="recallDate1">Select Date for Day 1 (up to yesterday):</label>
-                    <input type="date" id="recallDate1" name="recallDate1" onchange="validateDate(this)">
-                </div>
-                <div class="meal-recall-container">
-                    <div id="day1_Early" class="meal-time">
-                        <h3>Early</h3>
-                        <label>Number of Items: </label>
-                        <input type="number" id="numItems1_Early" min="1" value="1" onchange="generateRows('Early', 1)">
-                        <table id="mealRecallTableDay1_Early">
-                            <thead>
-                                <tr>
-                                    <th>Item</th>
-                                    <th>Quantity</th>
-                                    <th>Unit</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <!-- Rows will be generated here -->
-                            </tbody>
-                        </table>
+            <!-- 7. Unit Reference Images -->
+            <section class="survey-section" data-section="unit-reference">
+                <h2>VI. Unit Reference Images</h2>
+                <p>Refer to these images for better clarity while filling out the next section.</p>
+                <div class="unit-images-container">
+                    <div class="unit-image">
+                        <img src="public/images/cup.jpeg" alt="Cup Reference" class="reference-image">
+                        <p>Cup(s)</p>
                     </div>
-                    <div id="day1_Breakfast" class="meal-time">
-                        <h3>Breakfast</h3>
-                        <label>Number of Items: </label>
-                        <input type="number" id="numItems1_Breakfast" min="1" value="1" onchange="generateRows('Breakfast', 1)">
-                        <table id="mealRecallTableDay1_Breakfast">
-                            <thead>
-                                <tr>
-                                    <th>Item</th>
-                                    <th>Quantity</th>
-                                    <th>Unit</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <!-- Rows will be generated here -->
-                            </tbody>
-                        </table>
+                    <div class="unit-image">
+                        <img src="public/images/spoons.jpeg" alt="Tablespoon Reference" class="reference-image">
+                        <p>Tablespoon(s)</p>
                     </div>
-                    <div id="day1_Mid-morning" class="meal-time">
-                        <h3>Mid-morning</h3>
-                        <label>Number of Items: </label>
-                        <input type="number" id="numItems1_Mid-morning" min="1" value="1" onchange="generateRows('Mid-morning', 1)">
-                        <table id="mealRecallTableDay1_Mid-morning">
-                            <thead>
-                                <tr>
-                                    <th>Item</th>
-                                    <th>Quantity</th>
-                                    <th>Unit</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <!-- Rows will be generated here -->
-                            </tbody>
-                        </table>
-                    </div>
-                    <div id="day1_Lunch" class="meal-time">
-                        <h3>Lunch</h3>
-                        <label>Number of Items: </label>
-                        <input type="number" id="numItems1_Lunch" min="1" value="1" onchange="generateRows('Lunch', 1)">
-                        <table id="mealRecallTableDay1_Lunch">
-                            <thead>
-                                <tr>
-                                    <th>Item</th>
-                                    <th>Quantity</th>
-                                    <th>Unit</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <!-- Rows will be generated here -->
-                            </tbody>
-                        </table>
-                    </div>
-                    <div id="day1_Teatime" class="meal-time">
-                        <h3>Teatime</h3>
-                        <label>Number of Items: </label>
-                        <input type="number" id="numItems1_Teatime" min="1" value="1" onchange="generateRows('Teatime', 1)">
-                        <table id="mealRecallTableDay1_Teatime">
-                            <thead>
-                                <tr>
-                                    <th>Item</th>
-                                    <th>Quantity</th>
-                                    <th>Unit</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <!-- Rows will be generated here -->
-                            </tbody>
-                        </table>
-                    </div>
-                    <div id="day1_Dinner" class="meal-time">
-                        <h3>Dinner</h3>
-                        <label>Number of Items: </label>
-                        <input type="number" id="numItems1_Dinner" min="1" value="1" onchange="generateRows('Dinner', 1)">
-                        <table id="mealRecallTableDay1_Dinner">
-                            <thead>
-                                <tr>
-                                    <th>Item</th>
-                                    <th>Quantity</th>
-                                    <th>Unit</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <!-- Rows will be generated here -->
-                            </tbody>
-                        </table>
-                    </div>
-                    <div id="day1_Bedtime" class="meal-time">
-                        <h3>Bedtime</h3>
-                        <label>Number of Items: </label>
-                        <input type="number" id="numItems1_Bedtime" min="1" value="1" onchange="generateRows('Bedtime', 1)">
-                        <table id="mealRecallTableDay1_Bedtime">
-                            <thead>
-                                <tr>
-                                    <th>Item</th>
-                                    <th>Quantity</th>
-                                    <th>Unit</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <!-- Rows will be generated here -->
-                            </tbody>
-                        </table>
+                    <div class="unit-image">
+                        <img src="public/images/glass.jpeg" alt="Small Glass Reference" class="reference-image">
+                        <p>Small Glass(es)</p>
                     </div>
                 </div>
-                <div style="margin-top: 20px;">
-                    <button type="button" id="saveBtn" class="save-btn">Save</button>
-                    <div class="save-message" id="save-message-meal-recall"></div>
-                </div>
+                <button class="next-btn" data-section="unit-reference">Next</button>
+                <div id="save-message-unit-reference" class="save-message"></div>
             </section>
+
+
+<!-- 8. 24-Hour Meal Recall - Day 1 -->
+<section class="survey-section" data-section="meal-recall">
+    <h2>VII. 24-Hour Meal Recall - Day 1</h2>
+    <p><strong>Instructions:</strong> Provide details for a recent day you remember clearly (e.g., yesterday). Click the "+" button to add a new row for each food item you consumed, or the "–" button to remove a row. For each row, enter the name of the food item, quantity, and select the appropriate unit.</p>
+    <div class="form-group">
+        <label for="recallDate1">Select Date for Day 1 (up to yesterday):</label>
+        <input type="date" id="recallDate1" name="recallDate1" max="" min="" onchange="validateDate(this)">
+        <div class="error-message" id="recallDate1-error" style="color: red; display: none;"></div>
+    </div>
+    <div class="meal-recall-container">
+        <div id="day1_Early" class="meal-time">
+            <h3>Early</h3>
+            <button type="button" class="add-row-btn" data-day="1" data-meal-time="Early" style="display: block; margin-bottom: 10px;">+ Add Item</button>
+            <table id="mealRecallTableDay1_Early" data-meal-time="Early">
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Quantity</th>
+                        <th>Unit</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Rows will be added dynamically with data-row-index -->
+                </tbody>
+            </table>
+        </div>
+        <div id="day1_Breakfast" class="meal-time">
+            <h3>Breakfast</h3>
+            <button type="button" class="add-row-btn" data-day="1" data-meal-time="Breakfast" style="display: block; margin-bottom: 10px;">+ Add Item</button>
+            <table id="mealRecallTableDay1_Breakfast" data-meal-time="Breakfast">
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Quantity</th>
+                        <th>Unit</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Rows will be added dynamically with data-row-index -->
+                </tbody>
+            </table>
+        </div>
+        <div id="day1_Mid-morning" class="meal-time">
+            <h3>Mid-morning</h3>
+            <button type="button" class="add-row-btn" data-day="1" data-meal-time="Mid-morning" style="display: block; margin-bottom: 10px;">+ Add Item</button>
+            <table id="mealRecallTableDay1_Mid-morning" data-meal-time="Mid-morning">
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Quantity</th>
+                        <th>Unit</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Rows will be added dynamically with data-row-index -->
+                </tbody>
+            </table>
+        </div>
+        <div id="day1_Lunch" class="meal-time">
+            <h3>Lunch</h3>
+            <button type="button" class="add-row-btn" data-day="1" data-meal-time="Lunch" style="display: block; margin-bottom: 10px;">+ Add Item</button>
+            <table id="mealRecallTableDay1_Lunch" data-meal-time="Lunch">
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Quantity</th>
+                        <th>Unit</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Rows will be added dynamically with data-row-index -->
+                </tbody>
+            </table>
+        </div>
+        <div id="day1_Teatime" class="meal-time">
+            <h3>Teatime</h3>
+            <button type="button" class="add-row-btn" data-day="1" data-meal-time="Teatime" style="display: block; margin-bottom: 10px;">+ Add Item</button>
+            <table id="mealRecallTableDay1_Teatime" data-meal-time="Teatime">
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Quantity</th>
+                        <th>Unit</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Rows will be added dynamically with data-row-index -->
+                </tbody>
+            </table>
+        </div>
+        <div id="day1_Dinner" class="meal-time">
+            <h3>Dinner</h3>
+            <button type="button" class="add-row-btn" data-day="1" data-meal-time="Dinner" style="display: block; margin-bottom: 10px;">+ Add Item</button>
+            <table id="mealRecallTableDay1_Dinner" data-meal-time="Dinner">
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Quantity</th>
+                        <th>Unit</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Rows will be added dynamically with data-row-index -->
+                </tbody>
+            </table>
+        </div>
+        <div id="day1_Bedtime" class="meal-time">
+            <h3>Bedtime</h3>
+            <button type="button" class="add-row-btn" data-day="1" data-meal-time="Bedtime" style="display: block; margin-bottom: 10px;">+ Add Item</button>
+            <table id="mealRecallTableDay1_Bedtime" data-meal-time="Bedtime">
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Quantity</th>
+                        <th>Unit</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Rows will be added dynamically with data-row-index -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div style="margin-top: 20px;">
+        <button type="button" id="saveBtnDay1" class="next-btn" data-section="meal-recall">Save Day 1</button>
+        <div class="save-message" id="save-message-meal-recall"></div>
+        <div class="save-message" id="save-message-meal-recall-confirm"></div>
+    </div>
+</section>
+
+<!-- 9. 24-Hour Meal Recall - Day 2 -->
+<section class="survey-section locked" data-section="meal-recall-day2">
+    <h2>VIII. 24-Hour Meal Recall - Day 2</h2>
+    <p><strong>Instructions:</strong> Provide details for another recent day you remember clearly (not consecutive with Day 1). Click the "+" button to add a new row for each food item you consumed, or the "–" button to remove a row. For each row, enter the name of the food item, quantity, and select the appropriate unit.</p>
+    <div id="day2-locked-message" style="display: block; margin-top: 20px; padding: 10px; border: 1px solid #ff0000; border-radius: 5px; background-color: #ffe6e6; color: #333;">
+        <p>Please come back on <span id="earliestDate"></span> to fill Day 2. Existing Day 2 data, if any, will be preserved.</p>
+    </div>
+    <div class="form-group">
+        <label for="recallDate2">Select Date for Day 2 (up to yesterday, non-consecutive with Day 1):</label>
+        <input type="date" id="recallDate2" name="recallDate2" max="" min="" onchange="validateDate(this)">
+        <div class="error-message" id="recallDate2-error" style="color: red; display: none;"></div>
+    </div>
+    <div class="meal-recall-container">
+        <div id="day2_Early" class="meal-time">
+            <h3>Early</h3>
+            <button type="button" class="add-row-btn" data-day="2" data-meal-time="Early" style="display: block; margin-bottom: 10px;">+ Add Item</button>
+            <table id="mealRecallTableDay2_Early" data-meal-time="Early">
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Quantity</th>
+                        <th>Unit</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Rows will be added dynamically with data-row-index -->
+                </tbody>
+            </table>
+        </div>
+        <div id="day2_Breakfast" class="meal-time">
+            <h3>Breakfast</h3>
+            <button type="button" class="add-row-btn" data-day="2" data-meal-time="Breakfast" style="display: block; margin-bottom: 10px;">+ Add Item</button>
+            <table id="mealRecallTableDay2_Breakfast" data-meal-time="Breakfast">
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Quantity</th>
+                        <th>Unit</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Rows will be added dynamically with data-row-index -->
+                </tbody>
+            </table>
+        </div>
+        <div id="day2_Mid-morning" class="meal-time">
+            <h3>Mid-morning</h3>
+            <button type="button" class="add-row-btn" data-day="2" data-meal-time="Mid-morning" style="display: block; margin-bottom: 10px;">+ Add Item</button>
+            <table id="mealRecallTableDay2_Mid-morning" data-meal-time="Mid-morning">
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Quantity</th>
+                        <th>Unit</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Rows will be added dynamically with data-row-index -->
+                </tbody>
+            </table>
+        </div>
+        <div id="day2_Lunch" class="meal-time">
+            <h3>Lunch</h3>
+            <button type="button" class="add-row-btn" data-day="2" data-meal-time="Lunch" style="display: block; margin-bottom: 10px;">+ Add Item</button>
+            <table id="mealRecallTableDay2_Lunch" data-meal-time="Lunch">
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Quantity</th>
+                        <th>Unit</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Rows will be added dynamically with data-row-index -->
+                </tbody>
+            </table>
+        </div>
+        <div id="day2_Teatime" class="meal-time">
+            <h3>Teatime</h3>
+            <button type="button" class="add-row-btn" data-day="2" data-meal-time="Teatime" style="display: block; margin-bottom: 10px;">+ Add Item</button>
+            <table id="mealRecallTableDay2_Teatime" data-meal-time="Teatime">
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Quantity</th>
+                        <th>Unit</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Rows will be added dynamically with data-row-index -->
+                </tbody>
+            </table>
+        </div>
+        <div id="day2_Dinner" class="meal-time">
+            <h3>Dinner</h3>
+            <button type="button" class="add-row-btn" data-day="2" data-meal-time="Dinner" style="display: block; margin-bottom: 10px;">+ Add Item</button>
+            <table id="mealRecallTableDay2_Dinner" data-meal-time="Dinner">
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Quantity</th>
+                        <th>Unit</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Rows will be added dynamically with data-row-index -->
+                </tbody>
+            </table>
+        </div>
+        <div id="day2_Bedtime" class="meal-time">
+            <h3>Bedtime</h3>
+            <button type="button" class="add-row-btn" data-day="2" data-meal-time="Bedtime" style="display: block; margin-bottom: 10px;">+ Add Item</button>
+            <table id="mealRecallTableDay2_Bedtime" data-meal-time="Bedtime">
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Quantity</th>
+                        <th>Unit</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Rows will be added dynamically with data-row-index -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div style="margin-top: 20px;">
+        <button type="button" id="saveBtnDay2" class="next-btn" data-section="meal-recall-day2">Save Day 2</button>
+        <div class="save-message" id="save-message-meal-recall-day2"></div>
+    </div>
+</section>
         </form>
     </div>
     <script src="script.js"></script>
