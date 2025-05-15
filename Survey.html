@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,13 +14,14 @@
                 <h3>Your Session</h3>
                 <p><strong>Session ID:</strong> <span id="uuidText"></span></p>
                 <p><strong>Unique Link:</strong> <a id="uniqueLink" href="#" target="_blank"></a></p>
-                <p><em>Save this link to resume your session later.</em></p>
+                <p><em>Save this link to resume your session anytime from any device.</em></p>
             </div>
             <h1>Awareness of My Plate, Food Pyramid, and Compliance of Dietary Habits</h1>
 
             <!-- 1. Demographic Information -->
             <section class="survey-section" data-section="demographic">
                 <h2>I. Demographic Information</h2>
+                <p style="color: red"><strong>Please ensure to click "Save & Next" button everytime you make a change to save your progress, if not it would be lost</strong></p>
                 <p><strong>Instructions:</strong> Please fill in your personal details below. Select the appropriate options from the dropdown menus or enter text where required.</p>
                 <div class="form-group">
                     <label for="name">Name:</label>
@@ -73,7 +75,7 @@
                     </select>
                 </div>
                 <div style="margin-top: 20px;">
-                    <button type="button" class="next-btn" data-section="demographic">Next</button>
+                    <button type="button" class="next-btn" data-section="demographic">Save and Next</button>
                     <div class="save-message" id="save-message-demographic"></div>
                 </div>
             </section>
@@ -81,6 +83,7 @@
             <!-- 2. Anthropometry -->
             <section class="survey-section" data-section="anthropometry">
                 <h2>II. Anthropometry</h2>
+                <p style="color: red"><strong>Please ensure to click "Save & Next" button everytime you make a change to save your progress, if not it would be lost</strong></p>
                 <p><strong>Instructions:</strong> Enter your weight in kilograms and height in centimeters. Use the 'Calculate BMI' button to compute your BMI based on these values. Ensure numbers are positive and accurate for best results.</p>
                 <div class="form-group">
                     <label for="weight">Weight (kgs):</label>
@@ -96,7 +99,7 @@
                     <button id="calcBMIBtn" style="margin-left: 10px; vertical-align: middle;">Calculate BMI</button>
                 </div>
                 <div style="margin-top: 20px;">
-                    <button type="button" class="next-btn" data-section="anthropometry">Next</button>
+                    <button type="button" class="next-btn" data-section="anthropometry">Save and Next</button>
                     <div class="save-message" id="save-message-anthropometry"></div>
                 </div>
             </section>
@@ -104,6 +107,7 @@
             <!-- 3. Dietary Assessment -->
             <section class="survey-section" data-section="dietary">
                 <h2>III. Dietary Assessment</h2>
+                <p style="color: red"><strong>Please ensure to click "Save & Next" button everytime you make a change to save your progress, if not it would be lost</strong></p>
                 <h3>IIIA. Awareness and Knowledge of My Plate, Food Pyramid and Dietary Guidelines</h3>
                 <p><strong>Instructions:</strong> Answer the following questions by selecting 'Yes' or 'No' for each. Provide details where text input is requested.</p>
                 <div class="form-group">
@@ -255,7 +259,7 @@
                     </div>
                 </div>
                 <div style="margin-top: 20px;">
-                    <button type="button" class="next-btn" data-section="dietary">Next</button>
+                    <button type="button" class="next-btn" data-section="dietary">Save and Next</button>
                     <div class="save-message" id="save-message-dietary"></div>
                 </div>
             </section>
@@ -263,6 +267,7 @@
             <!-- 4. Physical Activity -->
             <section class="survey-section" data-section="physical">
                 <h2>IIIB. Physical Activity</h2>
+                <p style="color: red"><strong>Please ensure to click "Save & Next" button everytime you make a change to save your progress, if not it would be lost</strong></p>
                 <p><strong>Instructions:</strong> Answer the questions below by selecting 'Yes' or 'No' where applicable. Please provide your best estimate.</p>
                 <div class="form-group">
                     <label>Are you aware of the guidelines recommended for physical activity?</label>
@@ -326,7 +331,7 @@
                     </div>
                 </div>
                 <div style="margin-top: 20px;">
-                    <button type="button" class="next-btn" data-section="physical">Next</button>
+                    <button type="button" class="next-btn" data-section="physical">Save and Next</button>
                     <div class="save-message" id="save-message-physical"></div>
                 </div>
             </section>
@@ -334,6 +339,7 @@
             <!-- 5. Food Frequency Questionnaire -->
             <section class="survey-section" data-section="frequency">
                 <h2>IV. Food Frequency Questionnaire</h2>
+                 <p style="color: red"><strong>Please ensure to click "Save & Next" button everytime you make a change to save your progress, if not it would be lost</strong></p>
                 <p><strong>Instructions:</strong> Select the option that best represents how often you consume each food group. Choose one option per row, based on your typical weekly intake.</p>
                 <table>
                     <thead>
@@ -368,7 +374,7 @@
                     </tbody>
                 </table>
                 <div style="margin-top: 20px;">
-                    <button type="button" class="next-btn" data-section="frequency">Next</button>
+                    <button type="button" class="next-btn" data-section="frequency">Save and Next</button>
                     <div class="save-message" id="save-message-frequency"></div>
                 </div>
             </section>
@@ -376,6 +382,7 @@
             <!-- 6. List of Food Items (Higher Frequency) -->
             <section class="survey-section" data-section="food-items">
                 <h2>V. List of Food Items (Higher Frequency)</h2>
+                <p style="color: red"><strong>Please ensure to click "Save & Next" button everytime you make a change to save your progress, if not it would be lost</strong></p>
                 <p><strong>Instructions:</strong> Select the two most frequently consumed items (highest and second highest) from each food group category if you eat them 2 or more times a week. Choose 'None' if no items apply.</p>
                 <table>
                     <thead>
@@ -785,14 +792,14 @@
                         </tr>
                         <tr>
                             <td>Fried foods</td>
-                            <td>Samosa, Pakodi/Pakora, Chips, Murukku, Mixture</td>
+                            <td>Samosa, Pakodi/Pakora, Chips, Murukulu, Mixture</td>
                             <td>
                                 <select name="fried_foods_highest">
                                     <option value="">Select</option>
                                     <option value="samosa">Samosa</option>
                                     <option value="pakodi">Pakodi/Pakora</option>
                                     <option value="chips">Chips</option>
-                                    <option value="murukku">Murukku</option>
+                                    <option value="murukku">Murukulu</option>
                                     <option value="mixture">Mixture</option>
                                     <option value="none">None</option>
                                 </select>
@@ -803,7 +810,7 @@
                                     <option value="samosa">Samosa</option>
                                     <option value="pakodi">Pakodi/Pakora</option>
                                     <option value="chips">Chips</option>
-                                    <option value="murukku">Murukku</option>
+                                    <option value="murukku">Murukulu</option>
                                     <option value="mixture">Mixture</option>
                                     <option value="none">None</option>
                                 </select>
@@ -812,7 +819,7 @@
                     </tbody>
                 </table>
                 <div style="margin-top: 20px;">
-                    <button type="button" class="next-btn" data-section="food-items">Next</button>
+                    <button type="button" class="next-btn" data-section="food-items">Save and Next</button>
                     <div class="save-message" id="save-message-food-items"></div>
                 </div>
             </section>
@@ -835,7 +842,6 @@
                         <p>Small Glass(es)</p>
                     </div>
                 </div>
-                <button class="next-btn" data-section="unit-reference">Next</button>
                 <div id="save-message-unit-reference" class="save-message"></div>
             </section>
 
@@ -843,7 +849,12 @@
 <!-- 8. 24-Hour Meal Recall - Day 1 -->
 <section class="survey-section" data-section="meal-recall">
     <h2>VII. 24-Hour Meal Recall - Day 1</h2>
-    <p><strong>Instructions:</strong> Provide details for a recent day you remember clearly (e.g., yesterday). Click the "+" button to add a new row for each food item you consumed, or the "–" button to remove a row. For each row, enter the name of the food item, quantity, and select the appropriate unit.</p>
+    <p style="color: red"><strong>Please ensure to click "Save & Next" button everytime you make a change to save your progress, if not it would be lost</strong></p>
+    <p><strong>Instructions:</strong> Record everything you ate over 24 hours on two non-consecutive days — ideally one weekday and one weekend.
+    Include all meals, snacks, and drinks consumed during each day.
+    Mention the main dish along with any side dishes or accompaniments.
+    Add approximate quantities for each item in terms of the provided units (e.g., Idli with groundnut chutney, Rice with ladies finger curry, dal, and curd).
+    . Click the "+" button to add a new row for each food item you consumed, or the "–" button to remove a row. For each row, enter the name of the food item, quantity, and select the appropriate unit.</p>
     <div class="form-group">
         <label for="recallDate1">Select Date for Day 1 (up to yesterday):</label>
         <input type="date" id="recallDate1" name="recallDate1" max="" min="" onchange="validateDate(this)">
@@ -851,7 +862,7 @@
     </div>
     <div class="meal-recall-container">
         <div id="day1_Early" class="meal-time">
-            <h3>Early</h3>
+            <h3>Early Morning</h3>
             <button type="button" class="add-row-btn" data-day="1" data-meal-time="Early" style="display: block; margin-bottom: 10px;">+ Add Item</button>
             <table id="mealRecallTableDay1_Early" data-meal-time="Early">
                 <thead>
@@ -980,7 +991,8 @@
 <!-- 9. 24-Hour Meal Recall - Day 2 -->
 <section class="survey-section locked" data-section="meal-recall-day2">
     <h2>VIII. 24-Hour Meal Recall - Day 2</h2>
-    <p><strong>Instructions:</strong> Provide details for another recent day you remember clearly (not consecutive with Day 1). Click the "+" button to add a new row for each food item you consumed, or the "–" button to remove a row. For each row, enter the name of the food item, quantity, and select the appropriate unit.</p>
+    <p style="color: red"><strong>Please ensure to click "Save & Next" button everytime you make a change to save your progress, if not it would be lost</strong></p>
+    <p><strong>Instructions:</strong> Day 2 must be a later date than Day 1, but not the day immediately after Day 1. Click the "+" button to add a new row for each food item you consumed, or the "–" button to remove a row. For each row, enter the name of the food item, quantity, and select the appropriate unit.</p>
     <div id="day2-locked-message" style="display: block; margin-top: 20px; padding: 10px; border: 1px solid #ff0000; border-radius: 5px; background-color: #ffe6e6; color: #333;">
         <p>Please come back on <span id="earliestDate"></span> to fill Day 2. Existing Day 2 data, if any, will be preserved.</p>
     </div>
@@ -991,7 +1003,7 @@
     </div>
     <div class="meal-recall-container">
         <div id="day2_Early" class="meal-time">
-            <h3>Early</h3>
+            <h3>Early Morning</h3>
             <button type="button" class="add-row-btn" data-day="2" data-meal-time="Early" style="display: block; margin-bottom: 10px;">+ Add Item</button>
             <table id="mealRecallTableDay2_Early" data-meal-time="Early">
                 <thead>
