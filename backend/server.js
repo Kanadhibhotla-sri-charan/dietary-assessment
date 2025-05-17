@@ -13,11 +13,8 @@ app.use(cors({
 }));
 
 const pool = new Pool({
-    user: 'postgres',
-    host: 'localhost',
-    database: 'survey_data',
-    password: 'Sripost@123',
-    port: 5432,
+  connectionString: process.env.DATABASE_URL,
+  ssl: { rejectUnauthorized: false }
 });
 
 async function initializeDatabase() {
