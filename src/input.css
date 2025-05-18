@@ -17,14 +17,14 @@ body {
 
 h1 {
   @apply text-center text-indigo-700 font-bold border-b-2 border-indigo-500;
-  font-size: min(2.5vw, 2.5em);
+  font-size: min(7.5vw, 7.5em); /* Increased 3x from 2.5em */
   margin-bottom: 2vw;
   padding-bottom: 1vw;
 }
 
 h2 {
   @apply text-indigo-600 font-semibold border-l-4 border-indigo-500;
-  font-size: min(1.8vw, 1.8em);
+  font-size: min(5.4vw, 5.4em); /* Increased 3x from 1.8em */
   margin-top: 2vw;
   margin-bottom: 1.5vw;
   padding-left: 1vw;
@@ -32,7 +32,7 @@ h2 {
 
 h3 {
   @apply text-indigo-500 font-medium;
-  font-size: min(1.4vw, 1.4em);
+  font-size: min(4.2vw, 4.2em); /* Increased 3x from 1.4em */
   margin-top: 1.5vw;
   margin-bottom: 1vw;
 }
@@ -43,10 +43,18 @@ h3 {
   padding: 1.2vw;
 }
 
+/* Ensure radio/checkbox options within form-group have reduced spacing */
+.form-group input[type="radio"],
+.form-group input[type="checkbox"] {
+  @apply mr-[0.4vw] align-middle;
+  width: 1vw;
+  height: 1vw;
+}
+
 label {
   @apply inline-block font-bold text-indigo-800 mr-1;
   width: 20vw;
-  font-size: min(1vw, 1em);
+  font-size: min(3vw, 3em); /* Increased 3x from 1em */
 }
 
 input[type="text"],
@@ -56,14 +64,7 @@ input[type="date"] {
   @apply border-2 border-teal-500 rounded-md bg-gray-50 shadow-sm focus:border-teal-600 focus:shadow-md focus:outline-none transition-all;
   padding: 0.8vw;
   width: 15vw;
-  font-size: min(1vw, 1em);
-}
-
-input[type="radio"],
-input[type="checkbox"] {
-  @apply mr-[0.4vw] align-middle;
-  width: 1vw;
-  height: 1vw;
+  font-size: min(3vw, 3em); /* Increased 3x from 1em */
 }
 
 table {
@@ -74,7 +75,7 @@ th,
 td {
   @apply border border-gray-200 text-left whitespace-nowrap;
   padding: 1.2vw;
-  font-size: min(1vw, 1em);
+  font-size: min(3vw, 3em); /* Increased 3x from 1em */
 }
 
 th {
@@ -94,7 +95,7 @@ td {
 #foodFrequencyTable td {
   @apply border border-gray-200 text-left whitespace-nowrap;
   padding: 1.2vw;
-  font-size: min(1vw, 1em);
+  font-size: min(3vw, 3em); /* Increased 3x */
 }
 
 #foodFrequencyTable th {
@@ -107,15 +108,15 @@ td {
 
 #foodFrequencyTable th:first-child,
 #foodFrequencyTable td:first-child {
-  @apply w-[33%]; /* Increased by 10% from 30% */
+  @apply w-[33%];
 }
 
 #foodFrequencyTable th:not(:first-child),
 #foodFrequencyTable td:not(:first-child) {
-  @apply w-[13%]; /* Decreased by 5% from 14% */
+  @apply w-[13%];
 }
 
-/* Top Two Items Table Styles (assumed table ID) */
+/* Top Two Items Table Styles (assumed ID, may need adjustment) */
 #topTwoItemsTable {
   @apply w-full border-collapse mt-[15px] bg-white shadow-sm table-fixed;
 }
@@ -124,7 +125,7 @@ td {
 #topTwoItemsTable td {
   @apply border border-gray-200 text-left;
   padding: 1.2vw;
-  font-size: min(1vw, 1em);
+  font-size: min(3vw, 3em); /* Increased 3x */
 }
 
 #topTwoItemsTable th {
@@ -137,16 +138,16 @@ td {
 
 #topTwoItemsTable th:first-child,
 #topTwoItemsTable td:first-child {
-  @apply w-[28%]; /* Decreased by 5% from 30% */
+  @apply w-[28%];
 }
 
 #topTwoItemsTable td:first-child {
-  @apply whitespace-normal; /* Allow wrapping for Items column */
+  @apply whitespace-normal;
 }
 
 #topTwoItemsTable th:not(:first-child),
 #topTwoItemsTable td:not(:first-child) {
-  @apply w-[14%]; /* Matches general table proportions */
+  @apply w-[14%];
 }
 
 /* Meal Recall Table Styles */
@@ -197,7 +198,7 @@ td {
 #mealRecallTableDay2_Bedtime td {
   @apply border border-gray-200 text-left whitespace-nowrap;
   padding: 0.8vw;
-  font-size: min(0.9vw, 0.9em);
+  font-size: min(2.7vw, 2.7em); /* Increased 3x from 0.9em */
 }
 
 #mealRecallTableDay1_Early th,
@@ -364,14 +365,14 @@ table input[type="number"],
 table select,
 table input[type="date"] {
   @apply w-full inline-block box-border;
-  font-size: min(1vw, 1em);
+  font-size: min(3vw, 3em); /* Increased 3x */
 }
 
 button {
   @apply bg-teal-500 text-white rounded-md cursor-pointer font-bold hover:bg-teal-600 active:bg-teal-700 active:scale-95 disabled:bg-gray-400 disabled:cursor-not-allowed disabled:opacity-70 transition-all;
   padding: 1vw 2vw;
   margin: 1vw 0.5vw;
-  font-size: min(1vw, 1em);
+  font-size: min(3vw, 3em); /* Increased 3x */
 }
 
 .next-btn {
@@ -388,7 +389,7 @@ button {
   @apply rounded-md cursor-pointer font-bold hover:scale-105 active:scale-95 transition-all;
   padding: 0.6vw 1.2vw;
   margin: 0 0.4vw;
-  font-size: min(0.9vw, 0.9em);
+  font-size: min(2.7vw, 2.7em); /* Increased 3x from 0.9em */
 }
 
 .add-row-btn {
@@ -414,7 +415,7 @@ button {
   @apply hidden bg-teal-500 text-white rounded-md font-bold text-center animate-fadeOut;
   padding: 1vw 2vw;
   margin: 1vw 0;
-  font-size: min(1.2vw, 1.2em);
+  font-size: min(3.6vw, 3.6em); /* Increased 3x from 1.2em */
   animation-delay: 2.5s;
 }
 
@@ -422,7 +423,7 @@ button {
   @apply hidden bg-red-500 text-white rounded-md font-bold text-center;
   padding: 1vw 2vw;
   margin: 1vw 0;
-  font-size: min(1.2vw, 1.2em);
+  font-size: min(3.6vw, 3.6em); /* Increased 3x from 1.2em */
 }
 
 .meal-recall-container {
@@ -441,7 +442,7 @@ button {
 
 .meal-time label {
   @apply mr-1;
-  font-size: min(1vw, 1em);
+  font-size: min(3vw, 3em); /* Increased 3x */
 }
 
 .meal-time table {
@@ -480,12 +481,12 @@ button {
   @apply border border-gray-300 rounded-lg bg-gray-50;
   margin-bottom: 2vw;
   padding: 1.5vw;
-  font-size: min(1vw, 1em);
+  font-size: min(3vw, 3em); /* Increased 3x */
 }
 
 .warning-text {
   @apply text-red-500 font-bold bg-red-100 rounded-md;
-  font-size: min(0.8vw, 0.8em);
+  font-size: min(0.27vw, 0.27em); /* Decreased 3x, ~2.7px at 1000px viewport */
   margin-bottom: 1vw;
   padding: 1vw;
 }
@@ -501,7 +502,7 @@ button {
 .calc-btn {
   @apply ml-1 align-middle bg-teal-500 text-white rounded-md hover:bg-teal-600 active:bg-teal-700;
   padding: 1vw 2vw;
-  font-size: min(1vw, 1em);
+  font-size: min(3vw, 3em); /* Increased 3x */
 }
 
 .button-group {
@@ -516,12 +517,12 @@ button {
   @apply block border border-red-500 rounded-lg bg-red-100 text-gray-800;
   margin-top: 2vw;
   padding: 1.5vw;
-  font-size: min(1vw, 1em);
+  font-size: min(3vw, 3em); /* Increased 3x */
 }
 
 .unique-link {
   @apply text-teal-600 hover:underline font-semibold;
-  font-size: min(1vw, 1em);
+  font-size: min(3vw, 3em); /* Increased 3x */
 }
 
 img {
