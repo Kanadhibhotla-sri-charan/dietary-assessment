@@ -607,151 +607,102 @@ body {
   min-height: 100vh;
   --tw-bg-opacity: 1;
   background-color: rgb(239 246 255 / var(--tw-bg-opacity));
-  padding: 0px;
   font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --tw-text-opacity: 1;
   color: rgb(31 41 55 / var(--tw-text-opacity));
-}
-
-@media (min-width: 640px) {
-  body {
-    padding: 1.25rem;
-  }
+  padding: 2vw;
+  /* Scales with viewport, matches 20px at 1000px viewport */
 }
 
 .container {
   margin-left: auto;
   margin-right: auto;
-  width: 100%;
-  max-width: 56rem;
   border-radius: 0.75rem;
   --tw-bg-opacity: 1;
   background-color: rgb(249 250 251 / var(--tw-bg-opacity));
-  padding: 1rem;
   --tw-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
   --tw-shadow-colored: 0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
-}
-
-@media (min-width: 640px) {
-  .container {
-    padding: 1.5rem;
-  }
-}
-
-@media (min-width: 768px) {
-  .container {
-    padding: 2rem;
-  }
+  width: min(90vw, 1000px);
+  /* Scales with viewport, max 1000px */
+  min-width: 320px;
+  /* Minimum threshold */
+  padding: 3vw;
+  /* Matches 30px at 1000px viewport */
 }
 
 h1 {
-  margin-bottom: 1.25rem;
   border-bottom-width: 2px;
   --tw-border-opacity: 1;
   border-color: rgb(99 102 241 / var(--tw-border-opacity));
-  padding-bottom: 0.5rem;
   text-align: center;
-  font-size: 1.25rem;
-  line-height: 1.75rem;
   font-weight: 700;
   --tw-text-opacity: 1;
   color: rgb(67 56 202 / var(--tw-text-opacity));
-}
-
-@media (min-width: 640px) {
-  h1 {
-    font-size: 1.875rem;
-    line-height: 2.25rem;
-  }
+  font-size: min(2.5vw, 2.5em);
+  /* Matches 2.5em at 1000px viewport */
+  margin-bottom: 2vw;
+  /* Matches 20px */
+  padding-bottom: 1vw;
+  /* Matches 10px */
 }
 
 h2 {
-  margin-top: 1.25rem;
-  margin-bottom: 1rem;
   border-left-width: 4px;
   --tw-border-opacity: 1;
   border-color: rgb(99 102 241 / var(--tw-border-opacity));
-  padding-left: 0.5rem;
-  font-size: 1.125rem;
-  line-height: 1.75rem;
   font-weight: 600;
   --tw-text-opacity: 1;
   color: rgb(79 70 229 / var(--tw-text-opacity));
-}
-
-@media (min-width: 640px) {
-  h2 {
-    font-size: 1.5rem;
-    line-height: 2rem;
-  }
+  font-size: min(1.8vw, 1.8em);
+  margin-top: 2vw;
+  margin-bottom: 1.5vw;
+  padding-left: 1vw;
 }
 
 h3 {
-  margin-top: 1rem;
-  margin-bottom: 0.5rem;
-  font-size: 1rem;
-  line-height: 1.5rem;
   font-weight: 500;
   --tw-text-opacity: 1;
   color: rgb(99 102 241 / var(--tw-text-opacity));
-}
-
-@media (min-width: 640px) {
-  h3 {
-    font-size: 1.25rem;
-    line-height: 1.75rem;
-  }
+  font-size: min(1.4vw, 1.4em);
+  margin-top: 1.5vw;
+  margin-bottom: 1vw;
 }
 
 .form-group {
-  margin-bottom: 1rem;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  align-items: flex-start;
   border-radius: 0.375rem;
   --tw-bg-opacity: 1;
   background-color: rgb(219 234 254 / var(--tw-bg-opacity));
-  padding: 0.75rem;
-}
-
-@media (min-width: 640px) {
-  .form-group {
-    flex-direction: row;
-    align-items: center;
-  }
+  margin-bottom: 1.8vw;
+  /* Matches 18px */
+  padding: 1.2vw;
+  /* Matches 12px */
 }
 
 label {
-  margin-right: 0px;
+  margin-right: 0.25rem;
   display: inline-block;
-  width: 100%;
   font-weight: 700;
   --tw-text-opacity: 1;
   color: rgb(55 48 163 / var(--tw-text-opacity));
-}
-
-@media (min-width: 640px) {
-  label {
-    margin-right: 0.5rem;
-    width: 12rem;
-  }
+  width: 20vw;
+  /* Matches 200px at 1000px viewport */
+  font-size: min(1vw, 1em);
 }
 
 input[type="text"],
 input[type="number"],
 select,
 input[type="date"] {
-  width: 100%;
   border-radius: 0.375rem;
   border-width: 2px;
   --tw-border-opacity: 1;
   border-color: rgb(20 184 166 / var(--tw-border-opacity));
   --tw-bg-opacity: 1;
   background-color: rgb(249 250 251 / var(--tw-bg-opacity));
-  padding: 0.5rem;
-  font-size: 0.875rem;
-  line-height: 1.25rem;
   --tw-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
   --tw-shadow-colored: 0 1px 2px 0 var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
@@ -773,28 +724,29 @@ input[type="date"]:focus {
   outline-offset: 2px;
 }
 
-@media (min-width: 640px) {
-  input[type="text"],
+input[type="text"],
 input[type="number"],
 select,
 input[type="date"] {
-    width: 10rem;
-    font-size: 1rem;
-    line-height: 1.5rem;
-  }
+  padding: 0.8vw;
+  /* Matches 8px */
+  width: 15vw;
+  /* Matches 150px */
+  font-size: min(1vw, 1em);
 }
 
 input[type="radio"],
 input[type="checkbox"] {
-  margin-right: 0.5rem;
+  margin-right: 0.25rem;
   vertical-align: middle;
+  width: 1vw;
+  height: 1vw;
 }
 
-/* General table styles (for tables other than Food Frequency and Meal Recall) */
-
-table:not(#foodFrequencyTable):not([id^="mealRecallTable"]) {
-  margin-top: 1rem;
+table {
+  margin-top: 15px;
   width: 100%;
+  table-layout: fixed;
   border-collapse: collapse;
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
@@ -805,11 +757,14 @@ table:not(#foodFrequencyTable):not([id^="mealRecallTable"]) {
 
 th,
 td {
+  white-space: nowrap;
   border-width: 1px;
   --tw-border-opacity: 1;
   border-color: rgb(229 231 235 / var(--tw-border-opacity));
-  padding: 0.75rem;
   text-align: left;
+  padding: 1.2vw;
+  /* Matches 12px */
+  font-size: min(1vw, 1em);
 }
 
 th {
@@ -828,7 +783,7 @@ td {
 /* Food Frequency Table Styles */
 
 #foodFrequencyTable {
-  margin-top: 1rem;
+  margin-top: 15px;
   width: 100%;
   table-layout: fixed;
   border-collapse: collapse;
@@ -845,10 +800,9 @@ td {
   border-width: 1px;
   --tw-border-opacity: 1;
   border-color: rgb(229 231 235 / var(--tw-border-opacity));
-  padding: 0.5rem;
   text-align: left;
-  font-size: 0.875rem;
-  line-height: 1.25rem;
+  padding: 1.2vw;
+  font-size: min(1vw, 1em);
 }
 
 #foodFrequencyTable th {
@@ -867,13 +821,13 @@ td {
 #foodFrequencyTable th:first-child,
 #foodFrequencyTable td:first-child {
   width: 30%;
-  /* Food Item column */
+  /* Matches older CSS proportions */
 }
 
 #foodFrequencyTable th:not(:first-child),
 #foodFrequencyTable td:not(:first-child) {
   width: 14%;
-  /* Frequency columns (e.g., Never, Once in a day, etc.) */
+  /* Matches older CSS proportions */
 }
 
 /* Meal Recall Table Styles */
@@ -892,7 +846,7 @@ td {
 #mealRecallTableDay2_Teatime,
 #mealRecallTableDay2_Dinner,
 #mealRecallTableDay2_Bedtime {
-  margin-top: 1rem;
+  margin-top: 15px;
   width: 100%;
   table-layout: fixed;
   border-collapse: collapse;
@@ -935,10 +889,10 @@ td {
   border-width: 1px;
   --tw-border-opacity: 1;
   border-color: rgb(229 231 235 / var(--tw-border-opacity));
-  padding: 0.5rem;
   text-align: left;
-  font-size: 0.875rem;
-  line-height: 1.25rem;
+  padding: 0.8vw;
+  /* Matches 8px */
+  font-size: min(0.9vw, 0.9em);
 }
 
 #mealRecallTableDay1_Early th,
@@ -1113,20 +1067,14 @@ table input[type="date"] {
   box-sizing: border-box;
   display: inline-block;
   width: 100%;
+  font-size: min(1vw, 1em);
 }
 
 button {
-  margin: 0.5rem;
   cursor: pointer;
   border-radius: 0.375rem;
   --tw-bg-opacity: 1;
   background-color: rgb(20 184 166 / var(--tw-bg-opacity));
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
-  font-size: 0.875rem;
-  line-height: 1.25rem;
   font-weight: 700;
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
@@ -1155,11 +1103,11 @@ button:disabled {
   opacity: 0.7;
 }
 
-@media (min-width: 640px) {
-  button {
-    font-size: 1rem;
-    line-height: 1.5rem;
-  }
+button {
+  padding: 1vw 2vw;
+  /* Matches 10px 20px */
+  margin: 1vw 0.5vw;
+  font-size: min(1vw, 1em);
 }
 
 .next-btn {
@@ -1195,15 +1143,8 @@ button:disabled {
 .add-row-btn,
 .add-row-action-btn,
 .remove-row-action-btn {
-  margin: 0.25rem;
   cursor: pointer;
   border-radius: 0.375rem;
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
-  padding-top: 0.25rem;
-  padding-bottom: 0.25rem;
-  font-size: 0.875rem;
-  line-height: 1.25rem;
   font-weight: 700;
   transition-property: all;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -1224,6 +1165,15 @@ button:disabled {
   --tw-scale-x: .95;
   --tw-scale-y: .95;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.add-row-btn,
+.add-row-action-btn,
+.remove-row-action-btn {
+  padding: 0.6vw 1.2vw;
+  /* Matches 6px 12px */
+  margin: 0 0.4vw;
+  font-size: min(0.9vw, 0.9em);
 }
 
 .add-row-btn {
@@ -1285,7 +1235,6 @@ button:disabled {
 }
 
 .save-message {
-  margin: 0.5rem;
   display: none;
 }
 
@@ -1305,31 +1254,35 @@ button:disabled {
   border-radius: 0.375rem;
   --tw-bg-opacity: 1;
   background-color: rgb(20 184 166 / var(--tw-bg-opacity));
-  padding: 0.75rem;
   text-align: center;
   font-weight: 700;
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
+  padding: 1vw 2vw;
+  margin: 1vw 0;
+  font-size: min(1vw, 1em);
   animation-delay: 2.5s;
 }
 
 .comeback-message {
-  margin: 0.5rem;
   display: none;
   border-radius: 0.375rem;
   --tw-bg-opacity: 1;
   background-color: rgb(239 68 68 / var(--tw-bg-opacity));
-  padding: 0.75rem;
   text-align: center;
   font-weight: 700;
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
+  padding: 1vw 2vw;
+  margin: 1vw 0;
+  font-size: min(1vw, 1em);
 }
 
 .meal-recall-container {
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
+  gap: 2vw;
+  /* Matches 20px */
 }
 
 .meal-time {
@@ -1340,15 +1293,16 @@ button:disabled {
 
 .meal-time h3 {
   margin: 0px;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1vw;
 }
 
 .meal-time label {
-  margin-right: 0.5rem;
+  margin-right: 0.25rem;
+  font-size: min(1vw, 1em);
 }
 
 .meal-time table {
-  margin-top: 0.5rem;
+  margin-top: 10px;
   width: 100%;
   border-collapse: collapse;
 }
@@ -1361,24 +1315,24 @@ button:disabled {
 }
 
 .survey-section[data-section="unit-reference"] .unit-images-container {
-  margin-top: 1.25rem;
-  margin-bottom: 1.25rem;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 1.25rem;
+  gap: 2vw;
+  margin: 2vw 0;
 }
 
 .survey-section[data-section="unit-reference"] .unit-image {
-  width: 300px;
   flex: none;
   text-align: center;
+  width: 30vw;
+  /* Matches 300px */
 }
 
 .survey-section[data-section="unit-reference"] img.reference-image {
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.25rem;
   display: block;
   height: auto;
   max-height: 250px;
@@ -1397,34 +1351,27 @@ button:disabled {
 /* New classes for inline styles */
 
 .uuid-display {
-  margin-bottom: 1.25rem;
   border-radius: 0.5rem;
   border-width: 1px;
   --tw-border-opacity: 1;
   border-color: rgb(209 213 219 / var(--tw-border-opacity));
   --tw-bg-opacity: 1;
   background-color: rgb(249 250 251 / var(--tw-bg-opacity));
-  padding: 1rem;
+  margin-bottom: 2vw;
+  padding: 1.5vw;
+  font-size: min(1vw, 1em);
 }
 
 .warning-text {
-  margin-bottom: 0.5rem;
   border-radius: 0.375rem;
   --tw-bg-opacity: 1;
   background-color: rgb(254 226 226 / var(--tw-bg-opacity));
-  padding: 0.5rem;
-  font-size: 0.875rem;
-  line-height: 1.25rem;
   font-weight: 700;
   --tw-text-opacity: 1;
   color: rgb(239 68 68 / var(--tw-text-opacity));
-}
-
-@media (min-width: 640px) {
-  .warning-text {
-    font-size: 1rem;
-    line-height: 1.5rem;
-  }
+  font-size: min(1vw, 1em);
+  margin-bottom: 1vw;
+  padding: 1vw;
 }
 
 .hidden-group {
@@ -1436,14 +1383,10 @@ button:disabled {
 }
 
 .calc-btn {
-  margin-left: 0.5rem;
+  margin-left: 0.25rem;
   border-radius: 0.375rem;
   --tw-bg-opacity: 1;
   background-color: rgb(20 184 166 / var(--tw-bg-opacity));
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
   vertical-align: middle;
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
@@ -1459,17 +1402,21 @@ button:disabled {
   background-color: rgb(15 118 110 / var(--tw-bg-opacity));
 }
 
+.calc-btn {
+  padding: 1vw 2vw;
+  font-size: min(1vw, 1em);
+}
+
 .button-group {
-  margin-top: 1.25rem;
+  margin-top: 20px;
 }
 
 .add-row-display {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.25rem;
   display: block;
 }
 
 .locked-message {
-  margin-top: 1.25rem;
   display: block;
   border-radius: 0.5rem;
   border-width: 1px;
@@ -1477,9 +1424,11 @@ button:disabled {
   border-color: rgb(239 68 68 / var(--tw-border-opacity));
   --tw-bg-opacity: 1;
   background-color: rgb(254 226 226 / var(--tw-bg-opacity));
-  padding: 0.75rem;
   --tw-text-opacity: 1;
   color: rgb(31 41 55 / var(--tw-text-opacity));
+  margin-top: 2vw;
+  padding: 1.5vw;
+  font-size: min(1vw, 1em);
 }
 
 .unique-link {
@@ -1492,110 +1441,8 @@ button:disabled {
   text-decoration-line: underline;
 }
 
-/* Mobile-first table responsiveness for other tables */
-
-table:not(#foodFrequencyTable):not([id^="mealRecallTable"]),
-table:not(#foodFrequencyTable):not([id^="mealRecallTable"]) thead,
-table:not(#foodFrequencyTable):not([id^="mealRecallTable"]) tbody,
-table:not(#foodFrequencyTable):not([id^="mealRecallTable"]) th,
-table:not(#foodFrequencyTable):not([id^="mealRecallTable"]) td,
-table:not(#foodFrequencyTable):not([id^="mealRecallTable"]) tr {
-  display: block;
-}
-
-@media (min-width: 768px) {
-  table:not(#foodFrequencyTable):not([id^="mealRecallTable"]),
-table:not(#foodFrequencyTable):not([id^="mealRecallTable"]) thead,
-table:not(#foodFrequencyTable):not([id^="mealRecallTable"]) tbody,
-table:not(#foodFrequencyTable):not([id^="mealRecallTable"]) th,
-table:not(#foodFrequencyTable):not([id^="mealRecallTable"]) td,
-table:not(#foodFrequencyTable):not([id^="mealRecallTable"]) tr {
-    display: table;
-  }
-}
-
-table:not(#foodFrequencyTable):not([id^="mealRecallTable"]) thead {
-  display: none;
-}
-
-@media (min-width: 768px) {
-  table:not(#foodFrequencyTable):not([id^="mealRecallTable"]) thead {
-    display: table-header-group;
-  }
-}
-
-table:not(#foodFrequencyTable):not([id^="mealRecallTable"]) tr {
-  margin-bottom: 1rem;
-  border-bottom-width: 1px;
-  --tw-border-opacity: 1;
-  border-color: rgb(209 213 219 / var(--tw-border-opacity));
-  padding-bottom: 0.5rem;
-}
-
-@media (min-width: 768px) {
-  table:not(#foodFrequencyTable):not([id^="mealRecallTable"]) tr {
-    margin-bottom: 0px;
-    border-bottom-width: 0px;
-    padding-bottom: 0px;
-  }
-}
-
-table:not(#foodFrequencyTable):not([id^="mealRecallTable"]) td {
-  position: relative;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
-  padding-left: 40%;
-  padding-right: 0.5rem;
-  text-align: left;
-}
-
-table:not(#foodFrequencyTable):not([id^="mealRecallTable"]) td::before {
-  position: absolute;
-  left: 0px;
-  width: 38%;
-  --tw-bg-opacity: 1;
-  background-color: rgb(224 231 255 / var(--tw-bg-opacity));
-  padding: 0.25rem;
-  font-weight: 700;
-  --tw-text-opacity: 1;
-  color: rgb(55 48 163 / var(--tw-text-opacity));
-  --tw-content: attr(data-label);
-  content: var(--tw-content);
-}
-
-@media (min-width: 768px) {
-  table:not(#foodFrequencyTable):not([id^="mealRecallTable"]) td {
-    border-width: 1px;
-    padding-left: 0px;
-  }
-
-  table:not(#foodFrequencyTable):not([id^="mealRecallTable"]) td::before {
-    --tw-content: none;
-    content: var(--tw-content);
-  }
-}
-
-/* Responsive font size and padding for Food Frequency and Meal Recall tables */
-
-@media (max-width: 768px) {
-  #foodFrequencyTable th,
-  #foodFrequencyTable td,
-  [id^="mealRecallTable"] th,
-  [id^="mealRecallTable"] td {
-    padding: 0.25rem;
-    font-size: 0.75rem;
-    line-height: 1rem;
-  }
-}
-
-@media (max-width: 480px) {
-  #foodFrequencyTable th,
-  #foodFrequencyTable td,
-  [id^="mealRecallTable"] th,
-  [id^="mealRecallTable"] td {
-    padding: 0.125rem;
-    font-size: 10px;
-  }
+.unique-link {
+  font-size: min(1vw, 1em);
 }
 
 img {

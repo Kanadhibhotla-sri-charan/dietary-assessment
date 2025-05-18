@@ -4,53 +4,77 @@
 
 /* Base styles */
 body {
-  @apply font-sans bg-blue-50 text-gray-800 min-h-screen m-0 p-0 sm:p-5;
+  @apply font-sans bg-blue-50 text-gray-800 min-h-screen m-0;
+  padding: 2vw; /* Scales with viewport, matches 20px at 1000px viewport */
 }
 
 .container {
-  @apply w-full max-w-4xl mx-auto bg-gray-50 p-4 sm:p-6 md:p-8 rounded-xl shadow-xl;
+  @apply bg-gray-50 rounded-xl shadow-xl mx-auto;
+  width: min(90vw, 1000px); /* Scales with viewport, max 1000px */
+  min-width: 320px; /* Minimum threshold */
+  padding: 3vw; /* Matches 30px at 1000px viewport */
 }
 
 h1 {
-  @apply text-center text-indigo-700 text-xl sm:text-3xl font-bold mb-5 border-b-2 border-indigo-500 pb-2;
+  @apply text-center text-indigo-700 font-bold border-b-2 border-indigo-500;
+  font-size: min(2.5vw, 2.5em); /* Matches 2.5em at 1000px viewport */
+  margin-bottom: 2vw; /* Matches 20px */
+  padding-bottom: 1vw; /* Matches 10px */
 }
 
 h2 {
-  @apply text-indigo-600 text-lg sm:text-2xl font-semibold mt-5 mb-4 border-l-4 border-indigo-500 pl-2;
+  @apply text-indigo-600 font-semibold border-l-4 border-indigo-500;
+  font-size: min(1.8vw, 1.8em);
+  margin-top: 2vw;
+  margin-bottom: 1.5vw;
+  padding-left: 1vw;
 }
 
 h3 {
-  @apply text-indigo-500 text-base sm:text-xl font-medium mt-4 mb-2;
+  @apply text-indigo-500 font-medium;
+  font-size: min(1.4vw, 1.4em);
+  margin-top: 1.5vw;
+  margin-bottom: 1vw;
 }
 
 .form-group {
-  @apply mb-4 p-3 bg-blue-100 rounded-md flex flex-col sm:flex-row sm:items-center gap-2;
+  @apply bg-blue-100 rounded-md flex flex-col items-start;
+  margin-bottom: 1.8vw; /* Matches 18px */
+  padding: 1.2vw; /* Matches 12px */
 }
 
 label {
-  @apply inline-block w-full sm:w-48 font-bold text-indigo-800 mr-0 sm:mr-2;
+  @apply inline-block font-bold text-indigo-800 mr-1;
+  width: 20vw; /* Matches 200px at 1000px viewport */
+  font-size: min(1vw, 1em);
 }
 
 input[type="text"],
 input[type="number"],
 select,
 input[type="date"] {
-  @apply p-2 w-full sm:w-40 border-2 border-teal-500 rounded-md text-sm sm:text-base bg-gray-50 shadow-sm focus:border-teal-600 focus:shadow-md focus:outline-none transition-all;
+  @apply border-2 border-teal-500 rounded-md bg-gray-50 shadow-sm focus:border-teal-600 focus:shadow-md focus:outline-none transition-all;
+  padding: 0.8vw; /* Matches 8px */
+  width: 15vw; /* Matches 150px */
+  font-size: min(1vw, 1em);
 }
 
 input[type="radio"],
 input[type="checkbox"] {
-  @apply mr-2 align-middle;
+  @apply mr-1 align-middle;
+  width: 1vw;
+  height: 1vw;
 }
 
-/* General table styles (for tables other than Food Frequency and Meal Recall) */
-table:not(#foodFrequencyTable):not([id^="mealRecallTable"]) {
-  @apply w-full border-collapse mt-4 bg-white shadow-sm;
+table {
+  @apply w-full border-collapse mt-[15px] bg-white shadow-sm table-fixed;
 }
 
 th,
 td {
-  @apply border border-gray-200 p-3 text-left;
+  @apply border border-gray-200 text-left whitespace-nowrap;
+  padding: 1.2vw; /* Matches 12px */
+  font-size: min(1vw, 1em);
 }
 
 th {
@@ -63,12 +87,14 @@ td {
 
 /* Food Frequency Table Styles */
 #foodFrequencyTable {
-  @apply w-full border-collapse mt-4 bg-white shadow-sm table-fixed;
+  @apply w-full border-collapse mt-[15px] bg-white shadow-sm table-fixed;
 }
 
 #foodFrequencyTable th,
 #foodFrequencyTable td {
-  @apply border border-gray-200 p-2 text-left whitespace-nowrap text-sm;
+  @apply border border-gray-200 text-left whitespace-nowrap;
+  padding: 1.2vw;
+  font-size: min(1vw, 1em);
 }
 
 #foodFrequencyTable th {
@@ -81,12 +107,12 @@ td {
 
 #foodFrequencyTable th:first-child,
 #foodFrequencyTable td:first-child {
-  @apply w-[30%]; /* Food Item column */
+  @apply w-[30%]; /* Matches older CSS proportions */
 }
 
 #foodFrequencyTable th:not(:first-child),
 #foodFrequencyTable td:not(:first-child) {
-  @apply w-[14%]; /* Frequency columns (e.g., Never, Once in a day, etc.) */
+  @apply w-[14%]; /* Matches older CSS proportions */
 }
 
 /* Meal Recall Table Styles */
@@ -104,7 +130,7 @@ td {
 #mealRecallTableDay2_Teatime,
 #mealRecallTableDay2_Dinner,
 #mealRecallTableDay2_Bedtime {
-  @apply w-full border-collapse mt-4 bg-white shadow-sm table-fixed;
+  @apply w-full border-collapse mt-[15px] bg-white shadow-sm table-fixed;
 }
 
 #mealRecallTableDay1_Early th,
@@ -135,7 +161,9 @@ td {
 #mealRecallTableDay2_Teatime td,
 #mealRecallTableDay2_Dinner td,
 #mealRecallTableDay2_Bedtime td {
-  @apply border border-gray-200 p-2 text-left whitespace-nowrap text-sm;
+  @apply border border-gray-200 text-left whitespace-nowrap;
+  padding: 0.8vw; /* Matches 8px */
+  font-size: min(0.9vw, 0.9em);
 }
 
 #mealRecallTableDay1_Early th,
@@ -302,10 +330,14 @@ table input[type="number"],
 table select,
 table input[type="date"] {
   @apply w-full inline-block box-border;
+  font-size: min(1vw, 1em);
 }
 
 button {
-  @apply px-4 py-2 m-2 bg-teal-500 text-white rounded-md cursor-pointer font-bold text-sm sm:text-base hover:bg-teal-600 active:bg-teal-700 active:scale-95 disabled:bg-gray-400 disabled:cursor-not-allowed disabled:opacity-70 transition-all;
+  @apply bg-teal-500 text-white rounded-md cursor-pointer font-bold hover:bg-teal-600 active:bg-teal-700 active:scale-95 disabled:bg-gray-400 disabled:cursor-not-allowed disabled:opacity-70 transition-all;
+  padding: 1vw 2vw; /* Matches 10px 20px */
+  margin: 1vw 0.5vw;
+  font-size: min(1vw, 1em);
 }
 
 .next-btn {
@@ -319,7 +351,10 @@ button {
 .add-row-btn,
 .add-row-action-btn,
 .remove-row-action-btn {
-  @apply px-3 py-1 m-1 text-sm rounded-md cursor-pointer font-bold hover:scale-105 active:scale-95 transition-all;
+  @apply rounded-md cursor-pointer font-bold hover:scale-105 active:scale-95 transition-all;
+  padding: 0.6vw 1.2vw; /* Matches 6px 12px */
+  margin: 0 0.4vw;
+  font-size: min(0.9vw, 0.9em);
 }
 
 .add-row-btn {
@@ -342,16 +377,23 @@ button {
 }
 
 .save-message {
-  @apply hidden p-3 m-2 bg-teal-500 text-white rounded-md font-bold text-center animate-fadeOut;
+  @apply hidden bg-teal-500 text-white rounded-md font-bold text-center animate-fadeOut;
+  padding: 1vw 2vw;
+  margin: 1vw 0;
+  font-size: min(1vw, 1em);
   animation-delay: 2.5s;
 }
 
 .comeback-message {
-  @apply hidden p-3 m-2 bg-red-500 text-white rounded-md font-bold text-center;
+  @apply hidden bg-red-500 text-white rounded-md font-bold text-center;
+  padding: 1vw 2vw;
+  margin: 1vw 0;
+  font-size: min(1vw, 1em);
 }
 
 .meal-recall-container {
-  @apply flex flex-col gap-5;
+  @apply flex flex-col;
+  gap: 2vw; /* Matches 20px */
 }
 
 .meal-time {
@@ -359,15 +401,17 @@ button {
 }
 
 .meal-time h3 {
-  @apply m-0 mb-2;
+  @apply m-0;
+  margin-bottom: 1vw;
 }
 
 .meal-time label {
-  @apply mr-2;
+  @apply mr-1;
+  font-size: min(1vw, 1em);
 }
 
 .meal-time table {
-  @apply w-full mt-2 border-collapse;
+  @apply w-full mt-[10px] border-collapse;
 }
 
 .meal-time table th,
@@ -376,15 +420,18 @@ button {
 }
 
 .survey-section[data-section="unit-reference"] .unit-images-container {
-  @apply flex flex-wrap justify-center gap-5 my-5;
+  @apply flex flex-wrap justify-center;
+  gap: 2vw;
+  margin: 2vw 0;
 }
 
 .survey-section[data-section="unit-reference"] .unit-image {
-  @apply flex-none w-[300px] text-center;
+  @apply flex-none text-center;
+  width: 30vw; /* Matches 300px */
 }
 
 .survey-section[data-section="unit-reference"] img.reference-image {
-  @apply max-w-full max-h-[250px] h-auto block mx-auto mb-2 object-contain;
+  @apply max-w-full max-h-[250px] h-auto block mx-auto mb-1 object-contain;
 }
 
 .survey-section[data-section="unit-reference"].blurred {
@@ -396,11 +443,17 @@ button {
 
 /* New classes for inline styles */
 .uuid-display {
-  @apply mb-5 p-4 border border-gray-300 rounded-lg bg-gray-50;
+  @apply border border-gray-300 rounded-lg bg-gray-50;
+  margin-bottom: 2vw;
+  padding: 1.5vw;
+  font-size: min(1vw, 1em);
 }
 
 .warning-text {
-  @apply text-red-500 font-bold text-sm sm:text-base mb-2 bg-red-100 p-2 rounded-md;
+  @apply text-red-500 font-bold bg-red-100 rounded-md;
+  font-size: min(1vw, 1em);
+  margin-bottom: 1vw;
+  padding: 1vw;
 }
 
 .hidden-group {
@@ -412,64 +465,29 @@ button {
 }
 
 .calc-btn {
-  @apply ml-2 align-middle bg-teal-500 text-white px-4 py-2 rounded-md hover:bg-teal-600 active:bg-teal-700;
+  @apply ml-1 align-middle bg-teal-500 text-white rounded-md hover:bg-teal-600 active:bg-teal-700;
+  padding: 1vw 2vw;
+  font-size: min(1vw, 1em);
 }
 
 .button-group {
-  @apply mt-5;
+  @apply mt-[20px];
 }
 
 .add-row-display {
-  @apply block mb-2;
+  @apply block mb-1;
 }
 
 .locked-message {
-  @apply block mt-5 p-3 border border-red-500 rounded-lg bg-red-100 text-gray-800;
+  @apply block border border-red-500 rounded-lg bg-red-100 text-gray-800;
+  margin-top: 2vw;
+  padding: 1.5vw;
+  font-size: min(1vw, 1em);
 }
 
 .unique-link {
   @apply text-teal-600 hover:underline font-semibold;
-}
-
-/* Mobile-first table responsiveness for other tables */
-table:not(#foodFrequencyTable):not([id^="mealRecallTable"]),
-table:not(#foodFrequencyTable):not([id^="mealRecallTable"]) thead,
-table:not(#foodFrequencyTable):not([id^="mealRecallTable"]) tbody,
-table:not(#foodFrequencyTable):not([id^="mealRecallTable"]) th,
-table:not(#foodFrequencyTable):not([id^="mealRecallTable"]) td,
-table:not(#foodFrequencyTable):not([id^="mealRecallTable"]) tr {
-  @apply block md:table;
-}
-
-table:not(#foodFrequencyTable):not([id^="mealRecallTable"]) thead {
-  @apply hidden md:table-header-group;
-}
-
-table:not(#foodFrequencyTable):not([id^="mealRecallTable"]) tr {
-  @apply mb-4 border-b border-gray-300 pb-2 md:mb-0 md:border-b-0 md:pb-0;
-}
-
-table:not(#foodFrequencyTable):not([id^="mealRecallTable"]) td {
-  @apply relative pl-[40%] pr-2 py-2 text-left before:content-[attr(data-label)] before:absolute before:left-0 before:w-[38%] before:font-bold before:text-indigo-800 before:bg-indigo-100 before:p-1 md:pl-0 md:before:content-none md:border;
-}
-
-/* Responsive font size and padding for Food Frequency and Meal Recall tables */
-@media (max-width: 768px) {
-  #foodFrequencyTable th,
-  #foodFrequencyTable td,
-  [id^="mealRecallTable"] th,
-  [id^="mealRecallTable"] td {
-    @apply text-xs p-1;
-  }
-}
-
-@media (max-width: 480px) {
-  #foodFrequencyTable th,
-  #foodFrequencyTable td,
-  [id^="mealRecallTable"] th,
-  [id^="mealRecallTable"] td {
-    @apply text-[10px] p-0.5;
-  }
+  font-size: min(1vw, 1em);
 }
 
 img {
