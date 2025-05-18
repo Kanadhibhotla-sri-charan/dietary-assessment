@@ -368,6 +368,33 @@ button {
   @apply text-teal-600 hover:underline font-semibold;
 }
 
+/* Food Frequency Table Specific Styles */
+#foodFrequencyTable {
+  @apply table-fixed w-full;
+}
+
+#foodFrequencyTable th,
+#foodFrequencyTable td {
+  @apply p-2;
+}
+
+/* Column widths for Food Frequency Table */
+#foodFrequencyTable th:first-child,
+#foodFrequencyTable td:first-child {
+  @apply w-[30%]; /* Food Item column */
+}
+
+#foodFrequencyTable th:not(:first-child),
+#foodFrequencyTable td:not(:first-child) {
+  @apply w-[14%]; /* Frequency columns (e.g., Never, Once in a day, etc.) */
+}
+
+/* Prevent text wrapping in Food Frequency Table */
+#foodFrequencyTable th,
+#foodFrequencyTable td {
+  @apply whitespace-nowrap;
+}
+
 /* Mobile-first table responsiveness */
 table,
 thead,
@@ -375,27 +402,37 @@ tbody,
 th,
 td,
 tr {
-  @apply block;
+  @apply block md:table;
 }
 
 thead {
-  @apply hidden;
+  @apply hidden md:table-header-group;
 }
 
 tr {
-  @apply mb-2;
+  @apply mb-4 border-b border-gray-300 pb-2 md:mb-0 md:border-b-0 md:pb-0;
 }
 
 td {
-  @apply text-left relative pl-[50%] before:content-[attr(data-label)] before:absolute before:left-2 before:w-[45%] before:font-bold sm:pl-0 sm:before:content-none;
+  @apply relative pl-[40%] pr-2 py-2 text-left before:content-[attr(data-label)] before:absolute before:left-0 before:w-[38%] before:font-bold before:text-indigo-800 before:bg-indigo-100 before:p-1 md:pl-0 md:before:content-none md:border;
 }
 
-img {
-  @apply max-w-full h-auto block;
+/* Ensure radio inputs are aligned properly on mobile */
+td input[type="radio"] {
+  @apply ml-2;
 }
 
-/* Tablet and larger screens */
-@media (min-width: 600px) {
+/* Specific styles for Meal Items tables on mobile */
+[id^="mealRecallTable"] td {
+  @apply border-b border-gray-200 last:border-b-0;
+}
+
+[id^="mealRecallTable"] tr {
+  @apply border border-gray-300 mb-4 p-2 rounded-md md:border-0 md:p-0 md:rounded-none;
+}
+
+/* Desktop screens (ensure proper table layout) */
+@media (min-width: 768px) {
   table,
   thead,
   tbody,
@@ -416,4 +453,8 @@ img {
   td {
     @apply pl-0;
   }
+}
+
+img {
+  @apply max-w-full h-auto block;
 }

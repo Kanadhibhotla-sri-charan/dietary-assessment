@@ -1386,6 +1386,39 @@ button:disabled {
   text-decoration-line: underline;
 }
 
+/* Food Frequency Table Specific Styles */
+
+#foodFrequencyTable {
+  width: 100%;
+  table-layout: fixed;
+}
+
+#foodFrequencyTable th,
+#foodFrequencyTable td {
+  padding: 0.5rem;
+}
+
+/* Column widths for Food Frequency Table */
+
+#foodFrequencyTable th:first-child,
+#foodFrequencyTable td:first-child {
+  width: 30%;
+  /* Food Item column */
+}
+
+#foodFrequencyTable th:not(:first-child),
+#foodFrequencyTable td:not(:first-child) {
+  width: 14%;
+  /* Frequency columns (e.g., Never, Once in a day, etc.) */
+}
+
+/* Prevent text wrapping in Food Frequency Table */
+
+#foodFrequencyTable th,
+#foodFrequencyTable td {
+  white-space: nowrap;
+}
+
 /* Mobile-first table responsiveness */
 
 table,
@@ -1397,31 +1430,69 @@ tr {
   display: block;
 }
 
+@media (min-width: 768px) {
+  table,
+thead,
+tbody,
+th,
+td,
+tr {
+    display: table;
+  }
+}
+
 thead {
   display: none;
 }
 
+@media (min-width: 768px) {
+  thead {
+    display: table-header-group;
+  }
+}
+
 tr {
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
+  border-bottom-width: 1px;
+  --tw-border-opacity: 1;
+  border-color: rgb(209 213 219 / var(--tw-border-opacity));
+  padding-bottom: 0.5rem;
+}
+
+@media (min-width: 768px) {
+  tr {
+    margin-bottom: 0px;
+    border-bottom-width: 0px;
+    padding-bottom: 0px;
+  }
 }
 
 td {
   position: relative;
-  padding-left: 50%;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 40%;
+  padding-right: 0.5rem;
   text-align: left;
 }
 
 td::before {
   position: absolute;
-  left: 0.5rem;
-  width: 45%;
+  left: 0px;
+  width: 38%;
+  --tw-bg-opacity: 1;
+  background-color: rgb(224 231 255 / var(--tw-bg-opacity));
+  padding: 0.25rem;
   font-weight: 700;
+  --tw-text-opacity: 1;
+  color: rgb(55 48 163 / var(--tw-text-opacity));
   --tw-content: attr(data-label);
   content: var(--tw-content);
 }
 
-@media (min-width: 640px) {
+@media (min-width: 768px) {
   td {
+    border-width: 1px;
     padding-left: 0px;
   }
 
@@ -1431,15 +1502,44 @@ td::before {
   }
 }
 
-img {
-  display: block;
-  height: auto;
-  max-width: 100%;
+/* Ensure radio inputs are aligned properly on mobile */
+
+td input[type="radio"] {
+  margin-left: 0.5rem;
 }
 
-/* Tablet and larger screens */
+/* Specific styles for Meal Items tables on mobile */
 
-@media (min-width: 600px) {
+[id^="mealRecallTable"] td {
+  border-bottom-width: 1px;
+  --tw-border-opacity: 1;
+  border-color: rgb(229 231 235 / var(--tw-border-opacity));
+}
+
+[id^="mealRecallTable"] td:last-child {
+  border-bottom-width: 0px;
+}
+
+[id^="mealRecallTable"] tr {
+  margin-bottom: 1rem;
+  border-radius: 0.375rem;
+  border-width: 1px;
+  --tw-border-opacity: 1;
+  border-color: rgb(209 213 219 / var(--tw-border-opacity));
+  padding: 0.5rem;
+}
+
+@media (min-width: 768px) {
+  [id^="mealRecallTable"] tr {
+    border-radius: 0px;
+    border-width: 0px;
+    padding: 0px;
+  }
+}
+
+/* Desktop screens (ensure proper table layout) */
+
+@media (min-width: 768px) {
   table,
   thead,
   tbody,
@@ -1459,33 +1559,11 @@ img {
 
   td {
     padding-left: 0px;
-nt-[attr(data-label)] before:absolute before:left-2 before:w-[45%] before:font-bold sm:pl-0 sm:before:content-none;
+  }
 }
 
 img {
-  @apply max-w-full h-auto block;
-}
-
-/* Tablet and larger screens */
-@media (min-width: 600px) {
-  table,
-  thead,
-  tbody,
-  th,
-  td,
-  tr {
-    @apply table;
-  }
-
-  thead {
-    @apply table-header-group;
-  }
-
-  tr {
-    @apply mb-0;
-  }
-
-  td {
-    @apply pl-0;
-  }
+  display: block;
+  height: auto;
+  max-width: 100%;
 }
