@@ -494,3 +494,66 @@ button:disabled {
     opacity: 0.7 !important;
     transition: filter 0.3s, opacity 0.3s;
 }
+
+
+/* Ensure basic layout */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+.survey-section {
+  width: 90%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+input, select, button {
+  width: 100%;
+  max-width: 300px;
+  margin: 5px 0;
+}
+
+/* Adjust for smaller screens (e.g., mobile) */
+@media (max-width: 600px) {
+  .survey-section {
+    padding: 10px;
+  }
+
+  h1, h2 {
+    font-size: 18px;
+  }
+
+  input, select, button {
+    max-width: 100%;
+    font-size: 14px;
+  }
+
+  table, thead, tbody, th, td, tr {
+    display: block;
+  }
+
+  thead {
+    display: none;
+  }
+
+  tr {
+    margin-bottom: 10px;
+  }
+
+  td {
+    text-align: left;
+    position: relative;
+    padding-left: 50%;
+  }
+
+  td:before {
+    content: attr(data-label);
+    position: absolute;
+    left: 10px;
+    width: 45%;
+    font-weight: bold;
+  }
+}
