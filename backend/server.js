@@ -7,10 +7,12 @@ const app = express();
 
 app.use(express.json());
 app.use(cors({
-    origin: ['http://127.0.0.1:5500', 'http://127.0.0.1:5501', 'http://localhost:*'],
+    origin: ['http://127.0.0.1:5500', 'http://127.0.0.1:5501', 'http://localhost:*',  'https://*.vercel.app'],
     methods: ['GET', 'POST', 'OPTIONS'],
     allowedHeaders: ['Content-Type']
 }));
+
+app.use(express.static('public'));
 
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
