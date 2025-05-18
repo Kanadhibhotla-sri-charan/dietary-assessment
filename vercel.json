@@ -1,14 +1,33 @@
 {
   "version": 2,
   "builds": [
-    { "src": "backend/server.js", "use": "@vercel/node" },
-    { "src": "public/**", "use": "@vercel/static" }
+    {
+      "src": "package.json",
+      "use": "@vercel/node",
+      "config": {
+        "includeFiles": ["src/**", "public/**"]
+      }
+    },
+    {
+      "src": "public/**",
+      "use": "@vercel/static"
+    }
   ],
   "rewrites": [
-    { "source": "/api/(.*)", "destination": "/backend/server.js" },
-    { "source": "/(.*)", "destination": "/public/$1" }
+    {
+      "source": "/api/(.*)",
+      "destination": "/backend/server.js"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/public/$1"
+    }
   ],
   "redirects": [
-    { "source": "/", "destination": "/Survey.html", "permanent": false }
+    {
+      "source": "/",
+      "destination": "/Survey.html",
+      "permanent": false
+    }
   ]
 }

@@ -1,0 +1,419 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Base styles */
+body {
+  @apply font-sans bg-blue-50 text-gray-800 min-h-screen m-0 p-0 sm:p-5;
+}
+
+.container {
+  @apply w-full max-w-4xl mx-auto bg-gray-50 p-4 sm:p-6 md:p-8 rounded-xl shadow-xl;
+}
+
+h1 {
+  @apply text-center text-indigo-700 text-xl sm:text-3xl font-bold mb-5 border-b-2 border-indigo-500 pb-2;
+}
+
+h2 {
+  @apply text-indigo-600 text-lg sm:text-2xl font-semibold mt-5 mb-4 border-l-4 border-indigo-500 pl-2;
+}
+
+h3 {
+  @apply text-indigo-500 text-base sm:text-xl font-medium mt-4 mb-2;
+}
+
+.form-group {
+  @apply mb-4 p-3 bg-blue-100 rounded-md flex flex-col sm:flex-row sm:items-center gap-2;
+}
+
+label {
+  @apply inline-block w-full sm:w-48 font-bold text-indigo-800 mr-0 sm:mr-2;
+}
+
+input[type="text"],
+input[type="number"],
+select,
+input[type="date"] {
+  @apply p-2 w-full sm:w-40 border-2 border-teal-500 rounded-md text-sm sm:text-base bg-gray-50 shadow-sm focus:border-teal-600 focus:shadow-md focus:outline-none transition-all;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+  @apply mr-2 align-middle;
+}
+
+table {
+  @apply w-full border-collapse mt-4 bg-white shadow-sm;
+}
+
+th,
+td {
+  @apply border border-gray-200 p-3 text-left;
+}
+
+th {
+  @apply bg-indigo-600 text-white font-bold;
+}
+
+td {
+  @apply bg-cyan-50;
+}
+
+/* Specific styles for meal recall tables */
+#mealRecallTableDay1_Early,
+#mealRecallTableDay1_Breakfast,
+#mealRecallTableDay1_Mid-morning,
+#mealRecallTableDay1_Lunch,
+#mealRecallTableDay1_Teatime,
+#mealRecallTableDay1_Dinner,
+#mealRecallTableDay1_Bedtime,
+#mealRecallTableDay2_Early,
+#mealRecallTableDay2_Breakfast,
+#mealRecallTableDay2_Mid-morning,
+#mealRecallTableDay2_Lunch,
+#mealRecallTableDay2_Teatime,
+#mealRecallTableDay2_Dinner,
+#mealRecallTableDay2_Bedtime {
+  @apply table-fixed w-full;
+}
+
+#mealRecallTableDay1_Early th,
+#mealRecallTableDay1_Breakfast th,
+#mealRecallTableDay1_Mid-morning th,
+#mealRecallTableDay1_Lunch th,
+#mealRecallTableDay1_Teatime th,
+#mealRecallTableDay1_Dinner th,
+#mealRecallTableDay1_Bedtime th,
+#mealRecallTableDay2_Early th,
+#mealRecallTableDay2_Breakfast th,
+#mealRecallTableDay2_Mid-morning th,
+#mealRecallTableDay2_Lunch th,
+#mealRecallTableDay2_Teatime th,
+#mealRecallTableDay2_Dinner th,
+#mealRecallTableDay2_Bedtime th,
+#mealRecallTableDay1_Early td,
+#mealRecallTableDay1_Breakfast td,
+#mealRecallTableDay1_Mid-morning td,
+#mealRecallTableDay1_Lunch td,
+#mealRecallTableDay1_Teatime td,
+#mealRecallTableDay1_Dinner td,
+#mealRecallTableDay1_Bedtime td,
+#mealRecallTableDay2_Early td,
+#mealRecallTableDay2_Breakfast td,
+#mealRecallTableDay2_Mid-morning td,
+#mealRecallTableDay2_Lunch td,
+#mealRecallTableDay2_Teatime td,
+#mealRecallTableDay2_Dinner td,
+#mealRecallTableDay2_Bedtime td {
+  @apply p-2;
+}
+
+/* Updated column widths for Item, Quantity, Unit, Actions */
+#mealRecallTableDay1_Early th:nth-child(1),
+#mealRecallTableDay1_Breakfast th:nth-child(1),
+#mealRecallTableDay1_Mid-morning th:nth-child(1),
+#mealRecallTableDay1_Lunch th:nth-child(1),
+#mealRecallTableDay1_Teatime th:nth-child(1),
+#mealRecallTableDay1_Dinner th:nth-child(1),
+#mealRecallTableDay1_Bedtime th:nth-child(1),
+#mealRecallTableDay2_Early th:nth-child(1),
+#mealRecallTableDay2_Breakfast th:nth-child(1),
+#mealRecallTableDay2_Mid-morning th:nth-child(1),
+#mealRecallTableDay2_Lunch th:nth-child(1),
+#mealRecallTableDay2_Teatime th:nth-child(1),
+#mealRecallTableDay2_Dinner th:nth-child(1),
+#mealRecallTableDay2_Bedtime th:nth-child(1),
+#mealRecallTableDay1_Early td:nth-child(1),
+#mealRecallTableDay1_Breakfast td:nth-child(1),
+#mealRecallTableDay1_Mid-morning td:nth-child(1),
+#mealRecallTableDay1_Lunch td:nth-child(1),
+#mealRecallTableDay1_Teatime td:nth-child(1),
+#mealRecallTableDay1_Dinner td:nth-child(1),
+#mealRecallTableDay1_Bedtime td:nth-child(1),
+#mealRecallTableDay2_Early td:nth-child(1),
+#mealRecallTableDay2_Breakfast td:nth-child(1),
+#mealRecallTableDay2_Mid-morning td:nth-child(1),
+#mealRecallTableDay2_Lunch td:nth-child(1),
+#mealRecallTableDay2_Teatime td:nth-child(1),
+#mealRecallTableDay2_Dinner td:nth-child(1),
+#mealRecallTableDay2_Bedtime td:nth-child(1) {
+  @apply w-[40%];
+}
+
+#mealRecallTableDay1_Early th:nth-child(2),
+#mealRecallTableDay1_Breakfast th:nth-child(2),
+#mealRecallTableDay1_Mid-morning th:nth-child(2),
+#mealRecallTableDay1_Lunch th:nth-child(2),
+#mealRecallTableDay1_Teatime th:nth-child(2),
+#mealRecallTableDay1_Dinner th:nth-child(2),
+#mealRecallTableDay1_Bedtime th:nth-child(2),
+#mealRecallTableDay2_Early th:nth-child(2),
+#mealRecallTableDay2_Breakfast th:nth-child(2),
+#mealRecallTableDay2_Mid-morning th:nth-child(2),
+#mealRecallTableDay2_Lunch th:nth-child(2),
+#mealRecallTableDay2_Teatime th:nth-child(2),
+#mealRecallTableDay2_Dinner th:nth-child(2),
+#mealRecallTableDay2_Bedtime th:nth-child(2),
+#mealRecallTableDay1_Early td:nth-child(2),
+#mealRecallTableDay1_Breakfast td:nth-child(2),
+#mealRecallTableDay1_Mid-morning td:nth-child(2),
+#mealRecallTableDay1_Lunch td:nth-child(2),
+#mealRecallTableDay1_Teatime td:nth-child(2),
+#mealRecallTableDay1_Dinner td:nth-child(2),
+#mealRecallTableDay1_Bedtime td:nth-child(2),
+#mealRecallTableDay2_Early td:nth-child(2),
+#mealRecallTableDay2_Breakfast td:nth-child(2),
+#mealRecallTableDay2_Mid-morning td:nth-child(2),
+#mealRecallTableDay2_Lunch td:nth-child(2),
+#mealRecallTableDay2_Teatime td:nth-child(2),
+#mealRecallTableDay2_Dinner td:nth-child(2),
+#mealRecallTableDay2_Bedtime td:nth-child(2) {
+  @apply w-[20%];
+}
+
+#mealRecallTableDay1_Early th:nth-child(3),
+#mealRecallTableDay1_Breakfast th:nth-child(3),
+#mealRecallTableDay1_Mid-morning th:nth-child(3),
+#mealRecallTableDay1_Lunch th:nth-child(3),
+#mealRecallTableDay1_Teatime th:nth-child(3),
+#mealRecallTableDay1_Dinner th:nth-child(3),
+#mealRecallTableDay1_Bedtime th:nth-child(3),
+#mealRecallTableDay2_Early th:nth-child(3),
+#mealRecallTableDay2_Breakfast th:nth-child(3),
+#mealRecallTableDay2_Mid-morning th:nth-child(3),
+#mealRecallTableDay2_Lunch th:nth-child(3),
+#mealRecallTableDay2_Teatime th:nth-child(3),
+#mealRecallTableDay2_Dinner th:nth-child(3),
+#mealRecallTableDay2_Bedtime th:nth-child(3),
+#mealRecallTableDay1_Early td:nth-child(3),
+#mealRecallTableDay1_Breakfast td:nth-child(3),
+#mealRecallTableDay1_Mid-morning td:nth-child(3),
+#mealRecallTableDay1_Lunch td:nth-child(3),
+#mealRecallTableDay1_Teatime td:nth-child(3),
+#mealRecallTableDay1_Dinner td:nth-child(3),
+#mealRecallTableDay1_Bedtime td:nth-child(3),
+#mealRecallTableDay2_Early td:nth-child(3),
+#mealRecallTableDay2_Breakfast td:nth-child(3),
+#mealRecallTableDay2_Mid-morning td:nth-child(3),
+#mealRecallTableDay2_Lunch td:nth-child(3),
+#mealRecallTableDay2_Teatime td:nth-child(3),
+#mealRecallTableDay2_Dinner td:nth-child(3),
+#mealRecallTableDay2_Bedtime td:nth-child(3) {
+  @apply w-[20%];
+}
+
+#mealRecallTableDay1_Early th:nth-child(4),
+#mealRecallTableDay1_Breakfast th:nth-child(4),
+#mealRecallTableDay1_Mid-morning th:nth-child(4),
+#mealRecallTableDay1_Lunch th:nth-child(4),
+#mealRecallTableDay1_Teatime th:nth-child(4),
+#mealRecallTableDay1_Dinner th:nth-child(4),
+#mealRecallTableDay1_Bedtime th:nth-child(4),
+#mealRecallTableDay2_Early th:nth-child(4),
+#mealRecallTableDay2_Breakfast th:nth-child(4),
+#mealRecallTableDay2_Mid-morning th:nth-child(4),
+#mealRecallTableDay2_Lunch th:nth-child(4),
+#mealRecallTableDay2_Teatime th:nth-child(4),
+#mealRecallTableDay2_Dinner th:nth-child(4),
+#mealRecallTableDay2_Bedtime th:nth-child(4),
+#mealRecallTableDay1_Early td:nth-child(4),
+#mealRecallTableDay1_Breakfast td:nth-child(4),
+#mealRecallTableDay1_Mid-morning td:nth-child(4),
+#mealRecallTableDay1_Lunch td:nth-child(4),
+#mealRecallTableDay1_Teatime td:nth-child(4),
+#mealRecallTableDay1_Dinner td:nth-child(4),
+#mealRecallTableDay1_Bedtime td:nth-child(4),
+#mealRecallTableDay2_Early td:nth-child(4),
+#mealRecallTableDay2_Breakfast td:nth-child(4),
+#mealRecallTableDay2_Mid-morning td:nth-child(4),
+#mealRecallTableDay2_Lunch td:nth-child(4),
+#mealRecallTableDay2_Teatime td:nth-child(4),
+#mealRecallTableDay2_Dinner td:nth-child(4),
+#mealRecallTableDay2_Bedtime td:nth-child(4) {
+  @apply w-[20%];
+}
+
+table input[type="text"],
+table input[type="number"],
+table select,
+table input[type="date"] {
+  @apply w-full inline-block box-border;
+}
+
+button {
+  @apply px-4 py-2 m-2 bg-teal-500 text-white rounded-md cursor-pointer font-bold text-sm sm:text-base hover:bg-teal-600 active:bg-teal-700 active:scale-95 disabled:bg-gray-400 disabled:cursor-not-allowed disabled:opacity-70 transition-all;
+}
+
+.next-btn {
+  @apply bg-indigo-500 hover:bg-indigo-600 active:bg-indigo-700;
+}
+
+#saveBtn {
+  @apply bg-red-500 hover:bg-red-600 active:bg-red-700;
+}
+
+.add-row-btn,
+.add-row-action-btn,
+.remove-row-action-btn {
+  @apply px-3 py-1 m-1 text-sm rounded-md cursor-pointer font-bold hover:scale-105 active:scale-95 transition-all;
+}
+
+.add-row-btn {
+  @apply bg-teal-500 text-white hover:bg-teal-600 active:bg-teal-700;
+}
+
+.add-row-action-btn {
+  @apply bg-indigo-500 text-white hover:bg-indigo-600 active:bg-indigo-700;
+}
+
+.remove-row-action-btn {
+  @apply bg-red-500 text-white hover:bg-red-600 active:bg-red-700;
+}
+
+.survey-section.blurred {
+  filter: blur(5px);
+  pointer-events: none;
+  opacity: 0.7;
+  transition: filter 0.3s, opacity 0.3s;
+}
+
+.save-message {
+  @apply hidden p-3 m-2 bg-teal-500 text-white rounded-md font-bold text-center animate-fadeOut;
+  animation-delay: 2.5s;
+}
+
+.comeback-message {
+  @apply hidden p-3 m-2 bg-red-500 text-white rounded-md font-bold text-center;
+}
+
+.meal-recall-container {
+  @apply flex flex-col gap-5;
+}
+
+.meal-time {
+  @apply flex flex-col items-start;
+}
+
+.meal-time h3 {
+  @apply m-0 mb-2;
+}
+
+.meal-time label {
+  @apply mr-2;
+}
+
+.meal-time table {
+  @apply w-full mt-2 border-collapse;
+}
+
+.meal-time table th,
+.meal-time table td {
+  @apply border border-gray-200;
+}
+
+.survey-section[data-section="unit-reference"] .unit-images-container {
+  @apply flex flex-wrap justify-center gap-5 my-5;
+}
+
+.survey-section[data-section="unit-reference"] .unit-image {
+  @apply flex-none w-[300px] text-center;
+}
+
+.survey-section[data-section="unit-reference"] img.reference-image {
+  @apply max-w-full max-h-[250px] h-auto block mx-auto mb-2 object-contain;
+}
+
+.survey-section[data-section="unit-reference"].blurred {
+  filter: blur(5px) !important;
+  pointer-events: none !important;
+  opacity: 0.7 !important;
+  transition: filter 0.3s, opacity 0.3s;
+}
+
+/* New classes for inline styles */
+.uuid-display {
+  @apply mb-5 p-4 border border-gray-300 rounded-lg bg-gray-50;
+}
+
+.warning-text {
+  @apply text-red-500 font-bold text-sm sm:text-base mb-2 bg-red-100 p-2 rounded-md;
+}
+
+.hidden-group {
+  @apply hidden;
+}
+
+.hidden-error {
+  @apply hidden;
+}
+
+.calc-btn {
+  @apply ml-2 align-middle bg-teal-500 text-white px-4 py-2 rounded-md hover:bg-teal-600 active:bg-teal-700;
+}
+
+.button-group {
+  @apply mt-5;
+}
+
+.add-row-display {
+  @apply block mb-2;
+}
+
+.locked-message {
+  @apply block mt-5 p-3 border border-red-500 rounded-lg bg-red-100 text-gray-800;
+}
+
+.unique-link {
+  @apply text-teal-600 hover:underline font-semibold;
+}
+
+/* Mobile-first table responsiveness */
+table,
+thead,
+tbody,
+th,
+td,
+tr {
+  @apply block;
+}
+
+thead {
+  @apply hidden;
+}
+
+tr {
+  @apply mb-2;
+}
+
+td {
+  @apply text-left relative pl-[50%] before:content-[attr(data-label)] before:absolute before:left-2 before:w-[45%] before:font-bold sm:pl-0 sm:before:content-none;
+}
+
+img {
+  @apply max-w-full h-auto block;
+}
+
+/* Tablet and larger screens */
+@media (min-width: 600px) {
+  table,
+  thead,
+  tbody,
+  th,
+  td,
+  tr {
+    @apply table;
+  }
+
+  thead {
+    @apply table-header-group;
+  }
+
+  tr {
+    @apply mb-0;
+  }
+
+  td {
+    @apply pl-0;
+  }
+}
