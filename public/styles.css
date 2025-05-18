@@ -496,64 +496,102 @@ button:disabled {
 }
 
 
-/* Ensure basic layout */
+/* Mobile-first base styles */
 body {
   margin: 0;
   padding: 0;
   font-family: Arial, sans-serif;
+  font-size: 16px;
 }
 
 .survey-section {
-  width: 90%;
-  max-width: 800px;
+  width: 95%;
   margin: 0 auto;
-  padding: 20px;
+  padding: 10px;
+}
+
+h1, h2 {
+  font-size: 18px;
 }
 
 input, select, button {
   width: 100%;
-  max-width: 300px;
+  font-size: 14px;
   margin: 5px 0;
 }
 
-/* Adjust for smaller screens (e.g., mobile) */
-@media (max-width: 600px) {
+table, thead, tbody, th, td, tr {
+  display: block;
+}
+
+thead {
+  display: none;
+}
+
+tr {
+  margin-bottom: 10px;
+}
+
+td {
+  text-align: left;
+  position: relative;
+  padding-left: 50%;
+}
+
+td:before {
+  content: attr(data-label);
+  position: absolute;
+  left: 10px;
+  width: 45%;
+  font-weight: bold;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Tablet and larger screens */
+@media (min-width: 600px) {
   .survey-section {
-    padding: 10px;
+    width: 90%;
+    max-width: 800px;
+    padding: 20px;
   }
 
   h1, h2 {
-    font-size: 18px;
+    font-size: 24px;
   }
 
   input, select, button {
-    max-width: 100%;
-    font-size: 14px;
+    max-width: 300px;
+    font-size: 16px;
   }
 
   table, thead, tbody, th, td, tr {
-    display: block;
+    display: table;
   }
 
   thead {
-    display: none;
+    display: table-header-group;
   }
 
   tr {
-    margin-bottom: 10px;
+    margin-bottom: 0;
   }
 
   td {
-    text-align: left;
-    position: relative;
-    padding-left: 50%;
+    padding-left: 0;
   }
 
   td:before {
-    content: attr(data-label);
-    position: absolute;
-    left: 10px;
-    width: 45%;
-    font-weight: bold;
+    content: none;
+  }
+}
+
+@media (min-width: 1024px) {
+  .survey-section {
+    max-width: 1000px;
   }
 }
