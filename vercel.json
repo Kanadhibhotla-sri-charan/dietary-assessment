@@ -4,9 +4,9 @@
     { "src": "backend/server.js", "use": "@vercel/node" },
     { "src": "public/**", "use": "@vercel/static" }
   ],
-  "routes": [
-    { "src": "/api/(.*)", "dest": "backend/server.js" },
-    { "src": "/(.*)", "dest": "public/$1" }
+  "rewrites": [
+    { "source": "/api/(.*)", "destination": "/backend/server.js" },
+    { "source": "/(.*)", "destination": "/public/$1" }
   ],
   "redirects": [
     { "source": "/", "destination": "/Survey.html", "permanent": false }
