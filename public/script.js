@@ -551,7 +551,7 @@ async function saveSection(uuid, section) {
     console.log(`Saving section ${section}:`, JSON.stringify(sectionData, null, 2));
 
     try {
-        const response = await fetch('http://localhost:5000/api/save-section', {
+        const response = await fetch('/api/save-section', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(sectionData),
@@ -613,7 +613,7 @@ async function loadData(uuid, sessionId) {
     }
     try {
         const query = sessionId ? `uuid=${uuid}&session_id=${sessionId}` : `uuid=${uuid}`;
-        const response = await fetch(`http://localhost:5000/api/data?${query}`);
+        const response = await fetch(`/api/data?${query}`);
         if (!response.ok) {
             throw new Error('Failed to fetch data');
         }
