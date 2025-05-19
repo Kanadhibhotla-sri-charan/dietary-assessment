@@ -575,17 +575,17 @@ img {
   }
 
   h1 {
-    font-size: clamp(2rem, 5vw, 2.5em);
+    font-size: clamp(1.6rem, 5vw, 2.5em);
     min-font-size: 16px;
   }
 
   h2 {
-    font-size: min(1.44vw, 1.44em);
+    font-size: clamp(1.5rem, 3vw, 2.2em);
     min-font-size: 14px;
   }
 
   h3 {
-    font-size: min(1.12vw, 1.12em);
+    font-size: clamp(1.3rem, 2vw, 2em);
     min-font-size: 12px;
   }
 
@@ -613,6 +613,7 @@ img {
     th,
     td {
       padding: 0.8vw;
+      word-break: break-all;
     }
   }
 
