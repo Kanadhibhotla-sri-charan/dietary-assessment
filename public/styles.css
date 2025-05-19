@@ -627,6 +627,8 @@ body {
   padding: 3vw;
 }
 
+/* Headings */
+
 h1 {
   border-bottom-width: 2px;
   --tw-border-opacity: 1;
@@ -635,8 +637,7 @@ h1 {
   font-weight: 700;
   --tw-text-opacity: 1;
   color: rgb(67 56 202 / var(--tw-text-opacity));
-  font-size: min(7.5vw, 7.5em);
-  /* Increased 3x from 2.5em */
+  font-size: clamp(3rem, 2.5vw, 2.5em);
   margin-bottom: 2vw;
   padding-bottom: 1vw;
 }
@@ -648,8 +649,7 @@ h2 {
   font-weight: 600;
   --tw-text-opacity: 1;
   color: rgb(79 70 229 / var(--tw-text-opacity));
-  font-size: min(5.4vw, 5.4em);
-  /* Increased 3x from 1.8em */
+  font-size: clamp(2.3rem, 1.8vw, 1.8em);
   margin-top: 2vw;
   margin-bottom: 1.5vw;
   padding-left: 1vw;
@@ -659,11 +659,12 @@ h3 {
   font-weight: 500;
   --tw-text-opacity: 1;
   color: rgb(99 102 241 / var(--tw-text-opacity));
-  font-size: min(4.2vw, 4.2em);
-  /* Increased 3x from 1.4em */
+  font-size: clamp(1.2rem, 1.4vw, 1.4em);
   margin-top: 1.5vw;
   margin-bottom: 1vw;
 }
+
+/* Form Elements */
 
 .form-group {
   display: flex;
@@ -677,14 +678,14 @@ h3 {
   padding: 1.2vw;
 }
 
-/* Ensure radio/checkbox options within form-group have reduced spacing */
-
 .form-group input[type="radio"],
 .form-group input[type="checkbox"] {
   margin-right: 0.4vw;
   vertical-align: middle;
   width: 1vw;
   height: 1vw;
+  min-width: 12px;
+  min-height: 12px;
 }
 
 label {
@@ -693,9 +694,12 @@ label {
   font-weight: 700;
   --tw-text-opacity: 1;
   color: rgb(55 48 163 / var(--tw-text-opacity));
-  width: 20vw;
-  font-size: min(3vw, 3em);
-  /* Increased 3x from 1em */
+  width: auto;
+  min-width: auto;
+  display: block;
+  margin-bottom: 0.4vw;
+  font-size: clamp(0.8rem, 1vw, 1em);
+  min-font-size: 10px;
 }
 
 input[type="text"],
@@ -733,11 +737,14 @@ input[type="text"],
 input[type="number"],
 select,
 input[type="date"] {
-  padding: 0.8vw;
-  width: 15vw;
-  font-size: min(3vw, 3em);
-  /* Increased 3x from 1em */
+  padding: clamp(0.5rem, 0.8vw, 0.8em);
+  width: 100%;
+  min-width: auto;
+  font-size: clamp(0.8rem, 1vw, 1em);
+  min-font-size: 10px;
 }
+
+/* Tables */
 
 table {
   margin-top: 15px;
@@ -749,18 +756,18 @@ table {
   --tw-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
   --tw-shadow-colored: 0 1px 2px 0 var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+  overflow-x: auto;
 }
 
 th,
 td {
-  white-space: nowrap;
   border-width: 1px;
   --tw-border-opacity: 1;
   border-color: rgb(229 231 235 / var(--tw-border-opacity));
   text-align: left;
-  padding: 1.2vw;
-  font-size: min(3vw, 3em);
-  /* Increased 3x from 1em */
+  padding: clamp(0.6rem, 1.2vw, 1.2em);
+  font-size: clamp(0.8rem, 1vw, 1em);
+  min-font-size: 10px;
 }
 
 th {
@@ -776,7 +783,7 @@ td {
   background-color: rgb(236 254 255 / var(--tw-bg-opacity));
 }
 
-/* Food Frequency Table Styles */
+/* Food Frequency Table */
 
 #foodFrequencyTable {
   margin-top: 15px;
@@ -788,18 +795,18 @@ td {
   --tw-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
   --tw-shadow-colored: 0 1px 2px 0 var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+  overflow-x: auto;
 }
 
 #foodFrequencyTable th,
 #foodFrequencyTable td {
-  white-space: nowrap;
   border-width: 1px;
   --tw-border-opacity: 1;
   border-color: rgb(229 231 235 / var(--tw-border-opacity));
   text-align: left;
-  padding: 1.2vw;
-  font-size: min(3vw, 3em);
-  /* Increased 3x */
+  padding: clamp(0.6rem, 1.2vw, 1.2em);
+  font-size: clamp(0.8rem, 1vw, 1em);
+  min-font-size: 10px;
 }
 
 #foodFrequencyTable th {
@@ -808,26 +815,30 @@ td {
   font-weight: 700;
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 #foodFrequencyTable td {
   --tw-bg-opacity: 1;
   background-color: rgb(236 254 255 / var(--tw-bg-opacity));
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 #foodFrequencyTable th:first-child,
 #foodFrequencyTable td:first-child {
-  width: 33%;
+  width: 40%;
 }
 
 #foodFrequencyTable th:not(:first-child),
 #foodFrequencyTable td:not(:first-child) {
-  width: 13%;
+  width: 15%;
 }
 
-/* Top Two Items Table Styles (assumed ID, may need adjustment) */
+/* Food Items Table (previously assumed as topTwoItemsTable) */
 
-#topTwoItemsTable {
+#foodItemsTable {
   margin-top: 15px;
   width: 100%;
   table-layout: fixed;
@@ -837,20 +848,21 @@ td {
   --tw-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
   --tw-shadow-colored: 0 1px 2px 0 var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+  overflow-x: auto;
 }
 
-#topTwoItemsTable th,
-#topTwoItemsTable td {
+#foodItemsTable th,
+#foodItemsTable td {
   border-width: 1px;
   --tw-border-opacity: 1;
   border-color: rgb(229 231 235 / var(--tw-border-opacity));
   text-align: left;
-  padding: 1.2vw;
-  font-size: min(3vw, 3em);
-  /* Increased 3x */
+  padding: clamp(0.6rem, 1.2vw, 1.2em);
+  font-size: clamp(0.8rem, 1vw, 1em);
+  min-font-size: 10px;
 }
 
-#topTwoItemsTable th {
+#foodItemsTable th {
   white-space: nowrap;
   --tw-bg-opacity: 1;
   background-color: rgb(79 70 229 / var(--tw-bg-opacity));
@@ -859,26 +871,26 @@ td {
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
-#topTwoItemsTable td {
+#foodItemsTable td {
   --tw-bg-opacity: 1;
   background-color: rgb(236 254 255 / var(--tw-bg-opacity));
 }
 
-#topTwoItemsTable th:first-child,
-#topTwoItemsTable td:first-child {
-  width: 28%;
+#foodItemsTable th:first-child,
+#foodItemsTable td:first-child {
+  width: 35%;
 }
 
-#topTwoItemsTable td:first-child {
+#foodItemsTable td:nth-child(2) {
   white-space: normal;
 }
 
-#topTwoItemsTable th:not(:first-child),
-#topTwoItemsTable td:not(:first-child) {
-  width: 14%;
+#foodItemsTable th:not(:first-child),
+#foodItemsTable td:not(:first-child) {
+  width: 16.25%;
 }
 
-/* Meal Recall Table Styles */
+/* Meal Recall Tables */
 
 #mealRecallTableDay1_Early,
 #mealRecallTableDay1_Breakfast,
@@ -903,6 +915,7 @@ td {
   --tw-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
   --tw-shadow-colored: 0 1px 2px 0 var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+  overflow-x: auto;
 }
 
 #mealRecallTableDay1_Early th,
@@ -933,14 +946,13 @@ td {
 #mealRecallTableDay2_Teatime td,
 #mealRecallTableDay2_Dinner td,
 #mealRecallTableDay2_Bedtime td {
-  white-space: nowrap;
   border-width: 1px;
   --tw-border-opacity: 1;
   border-color: rgb(229 231 235 / var(--tw-border-opacity));
   text-align: left;
-  padding: 0.8vw;
-  font-size: min(2.7vw, 2.7em);
-  /* Increased 3x from 0.9em */
+  padding: clamp(0.4rem, 0.8vw, 0.8em);
+  font-size: clamp(0.7rem, 0.9vw, 0.9em);
+  min-font-size: 9px;
 }
 
 #mealRecallTableDay1_Early th,
@@ -1012,7 +1024,7 @@ td {
 #mealRecallTableDay2_Teatime td:nth-child(1),
 #mealRecallTableDay2_Dinner td:nth-child(1),
 #mealRecallTableDay2_Bedtime td:nth-child(1) {
-  width: 40%;
+  width: 45%;
 }
 
 #mealRecallTableDay1_Early th:nth-child(2),
@@ -1043,7 +1055,7 @@ td {
 #mealRecallTableDay2_Teatime td:nth-child(2),
 #mealRecallTableDay2_Dinner td:nth-child(2),
 #mealRecallTableDay2_Bedtime td:nth-child(2) {
-  width: 20%;
+  width: 18.33%;
 }
 
 #mealRecallTableDay1_Early th:nth-child(3),
@@ -1074,7 +1086,7 @@ td {
 #mealRecallTableDay2_Teatime td:nth-child(3),
 #mealRecallTableDay2_Dinner td:nth-child(3),
 #mealRecallTableDay2_Bedtime td:nth-child(3) {
-  width: 20%;
+  width: 18.33%;
 }
 
 #mealRecallTableDay1_Early th:nth-child(4),
@@ -1105,7 +1117,7 @@ td {
 #mealRecallTableDay2_Teatime td:nth-child(4),
 #mealRecallTableDay2_Dinner td:nth-child(4),
 #mealRecallTableDay2_Bedtime td:nth-child(4) {
-  width: 20%;
+  width: 18.33%;
 }
 
 table input[type="text"],
@@ -1115,9 +1127,48 @@ table input[type="date"] {
   box-sizing: border-box;
   display: inline-block;
   width: 100%;
-  font-size: min(3vw, 3em);
-  /* Increased 3x */
+  font-size: clamp(0.8rem, 1vw, 1em);
+  min-font-size: 10px;
 }
+
+/* Images */
+
+.survey-section[data-section="unit-reference"] .unit-images-container {
+  display: flex;
+  justify-content: center;
+  overflow-x: auto;
+  gap: 1.6vw;
+  margin: 2vw 0;
+}
+
+.survey-section[data-section="unit-reference"] .unit-image {
+  flex: none;
+  text-align: center;
+  width: auto;
+  min-width: auto;
+  max-width: 100%;
+}
+
+.survey-section[data-section="unit-reference"] img.reference-image {
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 0.25rem;
+  display: block;
+  height: auto;
+  max-height: 200px;
+  max-width: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+.survey-section[data-section="unit-reference"].blurred {
+  filter: blur(5px) !important;
+  pointer-events: none !important;
+  opacity: 0.7 !important;
+  transition: filter 0.3s, opacity 0.3s;
+}
+
+/* Buttons */
 
 button {
   cursor: pointer;
@@ -1153,10 +1204,10 @@ button:disabled {
 }
 
 button {
-  padding: 1vw 2vw;
+  padding: clamp(0.5rem, 1vw, 1em) clamp(1rem, 2vw, 2em);
   margin: 1vw 0.5vw;
-  font-size: min(3vw, 3em);
-  /* Increased 3x */
+  font-size: clamp(0.8rem, 1vw, 1em);
+  min-font-size: 10px;
 }
 
 .next-btn {
@@ -1219,10 +1270,10 @@ button {
 .add-row-btn,
 .add-row-action-btn,
 .remove-row-action-btn {
-  padding: 0.6vw 1.2vw;
+  padding: clamp(0.3rem, 0.6vw, 0.6em) clamp(0.6rem, 1.2vw, 1.2em);
   margin: 0 0.4vw;
-  font-size: min(2.7vw, 2.7em);
-  /* Increased 3x from 0.9em */
+  font-size: clamp(0.7rem, 0.9vw, 0.9em);
+  min-font-size: 9px;
 }
 
 .add-row-btn {
@@ -1276,11 +1327,19 @@ button {
   background-color: rgb(185 28 28 / var(--tw-bg-opacity));
 }
 
-.survey-section.blurred {
-  filter: blur(5px);
-  pointer-events: none;
-  opacity: 0.7;
-  transition: filter 0.3s, opacity 0.3s;
+/* Messages */
+
+.warning-text {
+  border-radius: 0.375rem;
+  --tw-bg-opacity: 1;
+  background-color: rgb(254 226 226 / var(--tw-bg-opacity));
+  font-weight: 700;
+  --tw-text-opacity: 1;
+  color: rgb(239 68 68 / var(--tw-text-opacity));
+  font-size: clamp(0.8rem, 1.2vw, 1.2em);
+  min-font-size: 12px;
+  margin-bottom: 1vw;
+  padding: clamp(0.6rem, 1vw, 1em);
 }
 
 .save-message {
@@ -1307,10 +1366,10 @@ button {
   font-weight: 700;
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
-  padding: 1vw 2vw;
+  padding: clamp(0.6rem, 1vw, 1em) clamp(1.2rem, 2vw, 2.4em);
   margin: 1vw 0;
-  font-size: min(3.6vw, 3.6em);
-  /* Increased 3x from 1.2em */
+  font-size: clamp(0.9rem, 1.2vw, 1.2em);
+  min-font-size: 12px;
   animation-delay: 2.5s;
 }
 
@@ -1323,11 +1382,57 @@ button {
   font-weight: 700;
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
-  padding: 1vw 2vw;
+  padding: clamp(0.6rem, 1vw, 1em) clamp(1.2rem, 2vw, 2.4em);
   margin: 1vw 0;
-  font-size: min(3.6vw, 3.6em);
-  /* Increased 3x from 1.2em */
+  font-size: clamp(0.9rem, 1.2vw, 1.2em);
+  min-font-size: 12px;
 }
+
+.uuid-display {
+  border-radius: 0.5rem;
+  border-width: 1px;
+  --tw-border-opacity: 1;
+  border-color: rgb(209 213 219 / var(--tw-border-opacity));
+  --tw-bg-opacity: 1;
+  background-color: rgb(249 250 251 / var(--tw-bg-opacity));
+  margin-bottom: 2vw;
+  padding: clamp(0.8rem, 1.5vw, 1.5em);
+  font-size: clamp(0.8rem, 1vw, 1em);
+  min-font-size: 10px;
+}
+
+.locked-message {
+  display: block;
+  border-radius: 0.5rem;
+  border-width: 1px;
+  --tw-border-opacity: 1;
+  border-color: rgb(239 68 68 / var(--tw-border-opacity));
+  --tw-bg-opacity: 1;
+  background-color: rgb(254 226 226 / var(--tw-bg-opacity));
+  --tw-text-opacity: 1;
+  color: rgb(31 41 55 / var(--tw-text-opacity));
+  margin-top: 2vw;
+  padding: clamp(0.8rem, 1.5vw, 1.5em);
+  font-size: clamp(0.8rem, 1vw, 1em);
+  min-font-size: 10px;
+}
+
+.unique-link {
+  font-weight: 600;
+  --tw-text-opacity: 1;
+  color: rgb(13 148 136 / var(--tw-text-opacity));
+}
+
+.unique-link:hover {
+  text-decoration-line: underline;
+}
+
+.unique-link {
+  font-size: clamp(0.8rem, 1vw, 1em);
+  min-font-size: 10px;
+}
+
+/* Containers */
 
 .meal-recall-container {
   display: flex;
@@ -1348,8 +1453,8 @@ button {
 
 .meal-time label {
   margin-right: 0.25rem;
-  font-size: min(3vw, 3em);
-  /* Increased 3x */
+  font-size: clamp(0.8rem, 1vw, 1em);
+  min-font-size: 10px;
 }
 
 .meal-time table {
@@ -1365,65 +1470,14 @@ button {
   border-color: rgb(229 231 235 / var(--tw-border-opacity));
 }
 
-.survey-section[data-section="unit-reference"] .unit-images-container {
-  display: flex;
-  justify-content: center;
-  gap: 1.6vw;
-  margin: 2vw 0;
-}
-
-.survey-section[data-section="unit-reference"] .unit-image {
-  flex: none;
-  text-align: center;
-  width: 30vw;
-}
-
-.survey-section[data-section="unit-reference"] img.reference-image {
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 0.25rem;
-  display: block;
-  height: auto;
-  max-height: 200px;
-  max-width: 100%;
-  -o-object-fit: contain;
-     object-fit: contain;
-}
-
-.survey-section[data-section="unit-reference"].blurred {
-  filter: blur(5px) !important;
-  pointer-events: none !important;
-  opacity: 0.7 !important;
+.survey-section.blurred {
+  filter: blur(5px);
+  pointer-events: none;
+  opacity: 0.7;
   transition: filter 0.3s, opacity 0.3s;
 }
 
-/* New classes for inline styles */
-
-.uuid-display {
-  border-radius: 0.5rem;
-  border-width: 1px;
-  --tw-border-opacity: 1;
-  border-color: rgb(209 213 219 / var(--tw-border-opacity));
-  --tw-bg-opacity: 1;
-  background-color: rgb(249 250 251 / var(--tw-bg-opacity));
-  margin-bottom: 2vw;
-  padding: 1.5vw;
-  font-size: min(3vw, 3em);
-  /* Increased 3x */
-}
-
-.warning-text {
-  border-radius: 0.375rem;
-  --tw-bg-opacity: 1;
-  background-color: rgb(254 226 226 / var(--tw-bg-opacity));
-  font-weight: 700;
-  --tw-text-opacity: 1;
-  color: rgb(239 68 68 / var(--tw-text-opacity));
-  font-size: min(0.27vw, 0.27em);
-  /* Decreased 3x, ~2.7px at 1000px viewport */
-  margin-bottom: 1vw;
-  padding: 1vw;
-}
+/* Miscellaneous */
 
 .hidden-group {
   display: none;
@@ -1454,9 +1508,9 @@ button {
 }
 
 .calc-btn {
-  padding: 1vw 2vw;
-  font-size: min(3vw, 3em);
-  /* Increased 3x */
+  padding: clamp(0.5rem, 1vw, 1em) clamp(1rem, 2vw, 2em);
+  font-size: clamp(0.8rem, 1vw, 1em);
+  min-font-size: 10px;
 }
 
 .button-group {
@@ -1468,39 +1522,264 @@ button {
   display: block;
 }
 
-.locked-message {
-  display: block;
-  border-radius: 0.5rem;
-  border-width: 1px;
-  --tw-border-opacity: 1;
-  border-color: rgb(239 68 68 / var(--tw-border-opacity));
-  --tw-bg-opacity: 1;
-  background-color: rgb(254 226 226 / var(--tw-bg-opacity));
-  --tw-text-opacity: 1;
-  color: rgb(31 41 55 / var(--tw-text-opacity));
-  margin-top: 2vw;
-  padding: 1.5vw;
-  font-size: min(3vw, 3em);
-  /* Increased 3x */
-}
-
-.unique-link {
-  font-weight: 600;
-  --tw-text-opacity: 1;
-  color: rgb(13 148 136 / var(--tw-text-opacity));
-}
-
-.unique-link:hover {
-  text-decoration-line: underline;
-}
-
-.unique-link {
-  font-size: min(3vw, 3em);
-  /* Increased 3x */
-}
-
 img {
   display: block;
   height: auto;
   max-width: 100%;
+}
+
+/* Small Mobile Adjustments (<480px) */
+
+@media (max-width: 480px) {
+  .container {
+    padding: 2.5vw;
+  }
+
+  h1 {
+    font-size: clamp(2rem, 5vw, 2.5em);
+    min-font-size: 16px;
+  }
+
+  h2 {
+    font-size: min(1.44vw, 1.44em);
+    min-font-size: 14px;
+  }
+
+  h3 {
+    font-size: min(1.12vw, 1.12em);
+    min-font-size: 12px;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.8vw;
+    border-radius: 0.375rem;
+    --tw-bg-opacity: 1;
+    background-color: rgb(219 234 254 / var(--tw-bg-opacity));
+    margin-bottom: 1.8vw;
+    padding: 1.2vw;
+  }
+
+  .form-group input[type="radio"],
+  .form-group input[type="checkbox"] {
+    margin-right: 0.3vw;
+  }
+
+  input[type="text"],
+  input[type="number"],
+  select,
+  input[type="date"] {
+    padding: 0.6vw;
+  }
+
+  table,
+  #foodFrequencyTable,
+  #foodItemsTable {
+    th,
+    td {
+      padding: 0.8vw;
+    }
+  }
+
+  #mealRecallTableDay1_Early,
+  #mealRecallTableDay1_Breakfast,
+  #mealRecallTableDay1_Mid-morning,
+  #mealRecallTableDay1_Lunch,
+  #mealRecallTableDay1_Teatime,
+  #mealRecallTableDay1_Dinner,
+  #mealRecallTableDay1_Bedtime,
+  #mealRecallTableDay2_Early,
+  #mealRecallTableDay2_Breakfast,
+  #mealRecallTableDay2_Mid-morning,
+  #mealRecallTableDay2_Lunch,
+  #mealRecallTableDay2_Teatime,
+  #mealRecallTableDay2_Dinner,
+  #mealRecallTableDay2_Bedtime {
+    th,
+    td {
+      padding: 0.6vw;
+    }
+  }
+
+  .survey-section[data-section="unit-reference"] .unit-images-container {
+    gap: 1.2vw;
+  }
+
+  .survey-section[data-section="unit-reference"] img.reference-image {
+    max-height: 160px;
+  }
+
+  .warning-text,
+  .save-message,
+  .comeback-message {
+    padding: 0.8vw 1.6vw;
+  }
+
+  .uuid-display,
+  .locked-message {
+    padding: 1.2vw;
+  }
+
+  button {
+    padding: 0.8vw 1.6vw;
+  }
+
+  .add-row-btn,
+  .add-row-action-btn,
+  .remove-row-action-btn {
+    padding: 0.5vw 1vw;
+  }
+
+  .calc-btn {
+    padding: 0.8vw 1.6vw;
+  }
+
+  .meal-recall-container {
+    gap: 1.5vw;
+  }
+}
+
+/* Adjustments for typical mobile and smaller tablets (481px to 1079px) */
+
+@media (min-width: 481px) and (max-width: 1079px) {
+  label {
+    font-size: clamp(1.2rem, 1.2vw, 1.2em);
+    /* Increase minimum and scaling */
+  }
+
+  input[type="text"],
+  input[type="number"],
+  select,
+  input[type="date"],
+  table input[type="text"],
+  table input[type="number"],
+  table select,
+  table input[type="date"] {
+    font-size: clamp(1.5rem, 1.2vw, 1.2em);
+    /* Increase minimum and scaling */
+    padding: clamp(0.6rem, 1vw, 1em);
+    /* Adjust padding if needed */
+  }
+
+  th,
+  td,
+  #foodFrequencyTable th,
+  #foodFrequencyTable td,
+  #foodItemsTable th,
+  #foodItemsTable td,
+  #mealRecallTableDay1_Early th,
+  #mealRecallTableDay1_Breakfast th,
+  #mealRecallTableDay1_Mid-morning th,
+  #mealRecallTableDay1_Lunch th,
+  #mealRecallTableDay1_Teatime th,
+  #mealRecallTableDay1_Dinner th,
+  #mealRecallTableDay1_Bedtime th,
+  #mealRecallTableDay2_Early th,
+  #mealRecallTableDay2_Breakfast th,
+  #mealRecallTableDay2_Mid-morning th,
+  #mealRecallTableDay2_Lunch th,
+  #mealRecallTableDay2_Teatime th,
+  #mealRecallTableDay2_Dinner th,
+  #mealRecallTableDay2_Bedtime th,
+  #mealRecallTableDay1_Early td,
+  #mealRecallTableDay1_Breakfast td,
+  #mealRecallTableDay1_Mid-morning td,
+  #mealRecallTableDay1_Lunch td,
+  #mealRecallTableDay1_Teatime td,
+  #mealRecallTableDay1_Dinner td,
+  #mealRecallTableDay1_Bedtime td,
+  #mealRecallTableDay2_Early td,
+  #mealRecallTableDay2_Breakfast td,
+  #mealRecallTableDay2_Mid-morning td,
+  #mealRecallTableDay2_Lunch td,
+  #mealRecallTableDay2_Teatime td,
+  #mealRecallTableDay2_Dinner td,
+  #mealRecallTableDay2_Bedtime td {
+    font-size: clamp(1.2rem, 1.1vw, 1.1em);
+    /* Increase minimum and scaling */
+    padding: clamp(0.7rem, 1.3vw, 1.3em);
+    /* Adjust padding if needed */
+  }
+
+  button,
+  .add-row-btn,
+  .add-row-action-btn,
+  .remove-row-action-btn,
+  .calc-btn,
+  .unique-link {
+    font-size: clamp(1rem, 1.2vw, 1.2em);
+    /* Increase minimum and scaling */
+    padding: clamp(0.6rem, 1.2vw, 1.2em) clamp(1.2rem, 2.4vw, 2.4em);
+    /* Adjust padding */
+  }
+
+  .warning-text,
+  .save-message,
+  .comeback-message,
+  .uuid-display,
+  .locked-message {
+    font-size: clamp(1.6rem, 1.2vw, 1.2em);
+    /* Increase minimum and scaling */
+    padding: clamp(0.8rem, 1.6vw, 1.6em);
+    /* Adjust padding */
+  }
+
+  h3 {
+    font-size: clamp(1.4rem, 1.6vw, 1.6em);
+    /* Adjust h3 size */
+  }
+}
+
+/* Default to block on smaller screens (implied by the code above) */
+
+@media (min-width: 1080px) {
+  /* Example breakpoint for larger screens */
+
+  .form-group {
+    display: flex;
+    align-items: center;
+    gap: 0.8vw;
+    border-radius: 0.375rem;
+    --tw-bg-opacity: 1;
+    background-color: rgb(219 234 254 / var(--tw-bg-opacity));
+    /* Change flex-direction back to row or adjust as needed */
+    margin-bottom: 1.8vw;
+    padding: 1.2vw;
+  }
+
+  label {
+    display: inline-block;
+    /* Go back to inline */
+    width: 20vw;
+    /* Restore the width */
+    min-width: 150px;
+    /* Restore the min-width for larger screens */
+    margin-bottom: 0;
+    /* Remove the margin-bottom */
+  }
+
+  input[type="text"],
+          input[type="number"],
+          select,
+          input[type="date"] {
+    width: 15vw;
+    /* Restore the width */
+    min-width: 120px;
+    /* Restore the min-width for larger screens */
+  }
+}
+
+h1 {
+  border-bottom-width: 2px;
+  --tw-border-opacity: 1;
+  border-color: rgb(99 102 241 / var(--tw-border-opacity));
+  text-align: center;
+  font-weight: 700;
+  --tw-text-opacity: 1;
+  color: rgb(67 56 202 / var(--tw-text-opacity));
+  font-size: clamp(2.2rem, 2.5vw, 2.5em);
+  margin-bottom: 2vw;
+  padding-bottom: 1vw;
 }

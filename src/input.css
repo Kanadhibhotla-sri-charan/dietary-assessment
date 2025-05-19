@@ -15,16 +15,17 @@ body {
   padding: 3vw;
 }
 
+/* Headings */
 h1 {
   @apply text-center text-indigo-700 font-bold border-b-2 border-indigo-500;
-  font-size: min(7.5vw, 7.5em); /* Increased 3x from 2.5em */
+  font-size: clamp(3rem, 2.5vw, 2.5em);
   margin-bottom: 2vw;
   padding-bottom: 1vw;
 }
 
 h2 {
   @apply text-indigo-600 font-semibold border-l-4 border-indigo-500;
-  font-size: min(5.4vw, 5.4em); /* Increased 3x from 1.8em */
+  font-size: clamp(2.3rem, 1.8vw, 1.8em);
   margin-top: 2vw;
   margin-bottom: 1.5vw;
   padding-left: 1vw;
@@ -32,29 +33,35 @@ h2 {
 
 h3 {
   @apply text-indigo-500 font-medium;
-  font-size: min(4.2vw, 4.2em); /* Increased 3x from 1.4em */
+  font-size: clamp(1.2rem, 1.4vw, 1.4em);
   margin-top: 1.5vw;
   margin-bottom: 1vw;
 }
 
+/* Form Elements */
 .form-group {
   @apply bg-blue-100 rounded-md flex flex-col items-start gap-[0.8vw];
   margin-bottom: 1.8vw;
   padding: 1.2vw;
 }
 
-/* Ensure radio/checkbox options within form-group have reduced spacing */
 .form-group input[type="radio"],
 .form-group input[type="checkbox"] {
   @apply mr-[0.4vw] align-middle;
   width: 1vw;
   height: 1vw;
+  min-width: 12px;
+  min-height: 12px;
 }
 
 label {
   @apply inline-block font-bold text-indigo-800 mr-1;
-  width: 20vw;
-  font-size: min(3vw, 3em); /* Increased 3x from 1em */
+  width: auto;
+  min-width: auto;
+  display: block;
+  margin-bottom: 0.4vw;
+  font-size: clamp(0.8rem, 1vw, 1em);
+  min-font-size: 10px;
 }
 
 input[type="text"],
@@ -62,20 +69,25 @@ input[type="number"],
 select,
 input[type="date"] {
   @apply border-2 border-teal-500 rounded-md bg-gray-50 shadow-sm focus:border-teal-600 focus:shadow-md focus:outline-none transition-all;
-  padding: 0.8vw;
-  width: 15vw;
-  font-size: min(3vw, 3em); /* Increased 3x from 1em */
+  padding: clamp(0.5rem, 0.8vw, 0.8em);
+  width: 100%;
+  min-width: auto;
+  font-size: clamp(0.8rem, 1vw, 1em);
+  min-font-size: 10px;
 }
 
+/* Tables */
 table {
   @apply w-full border-collapse mt-[15px] bg-white shadow-sm table-fixed;
+  overflow-x: auto;
 }
 
 th,
 td {
-  @apply border border-gray-200 text-left whitespace-nowrap;
-  padding: 1.2vw;
-  font-size: min(3vw, 3em); /* Increased 3x from 1em */
+  @apply border border-gray-200 text-left;
+  padding: clamp(0.6rem, 1.2vw, 1.2em);
+  font-size: clamp(0.8rem, 1vw, 1em);
+  min-font-size: 10px;
 }
 
 th {
@@ -86,71 +98,79 @@ td {
   @apply bg-cyan-50;
 }
 
-/* Food Frequency Table Styles */
+/* Food Frequency Table */
 #foodFrequencyTable {
   @apply w-full border-collapse mt-[15px] bg-white shadow-sm table-fixed;
+  overflow-x: auto;
 }
 
 #foodFrequencyTable th,
 #foodFrequencyTable td {
-  @apply border border-gray-200 text-left whitespace-nowrap;
-  padding: 1.2vw;
-  font-size: min(3vw, 3em); /* Increased 3x */
+  @apply border border-gray-200 text-left;
+  padding: clamp(0.6rem, 1.2vw, 1.2em);
+  font-size: clamp(0.8rem, 1vw, 1em);
+  min-font-size: 10px;
 }
 
 #foodFrequencyTable th {
   @apply bg-indigo-600 text-white font-bold;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 #foodFrequencyTable td {
   @apply bg-cyan-50;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 #foodFrequencyTable th:first-child,
 #foodFrequencyTable td:first-child {
-  @apply w-[33%];
+  @apply w-[40%];
 }
 
 #foodFrequencyTable th:not(:first-child),
 #foodFrequencyTable td:not(:first-child) {
-  @apply w-[13%];
+  @apply w-[15%];
 }
 
-/* Top Two Items Table Styles (assumed ID, may need adjustment) */
-#topTwoItemsTable {
+/* Food Items Table (previously assumed as topTwoItemsTable) */
+#foodItemsTable {
   @apply w-full border-collapse mt-[15px] bg-white shadow-sm table-fixed;
+  overflow-x: auto;
 }
 
-#topTwoItemsTable th,
-#topTwoItemsTable td {
+#foodItemsTable th,
+#foodItemsTable td {
   @apply border border-gray-200 text-left;
-  padding: 1.2vw;
-  font-size: min(3vw, 3em); /* Increased 3x */
+  padding: clamp(0.6rem, 1.2vw, 1.2em);
+  font-size: clamp(0.8rem, 1vw, 1em);
+  min-font-size: 10px;
 }
 
-#topTwoItemsTable th {
+#foodItemsTable th {
   @apply bg-indigo-600 text-white font-bold whitespace-nowrap;
 }
 
-#topTwoItemsTable td {
+#foodItemsTable td {
   @apply bg-cyan-50;
 }
 
-#topTwoItemsTable th:first-child,
-#topTwoItemsTable td:first-child {
-  @apply w-[28%];
+#foodItemsTable th:first-child,
+#foodItemsTable td:first-child {
+  @apply w-[35%];
 }
 
-#topTwoItemsTable td:first-child {
+#foodItemsTable td:nth-child(2) {
   @apply whitespace-normal;
 }
 
-#topTwoItemsTable th:not(:first-child),
-#topTwoItemsTable td:not(:first-child) {
-  @apply w-[14%];
+#foodItemsTable th:not(:first-child),
+#foodItemsTable td:not(:first-child) {
+  @apply w-[16.25%];
 }
 
-/* Meal Recall Table Styles */
+/* Meal Recall Tables */
 #mealRecallTableDay1_Early,
 #mealRecallTableDay1_Breakfast,
 #mealRecallTableDay1_Mid-morning,
@@ -166,6 +186,7 @@ td {
 #mealRecallTableDay2_Dinner,
 #mealRecallTableDay2_Bedtime {
   @apply w-full border-collapse mt-[15px] bg-white shadow-sm table-fixed;
+  overflow-x: auto;
 }
 
 #mealRecallTableDay1_Early th,
@@ -196,9 +217,10 @@ td {
 #mealRecallTableDay2_Teatime td,
 #mealRecallTableDay2_Dinner td,
 #mealRecallTableDay2_Bedtime td {
-  @apply border border-gray-200 text-left whitespace-nowrap;
-  padding: 0.8vw;
-  font-size: min(2.7vw, 2.7em); /* Increased 3x from 0.9em */
+  @apply border border-gray-200 text-left;
+  padding: clamp(0.4rem, 0.8vw, 0.8em);
+  font-size: clamp(0.7rem, 0.9vw, 0.9em);
+  min-font-size: 9px;
 }
 
 #mealRecallTableDay1_Early th,
@@ -264,7 +286,7 @@ td {
 #mealRecallTableDay2_Teatime td:nth-child(1),
 #mealRecallTableDay2_Dinner td:nth-child(1),
 #mealRecallTableDay2_Bedtime td:nth-child(1) {
-  @apply w-[40%];
+  @apply w-[45%];
 }
 
 #mealRecallTableDay1_Early th:nth-child(2),
@@ -295,7 +317,7 @@ td {
 #mealRecallTableDay2_Teatime td:nth-child(2),
 #mealRecallTableDay2_Dinner td:nth-child(2),
 #mealRecallTableDay2_Bedtime td:nth-child(2) {
-  @apply w-[20%];
+  @apply w-[18.33%];
 }
 
 #mealRecallTableDay1_Early th:nth-child(3),
@@ -326,7 +348,7 @@ td {
 #mealRecallTableDay2_Teatime td:nth-child(3),
 #mealRecallTableDay2_Dinner td:nth-child(3),
 #mealRecallTableDay2_Bedtime td:nth-child(3) {
-  @apply w-[20%];
+  @apply w-[18.33%];
 }
 
 #mealRecallTableDay1_Early th:nth-child(4),
@@ -357,7 +379,7 @@ td {
 #mealRecallTableDay2_Teatime td:nth-child(4),
 #mealRecallTableDay2_Dinner td:nth-child(4),
 #mealRecallTableDay2_Bedtime td:nth-child(4) {
-  @apply w-[20%];
+  @apply w-[18.33%];
 }
 
 table input[type="text"],
@@ -365,14 +387,42 @@ table input[type="number"],
 table select,
 table input[type="date"] {
   @apply w-full inline-block box-border;
-  font-size: min(3vw, 3em); /* Increased 3x */
+  font-size: clamp(0.8rem, 1vw, 1em);
+  min-font-size: 10px;
 }
 
+/* Images */
+.survey-section[data-section="unit-reference"] .unit-images-container {
+  @apply flex justify-center overflow-x-auto;
+  gap: 1.6vw;
+  margin: 2vw 0;
+}
+
+.survey-section[data-section="unit-reference"] .unit-image {
+  @apply flex-none text-center;
+  width: auto;
+  min-width: auto;
+  max-width: 100%;
+}
+
+.survey-section[data-section="unit-reference"] img.reference-image {
+  @apply max-w-full max-h-[200px] h-auto block mx-auto mb-1 object-contain;
+}
+
+.survey-section[data-section="unit-reference"].blurred {
+  filter: blur(5px) !important;
+  pointer-events: none !important;
+  opacity: 0.7 !important;
+  transition: filter 0.3s, opacity 0.3s;
+}
+
+/* Buttons */
 button {
   @apply bg-teal-500 text-white rounded-md cursor-pointer font-bold hover:bg-teal-600 active:bg-teal-700 active:scale-95 disabled:bg-gray-400 disabled:cursor-not-allowed disabled:opacity-70 transition-all;
-  padding: 1vw 2vw;
+  padding: clamp(0.5rem, 1vw, 1em) clamp(1rem, 2vw, 2em);
   margin: 1vw 0.5vw;
-  font-size: min(3vw, 3em); /* Increased 3x */
+  font-size: clamp(0.8rem, 1vw, 1em);
+  min-font-size: 10px;
 }
 
 .next-btn {
@@ -387,9 +437,10 @@ button {
 .add-row-action-btn,
 .remove-row-action-btn {
   @apply rounded-md cursor-pointer font-bold hover:scale-105 active:scale-95 transition-all;
-  padding: 0.6vw 1.2vw;
+  padding: clamp(0.3rem, 0.6vw, 0.6em) clamp(0.6rem, 1.2vw, 1.2em);
   margin: 0 0.4vw;
-  font-size: min(2.7vw, 2.7em); /* Increased 3x from 0.9em */
+  font-size: clamp(0.7rem, 0.9vw, 0.9em);
+  min-font-size: 9px;
 }
 
 .add-row-btn {
@@ -404,28 +455,55 @@ button {
   @apply bg-red-500 text-white hover:bg-red-600 active:bg-red-700;
 }
 
-.survey-section.blurred {
-  filter: blur(5px);
-  pointer-events: none;
-  opacity: 0.7;
-  transition: filter 0.3s, opacity 0.3s;
+/* Messages */
+.warning-text {
+  @apply text-red-500 font-bold bg-red-100 rounded-md;
+  font-size: clamp(0.8rem, 1.2vw, 1.2em);
+  min-font-size: 12px;
+  margin-bottom: 1vw;
+  padding: clamp(0.6rem, 1vw, 1em);
 }
 
 .save-message {
   @apply hidden bg-teal-500 text-white rounded-md font-bold text-center animate-fadeOut;
-  padding: 1vw 2vw;
+  padding: clamp(0.6rem, 1vw, 1em) clamp(1.2rem, 2vw, 2.4em);
   margin: 1vw 0;
-  font-size: min(3.6vw, 3.6em); /* Increased 3x from 1.2em */
+  font-size: clamp(0.9rem, 1.2vw, 1.2em);
+  min-font-size: 12px;
   animation-delay: 2.5s;
 }
 
 .comeback-message {
   @apply hidden bg-red-500 text-white rounded-md font-bold text-center;
-  padding: 1vw 2vw;
+  padding: clamp(0.6rem, 1vw, 1em) clamp(1.2rem, 2vw, 2.4em);
   margin: 1vw 0;
-  font-size: min(3.6vw, 3.6em); /* Increased 3x from 1.2em */
+  font-size: clamp(0.9rem, 1.2vw, 1.2em);
+  min-font-size: 12px;
 }
 
+.uuid-display {
+  @apply border border-gray-300 rounded-lg bg-gray-50;
+  margin-bottom: 2vw;
+  padding: clamp(0.8rem, 1.5vw, 1.5em); 
+  font-size: clamp(0.8rem, 1vw, 1em);
+  min-font-size: 10px;
+}
+
+.locked-message {
+  @apply block border border-red-500 rounded-lg bg-red-100 text-gray-800;
+  margin-top: 2vw;
+  padding: clamp(0.8rem, 1.5vw, 1.5em); 
+  font-size: clamp(0.8rem, 1vw, 1em);
+  min-font-size: 10px;
+}
+
+.unique-link {
+  @apply text-teal-600 hover:underline font-semibold;
+  font-size: clamp(0.8rem, 1vw, 1em);
+  min-font-size: 10px;
+}
+
+/* Containers */
 .meal-recall-container {
   @apply flex flex-col;
   gap: 2vw;
@@ -442,7 +520,8 @@ button {
 
 .meal-time label {
   @apply mr-1;
-  font-size: min(3vw, 3em); /* Increased 3x */
+  font-size: clamp(0.8rem, 1vw, 1em);
+  min-font-size: 10px;
 }
 
 .meal-time table {
@@ -454,43 +533,14 @@ button {
   @apply border border-gray-200;
 }
 
-.survey-section[data-section="unit-reference"] .unit-images-container {
-  @apply flex justify-center;
-  gap: 1.6vw;
-  margin: 2vw 0;
-}
-
-.survey-section[data-section="unit-reference"] .unit-image {
-  @apply flex-none text-center;
-  width: 30vw;
-}
-
-.survey-section[data-section="unit-reference"] img.reference-image {
-  @apply max-w-full max-h-[200px] h-auto block mx-auto mb-1 object-contain;
-}
-
-.survey-section[data-section="unit-reference"].blurred {
-  filter: blur(5px) !important;
-  pointer-events: none !important;
-  opacity: 0.7 !important;
+.survey-section.blurred {
+  filter: blur(5px);
+  pointer-events: none;
+  opacity: 0.7;
   transition: filter 0.3s, opacity 0.3s;
 }
 
-/* New classes for inline styles */
-.uuid-display {
-  @apply border border-gray-300 rounded-lg bg-gray-50;
-  margin-bottom: 2vw;
-  padding: 1.5vw;
-  font-size: min(3vw, 3em); /* Increased 3x */
-}
-
-.warning-text {
-  @apply text-red-500 font-bold bg-red-100 rounded-md;
-  font-size: min(0.27vw, 0.27em); /* Decreased 3x, ~2.7px at 1000px viewport */
-  margin-bottom: 1vw;
-  padding: 1vw;
-}
-
+/* Miscellaneous */
 .hidden-group {
   @apply hidden;
 }
@@ -501,8 +551,9 @@ button {
 
 .calc-btn {
   @apply ml-1 align-middle bg-teal-500 text-white rounded-md hover:bg-teal-600 active:bg-teal-700;
-  padding: 1vw 2vw;
-  font-size: min(3vw, 3em); /* Increased 3x */
+  padding: clamp(0.5rem, 1vw, 1em) clamp(1rem, 2vw, 2em);
+  font-size: clamp(0.8rem, 1vw, 1em);
+  min-font-size: 10px;
 }
 
 .button-group {
@@ -513,18 +564,228 @@ button {
   @apply block mb-1;
 }
 
-.locked-message {
-  @apply block border border-red-500 rounded-lg bg-red-100 text-gray-800;
-  margin-top: 2vw;
-  padding: 1.5vw;
-  font-size: min(3vw, 3em); /* Increased 3x */
-}
-
-.unique-link {
-  @apply text-teal-600 hover:underline font-semibold;
-  font-size: min(3vw, 3em); /* Increased 3x */
-}
-
 img {
   @apply max-w-full h-auto block;
 }
+
+/* Small Mobile Adjustments (<480px) */
+@media (max-width: 480px) {
+  .container {
+    padding: 2.5vw;
+  }
+
+  h1 {
+    font-size: clamp(2rem, 5vw, 2.5em);
+    min-font-size: 16px;
+  }
+
+  h2 {
+    font-size: min(1.44vw, 1.44em);
+    min-font-size: 14px;
+  }
+
+  h3 {
+    font-size: min(1.12vw, 1.12em);
+    min-font-size: 12px;
+  }
+
+  .form-group {
+    @apply bg-blue-100 rounded-md flex flex-col items-start gap-[0.8vw];
+    margin-bottom: 1.8vw;
+    padding: 1.2vw;
+  }
+
+  .form-group input[type="radio"],
+  .form-group input[type="checkbox"] {
+    margin-right: 0.3vw;
+  }
+
+  input[type="text"],
+  input[type="number"],
+  select,
+  input[type="date"] {
+    padding: 0.6vw;
+  }
+
+  table,
+  #foodFrequencyTable,
+  #foodItemsTable {
+    th,
+    td {
+      padding: 0.8vw;
+    }
+  }
+
+  #mealRecallTableDay1_Early,
+  #mealRecallTableDay1_Breakfast,
+  #mealRecallTableDay1_Mid-morning,
+  #mealRecallTableDay1_Lunch,
+  #mealRecallTableDay1_Teatime,
+  #mealRecallTableDay1_Dinner,
+  #mealRecallTableDay1_Bedtime,
+  #mealRecallTableDay2_Early,
+  #mealRecallTableDay2_Breakfast,
+  #mealRecallTableDay2_Mid-morning,
+  #mealRecallTableDay2_Lunch,
+  #mealRecallTableDay2_Teatime,
+  #mealRecallTableDay2_Dinner,
+  #mealRecallTableDay2_Bedtime {
+    th,
+    td {
+      padding: 0.6vw;
+    }
+  }
+
+  .survey-section[data-section="unit-reference"] .unit-images-container {
+    gap: 1.2vw;
+  }
+
+  .survey-section[data-section="unit-reference"] img.reference-image {
+    max-height: 160px;
+  }
+
+  .warning-text,
+  .save-message,
+  .comeback-message {
+    padding: 0.8vw 1.6vw;
+  }
+
+  .uuid-display,
+  .locked-message {
+    padding: 1.2vw;
+  }
+
+  button {
+    padding: 0.8vw 1.6vw;
+  }
+
+  .add-row-btn,
+  .add-row-action-btn,
+  .remove-row-action-btn {
+    padding: 0.5vw 1vw;
+  }
+
+  .calc-btn {
+    padding: 0.8vw 1.6vw;
+  }
+
+  .meal-recall-container {
+    gap: 1.5vw;
+  }
+}
+
+/* Adjustments for typical mobile and smaller tablets (481px to 1079px) */
+@media (min-width: 481px) and (max-width: 1079px) {
+  label {
+    font-size: clamp(1.2rem, 1.2vw, 1.2em); /* Increase minimum and scaling */
+  }
+
+  input[type="text"],
+  input[type="number"],
+  select,
+  input[type="date"],
+  table input[type="text"],
+  table input[type="number"],
+  table select,
+  table input[type="date"] {
+    font-size: clamp(1.5rem, 1.2vw, 1.2em); /* Increase minimum and scaling */
+    padding: clamp(0.6rem, 1vw, 1em); /* Adjust padding if needed */
+  }
+
+  th,
+  td,
+  #foodFrequencyTable th,
+  #foodFrequencyTable td,
+  #foodItemsTable th,
+  #foodItemsTable td,
+  #mealRecallTableDay1_Early th,
+  #mealRecallTableDay1_Breakfast th,
+  #mealRecallTableDay1_Mid-morning th,
+  #mealRecallTableDay1_Lunch th,
+  #mealRecallTableDay1_Teatime th,
+  #mealRecallTableDay1_Dinner th,
+  #mealRecallTableDay1_Bedtime th,
+  #mealRecallTableDay2_Early th,
+  #mealRecallTableDay2_Breakfast th,
+  #mealRecallTableDay2_Mid-morning th,
+  #mealRecallTableDay2_Lunch th,
+  #mealRecallTableDay2_Teatime th,
+  #mealRecallTableDay2_Dinner th,
+  #mealRecallTableDay2_Bedtime th,
+  #mealRecallTableDay1_Early td,
+  #mealRecallTableDay1_Breakfast td,
+  #mealRecallTableDay1_Mid-morning td,
+  #mealRecallTableDay1_Lunch td,
+  #mealRecallTableDay1_Teatime td,
+  #mealRecallTableDay1_Dinner td,
+  #mealRecallTableDay1_Bedtime td,
+  #mealRecallTableDay2_Early td,
+  #mealRecallTableDay2_Breakfast td,
+  #mealRecallTableDay2_Mid-morning td,
+  #mealRecallTableDay2_Lunch td,
+  #mealRecallTableDay2_Teatime td,
+  #mealRecallTableDay2_Dinner td,
+  #mealRecallTableDay2_Bedtime td {
+    font-size: clamp(1.2rem, 1.1vw, 1.1em); /* Increase minimum and scaling */
+    padding: clamp(0.7rem, 1.3vw, 1.3em); /* Adjust padding if needed */
+  }
+
+  button,
+  .add-row-btn,
+  .add-row-action-btn,
+  .remove-row-action-btn,
+  .calc-btn,
+  .unique-link {
+    font-size: clamp(1rem, 1.2vw, 1.2em); /* Increase minimum and scaling */
+    padding: clamp(0.6rem, 1.2vw, 1.2em) clamp(1.2rem, 2.4vw, 2.4em); /* Adjust padding */
+  }
+
+  .warning-text,
+  .save-message,
+  .comeback-message,
+  .uuid-display,
+  .locked-message {
+    font-size: clamp(1.6rem, 1.2vw, 1.2em); /* Increase minimum and scaling */
+    padding: clamp(0.8rem, 1.6vw, 1.6em); /* Adjust padding */
+  }
+
+  h3 {
+    font-size: clamp(1.4rem, 1.6vw, 1.6em); /* Adjust h3 size */
+  }
+}
+
+/* Default to block on smaller screens (implied by the code above) */
+
+        @media (min-width: 1080px) { /* Example breakpoint for larger screens */
+          .form-group {
+            @apply bg-blue-100 rounded-md flex items-center gap-[0.8vw]; /* Change flex-direction back to row or adjust as needed */
+            margin-bottom: 1.8vw;
+            padding: 1.2vw;
+          }
+          label {
+            display: inline-block; /* Go back to inline */
+            width: 20vw; /* Restore the width */
+            min-width: 150px; /* Restore the min-width for larger screens */
+            margin-bottom: 0; /* Remove the margin-bottom */
+          }
+          input[type="text"],
+          input[type="number"],
+          select,
+          input[type="date"] {
+            width: 15vw; /* Restore the width */
+            min-width: 120px; /* Restore the min-width for larger screens */
+          }
+        }
+
+        h1 {
+              border-bottom-width: 2px;
+              --tw-border-opacity: 1;
+              border-color: rgb(99 102 241 / var(--tw-border-opacity));
+              text-align: center;
+              font-weight: 700;
+              --tw-text-opacity: 1;
+              color: rgb(67 56 202 / var(--tw-text-opacity));
+              font-size: clamp(2.2rem, 2.5vw, 2.5em); 
+              margin-bottom: 2vw;
+              padding-bottom: 1vw;
+            }
